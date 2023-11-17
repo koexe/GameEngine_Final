@@ -1,0 +1,16 @@
+{
+"Characters":[
+    {
+        "Name":"Main_Character",
+        "Location":"Main",
+        "CharacterBasicDialog":"기본 캐릭터 다이얼로그입니다.",
+        "LinkedQuests":["Quest_Main"]
+    },
+    {
+        "Name":"SUb_Character_1",
+        "Location":"Sub_1",
+        "CharacterBasicDialog":"추가 캐릭터 다이얼로그입니다.",
+        "LinkedQuests":["Quest_Sub"]
+    }
+]
+}

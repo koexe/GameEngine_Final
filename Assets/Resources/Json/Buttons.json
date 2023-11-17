@@ -1,0 +1,94 @@
+{
+"buttons":[
+    {
+        "RoomType":"0",
+        "EffectNum":"1",
+        "WhereEffect":"Null",
+        "EffectValue":"1",
+        "EffectFunc":"MovePhase",
+        "CoolTime":"0",
+        "DebugMessage": "Next phase"
+    },
+    {
+        "RoomType":"0",
+        "EffectNum":"2",
+        "WhereEffect":"Null",
+        "EffectValue":"-1",
+        "EffectFunc":"MovePhase",
+        "CoolTime":"0",
+        "DebugMessage": "Previous phase"
+    },
+    {
+        "RoomType":"1",
+        "EffectNum":"1",
+        "WhereEffect":"AccAdditional",
+        "EffectValue":"0.5",
+        "EffectFunc":"Null",
+        "CoolTime":"1",
+        "DebugMessage": "1_1"
+    },
+    {
+        "RoomType":"1",
+        "EffectNum":"2",
+        "WhereEffect":"AccAdditional",
+        "EffectValue":"0.3",
+        "EffectFunc":"",
+        "CoolTime":"2",
+        "DebugMessage": "1_2"
+    },
+    {
+        "RoomType":"2",
+        "EffectNum":"1",
+        "WhereEffect":"DodgeAdditional",
+        "EffectValue":"0.1",
+        "EffectFunc":"",
+        "CoolTime":"1",
+        "DebugMessage": "2_1"
+    },
+    {
+        "RoomType":"2",
+        "EffectNum":"2",
+        "WhereEffect":"DodgeAdditional",
+        "EffectValue":"-0.3",
+        "EffectFunc":"",
+        "CoolTime":"1",
+        "DebugMessage": "2_2"
+    },
+    {
+        "RoomType":"2",
+        "EffectNum":"3",
+        "WhereEffect":"DodgeAdditional",
+        "EffectValue":"1",
+        "EffectFunc":"",
+        "CoolTime":"1",
+        "DebugMessage": "2_3"
+    },
+    {
+        "RoomType":"3",
+        "EffectNum":"1",
+        "WhereEffect":"AccAdditional",
+        "EffectValue":"0.7",
+        "EffectFunc":"",
+        "CoolTime":"3",
+        "DebugMessage": "3_1"
+    },
+    {
+        "RoomType":"4",
+        "EffectNum":"1",
+        "WhereEffect":"DodgeAdditional",
+        "EffectValue":"0.9",
+        "EffectFunc":"",
+        "CoolTime":"3",
+        "DebugMessage": "4_1"
+    },
+    {
+        "RoomType":"4",
+        "EffectNum":"2",
+        "WhereEffect":"AccAdditional",
+        "EffectValue":"0.3",
+        "EffectFunc":"",
+        "CoolTime":"3",
+        "DebugMessage": "4_2"
+    }
+]
+}

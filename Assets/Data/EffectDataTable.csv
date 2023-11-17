@@ -1,0 +1,11 @@
+RoomType,EffectNum,WhereEffect,EffectValue,EffectFunc,DebugMessege
+0,1,Null,1,MovePhase,Next Phase
+0,2,Null,-1,MovePhase,Previous Phase
+1,1,AccAdditional,0.5,Null,1_1
+1,2,AccAdditional,0.3,Null,1_2
+2,1,DodgeAdditional,0.1,Null,2_1
+2,2,DodgeAdditional,-0.3,Null,2_2
+2,3,DodgeAdditional,1,Null,2_3
+3,1,AccAdditional,0.7,Null,3_1
+4,1,DodgeAdditional,0.9,Null,4_1
+4,2,AccAdditional,0.3,Null,4_2

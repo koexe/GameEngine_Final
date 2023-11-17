@@ -1,0 +1,15 @@
+{
+"Locations":[
+    {
+        "LocationName":"Main",
+        "LocationContainCharacter":["Main_Character"],
+        "LocationDescription":"Description_Main_1"
+    },
+    {
+        "LocationName":"Sub_1",
+        "LocationContainCharacter":["SUb_Character_1"],
+        "LocationDescription":"Description_Sub_1"
+
+    }
+]
+}
