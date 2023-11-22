@@ -37,9 +37,11 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
             g_cCharacterInfo = null;
             g_cChoiceInfo = null;
         }
-
-
-
+        if(g_sTextType == "Choice_Text")
+        {
+            g_cCharacterInfo = null;
+            g_cDialogInfo = null;
+        }
     }
 
 
@@ -71,6 +73,19 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
         {
             mainSceneMNG.ChangeDialog(g_cDialogInfo);
             Destroy(gameObject);
+        }
+        else if (g_sTextType == "Choice_Text")
+        {
+            JsonMNG.Dialogs ChoiceLinkedDialog = mainSceneMNG.g_cChrrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID]
+                [mainSceneMNG.g_cChrrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID].
+                FindIndex(LinkedQuest => LinkedQuest.DialogID == g_cChoiceInfo.ChoiceLinkedDialogID)];
+            mainSceneMNG.ChangeDialog(ChoiceLinkedDialog);
+            GameObject[] DestroyTemp = GameObject.FindGameObjectsWithTag("ChoiceText");
+
+            for (int i = 0; i < DestroyTemp.Length; i++)
+            {
+                Destroy(DestroyTemp[i]);
+            }
         }
     }
 }

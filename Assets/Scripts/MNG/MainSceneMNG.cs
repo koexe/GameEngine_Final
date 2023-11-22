@@ -10,6 +10,7 @@ public class MainSceneMNG : MonoBehaviour
     public TextMeshProUGUI TMP_LocationText;
     public GameObject Canvas_MainScene;
     public JsonMNG.Dialogs g_cCurrentDialog;
+    public JsonMNG.Character_Contains_Quest g_cChrrentCharacter;
     private int m_iCurrentDialogIndex;
     public bool isChangeText = true;
 
@@ -35,6 +36,7 @@ public class MainSceneMNG : MonoBehaviour
     {
         //캐릭터 클릭 시 해당 캐릭터의 퀘스트와 다이얼로그를 보여주는 기능
         TMP_DialogText.text = character.CharacterBasicDialog;
+        g_cChrrentCharacter = character;
         isChangeText = false;
 
     }
@@ -46,9 +48,42 @@ public class MainSceneMNG : MonoBehaviour
             if (isChangeText)
             {
                 m_iCurrentDialogIndex++;
-                if (m_iCurrentDialogIndex >= g_cCurrentDialog.Dialog.Count)
+                if (m_iCurrentDialogIndex >= g_cCurrentDialog.Dialog.Count && g_cCurrentDialog.Choices.Count == 0)
                 {
                     m_iCurrentDialogIndex = 0;
+                }
+                else if (m_iCurrentDialogIndex >= g_cCurrentDialog.Dialog.Count && g_cCurrentDialog.Choices.Count != 0)
+                {
+                    m_iCurrentDialogIndex = g_cCurrentDialog.Dialog.Count - 1;
+
+                    for (int i = 0; i < g_cCurrentDialog.Choices.Count; i++)
+                    {
+                        GameObject CharTemp = Resources.Load<GameObject>("Prefab/ChoosableText");
+
+                        CharTemp.GetComponent<ChoiceTextCTR>().mainSceneMNG = gameObject.transform.GetComponent<MainSceneMNG>();
+                        CharTemp.GetComponent<ChoiceTextCTR>().g_cChoiceInfo = g_cCurrentDialog.Choices[i];
+                        CharTemp.GetComponent<ChoiceTextCTR>().g_sTextType = "Choice_Text";
+                        CharTemp.GetComponent<TextMeshProUGUI>().text = g_cCurrentDialog.Choices[i].ChoiceDialog;
+
+
+                        GameObject CharTemp_Temp = Instantiate(CharTemp, Canvas_MainScene.transform);
+
+                        RectTransform rect = CharTemp_Temp.transform.GetComponent<RectTransform>();
+                        rect.anchorMax = new Vector2(0.5f, 0.0f);
+                        rect.anchorMin = new Vector2(0.5f, 0.0f);
+                        rect.sizeDelta = new Vector2(1000, 80);
+
+                        Vector3 Pos = new Vector3(-200.0f, 300.0f, 0.0f);
+                        Pos.y -= 80 * i;
+
+                        CharTemp_Temp.transform.tag = "ChoiceText";
+
+
+                        rect.anchoredPosition = Pos;
+                    }
+
+
+
                 }
 
                 TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
@@ -64,6 +99,7 @@ public class MainSceneMNG : MonoBehaviour
         TMP_DialogText = GameObject.Find("DialogText").GetComponent<TextMeshProUGUI>();
         TMP_LocationText = GameObject.Find("LocationText").GetComponent<TextMeshProUGUI>();
         TMP_FontAsset font = Resources.Load<TMP_FontAsset>("Font/BasicFont");
+        g_cChrrentCharacter = null;
 
         TMP_DialogText.font = font;
         TMP_LocationText.font = font;
@@ -83,6 +119,7 @@ public class MainSceneMNG : MonoBehaviour
             RectTransform rect = CharTemp_Temp.transform.GetComponent<RectTransform>();
             rect.anchorMax = new Vector2(0.0f, 0.5f);
             rect.anchorMin = new Vector2(0.0f, 0.5f);
+            rect.sizeDelta = new Vector2(300, 80);
             Vector3 Pos = new Vector3(220.0f, 280.0f, 0.0f);
             Pos.x -= 80 * i;
             rect.anchoredPosition = Pos;
