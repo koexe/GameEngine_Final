@@ -40,6 +40,13 @@ public class MainSceneMNG : MonoBehaviour
         isChangeText = false;
 
     }
+
+    public void ChangeLocation(string Name)
+    {
+        Debug.Log(Name);
+        GameMNG.Instance.g_cCurrentLocationInfo = GameMNG.Instance.g_AllLocationInfoList[GameMNG.Instance.g_AllLocationInfoList.FindIndex(item => item.LocationName == Name)];
+
+    }
     public void OnMouseDownEvent_DIalogWindow()
     {
         // 대화창 클릭 시 다이얼로그를 앞으로 진행시키는 기능
@@ -90,6 +97,8 @@ public class MainSceneMNG : MonoBehaviour
             }
         }
     }
+
+
     #endregion
     #region 내부에서 사용할 기능들
     private void FirstInit()
@@ -130,6 +139,37 @@ public class MainSceneMNG : MonoBehaviour
         TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
 
         TMP_LocationText.text = GameMNG.Instance.g_cCurrentLocationInfo.LocationName;
+    }
+
+    private void ChangeLocationInit()
+    {
+        for (int i = 0; i < GameMNG.Instance.g_cCurrentLocationInfo.CharacterList.Count; i++)
+        {
+            GameObject CharTemp = Resources.Load<GameObject>("Prefab/ChoosableText");
+
+            CharTemp.GetComponent<ChoiceTextCTR>().mainSceneMNG = gameObject.transform.GetComponent<MainSceneMNG>();
+            CharTemp.GetComponent<ChoiceTextCTR>().g_iCharacterIndex = i;
+            CharTemp.GetComponent<ChoiceTextCTR>().g_sTextType = "Character_Name_Text";
+            CharTemp.GetComponent<TextMeshProUGUI>().text = GameMNG.Instance.g_cCurrentLocationInfo.CharacterList[i].Name;
+
+
+            GameObject CharTemp_Temp = Instantiate(CharTemp, Canvas_MainScene.transform);
+
+            RectTransform rect = CharTemp_Temp.transform.GetComponent<RectTransform>();
+            rect.anchorMax = new Vector2(0.0f, 0.5f);
+            rect.anchorMin = new Vector2(0.0f, 0.5f);
+            rect.sizeDelta = new Vector2(300, 80);
+            Vector3 Pos = new Vector3(220.0f, 280.0f, 0.0f);
+            Pos.x -= 80 * i;
+            rect.anchoredPosition = Pos;
+        }
+        m_iCurrentDialogIndex = 0;
+        g_cCurrentDialog = GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog;
+
+        TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
+
+        TMP_LocationText.text = GameMNG.Instance.g_cCurrentLocationInfo.LocationName;
+
     }
     #endregion
 }
