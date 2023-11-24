@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+
 
 public class GameMNG : MonoBehaviour
 {
@@ -40,10 +42,32 @@ public class GameMNG : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
+    public class Triggers
     {
-        
-    }
+        bool First_Trigger;
+        bool Second_Trigger;
 
+        public Triggers()
+        {
+
+
+        }
+    }
+    private void SaveFunc(Triggers Save)
+    {
+        string path = Application.persistentDataPath + "Save.json";
+
+        string SaveData = JsonUtility.ToJson(Save);
+        File.WriteAllText(path,SaveData);
+    }
+    private void LoadFunc()
+    {
+        string path = Application.persistentDataPath + "Save.json";
+        if (File.Exists(path) == false)
+        {
+            
+        }
+
+    }
 
 }

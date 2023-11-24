@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - BattleButton
   - MNG
-  - Room
-  - RoomButton
   - ChoiceText
+  - CharacterText
   layers:
   - Default
   - TransparentFX

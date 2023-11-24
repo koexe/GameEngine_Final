@@ -44,7 +44,9 @@ public class MainSceneMNG : MonoBehaviour
     public void ChangeLocation(string Name)
     {
         Debug.Log(Name);
-        GameMNG.Instance.g_cCurrentLocationInfo = GameMNG.Instance.g_AllLocationInfoList[GameMNG.Instance.g_AllLocationInfoList.FindIndex(item => item.LocationName == Name)];
+
+        ChangeLocationInit(GameMNG.Instance.g_AllLocationInfoList[GameMNG.Instance.g_AllLocationInfoList.FindIndex(item => item.LocationName == Name)]);
+        Destroy(GameObject.Find("ScrollBar"));
 
     }
     public void OnMouseDownEvent_DIalogWindow()
@@ -129,6 +131,7 @@ public class MainSceneMNG : MonoBehaviour
             rect.anchorMax = new Vector2(0.0f, 0.5f);
             rect.anchorMin = new Vector2(0.0f, 0.5f);
             rect.sizeDelta = new Vector2(300, 80);
+            CharTemp_Temp.transform.tag = "CharacterText";
             Vector3 Pos = new Vector3(220.0f, 280.0f, 0.0f);
             Pos.x -= 80 * i;
             rect.anchoredPosition = Pos;
@@ -141,8 +144,16 @@ public class MainSceneMNG : MonoBehaviour
         TMP_LocationText.text = GameMNG.Instance.g_cCurrentLocationInfo.LocationName;
     }
 
-    private void ChangeLocationInit()
+    private void ChangeLocationInit(JsonMNG.LocationInfo_Contains_ALL location)
     {
+        GameMNG.Instance.g_cCurrentLocationInfo = location;
+        g_cChrrentCharacter = null;
+        GameObject[] Destroys = GameObject.FindGameObjectsWithTag("CharacterText");
+        for(int i = 0; i< Destroys.Length;i++)
+        {
+            Destroy(Destroys[i]);
+        }
+
         for (int i = 0; i < GameMNG.Instance.g_cCurrentLocationInfo.CharacterList.Count; i++)
         {
             GameObject CharTemp = Resources.Load<GameObject>("Prefab/ChoosableText");
@@ -156,6 +167,7 @@ public class MainSceneMNG : MonoBehaviour
             GameObject CharTemp_Temp = Instantiate(CharTemp, Canvas_MainScene.transform);
 
             RectTransform rect = CharTemp_Temp.transform.GetComponent<RectTransform>();
+            CharTemp_Temp.transform.tag = "CharacterText";
             rect.anchorMax = new Vector2(0.0f, 0.5f);
             rect.anchorMin = new Vector2(0.0f, 0.5f);
             rect.sizeDelta = new Vector2(300, 80);
