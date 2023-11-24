@@ -54,18 +54,33 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
             {
                 if (GameObject.Find(g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName) == null)
                 {
-                    Character_QuestText.GetComponent<TextMeshProUGUI>().text = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName;
-                    //뒤쪽의 인덱스는 Save 기능 제작 이후에 수정 예정
-                    Character_QuestText.GetComponent<ChoiceTextCTR>().g_sTextType = "Quest_Text";
-                    Character_QuestText.GetComponent<ChoiceTextCTR>().g_cDialogInfo = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0];
-                    GameObject Character_QuestText_Temp = Instantiate(Character_QuestText, Canvas_MainScene.transform);
-                    Character_QuestText_Temp.name = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName;
-                    RectTransform rect = Character_QuestText_Temp.transform.GetComponent<RectTransform>();
-                    rect.anchorMax = new Vector2(0.5f, 0.0f);
-                    rect.anchorMin = new Vector2(0.5f, 0.0f);
+                    bool isShow_Temp = true;
+                    if (g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestShowTrigger.Count != 0)
+                    {
+                        for (int j = 0; j < g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestShowTrigger.Count; j++)
+                        {
 
-                    Vector3 Pos = new Vector3(-400.0f, 300.0f, 0.0f);
-                    rect.anchoredPosition = Pos;
+                            if (GameMNG.Instance.g_PlayerTriggerDic[g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestShowTrigger[j].Trigger_Dialog] != g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestShowTrigger[j].Type)
+                            {
+                                isShow_Temp = false;
+                            }
+                        }
+                    }
+                    if (isShow_Temp == true)
+                    {
+                        Character_QuestText.GetComponent<TextMeshProUGUI>().text = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName;
+                        //뒤쪽의 인덱스는 Save 기능 제작 이후에 수정 예정
+                        Character_QuestText.GetComponent<ChoiceTextCTR>().g_sTextType = "Quest_Text";
+                        Character_QuestText.GetComponent<ChoiceTextCTR>().g_cDialogInfo = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0];
+                        GameObject Character_QuestText_Temp = Instantiate(Character_QuestText, Canvas_MainScene.transform);
+                        Character_QuestText_Temp.name = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName;
+                        RectTransform rect = Character_QuestText_Temp.transform.GetComponent<RectTransform>();
+                        rect.anchorMax = new Vector2(0.5f, 0.0f);
+                        rect.anchorMin = new Vector2(0.5f, 0.0f);
+
+                        Vector3 Pos = new Vector3(-400.0f, 300.0f, 0.0f);
+                        rect.anchoredPosition = Pos;
+                    }
                 }
             }
         }
@@ -76,8 +91,8 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
         }
         else if (g_sTextType == "Choice_Text")
         {
-            JsonMNG.Dialogs ChoiceLinkedDialog = mainSceneMNG.g_cChrrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID]
-                [mainSceneMNG.g_cChrrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID].
+            JsonMNG.Dialogs ChoiceLinkedDialog = mainSceneMNG.g_cCurrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID]
+                [mainSceneMNG.g_cCurrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID].
                 FindIndex(LinkedQuest => LinkedQuest.DialogID == g_cChoiceInfo.ChoiceLinkedDialogID)];
             mainSceneMNG.ChangeDialog(ChoiceLinkedDialog);
             GameObject[] DestroyTemp = GameObject.FindGameObjectsWithTag("ChoiceText");

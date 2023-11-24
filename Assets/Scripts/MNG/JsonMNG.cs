@@ -79,6 +79,7 @@ public class JsonMNG : MonoBehaviour
 
         foreach (Dialogs dialogs in Dial.Dialog_ALL)
         {
+            GameMNG.Instance.g_PlayerTriggerDic.Add(dialogs.DialogID, false);
             //Dialog를 Character_Contains_Quest 형식에 QuestID를 기준으로 넣고, CharacterTempList를 초기화함
             if (dialogs.DialogType == "Description")
             {
@@ -138,6 +139,7 @@ public class JsonMNG : MonoBehaviour
         }
         GameMNG.Instance.g_cCurrentLocationInfo = Loc_con_all;
         GameMNG.Instance.g_AllLocationInfoList = locationInfo_ALL;
+        GameMNG.Instance.LoadFunc();
     }
 
     private T ParseJson<T>(TextAsset json) where T : class
@@ -177,7 +179,7 @@ public class JsonMNG : MonoBehaviour
     {
         public string DialogType;
         public string QuestID;
-        public List<string> QuestShowTrigger;
+        public List<Trigger> QuestShowTrigger;
         public string DialogID;
         public string QuestName;
         public List<string> Dialog;
@@ -190,6 +192,12 @@ public class JsonMNG : MonoBehaviour
         public List<string> ChoiceTrigger;
         public string ChoiceDialog;
         public string ChoiceLinkedDialogID;
+    }
+    [System.Serializable]
+    public class Trigger
+    {
+        public string Trigger_Dialog;
+        public bool Type;
     }
 
     [System.Serializable]
@@ -222,7 +230,6 @@ public class JsonMNG : MonoBehaviour
     {
         public List<Character> Characters;
     }
-
     public class LocationInfo_Contains_ALL
     {
         public string LocationName;

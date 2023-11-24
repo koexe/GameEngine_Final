@@ -10,7 +10,7 @@ public class MainSceneMNG : MonoBehaviour
     public TextMeshProUGUI TMP_LocationText;
     public GameObject Canvas_MainScene;
     public JsonMNG.Dialogs g_cCurrentDialog;
-    public JsonMNG.Character_Contains_Quest g_cChrrentCharacter;
+    public JsonMNG.Character_Contains_Quest g_cCurrentCharacter;
     private int m_iCurrentDialogIndex;
     public bool isChangeText = true;
 
@@ -36,7 +36,7 @@ public class MainSceneMNG : MonoBehaviour
     {
         //캐릭터 클릭 시 해당 캐릭터의 퀘스트와 다이얼로그를 보여주는 기능
         TMP_DialogText.text = character.CharacterBasicDialog;
-        g_cChrrentCharacter = character;
+        g_cCurrentCharacter = character;
         isChangeText = false;
 
     }
@@ -110,50 +110,33 @@ public class MainSceneMNG : MonoBehaviour
         TMP_DialogText = GameObject.Find("DialogText").GetComponent<TextMeshProUGUI>();
         TMP_LocationText = GameObject.Find("LocationText").GetComponent<TextMeshProUGUI>();
         TMP_FontAsset font = Resources.Load<TMP_FontAsset>("Font/BasicFont");
-        g_cChrrentCharacter = null;
+        g_cCurrentCharacter = null;
 
         TMP_DialogText.font = font;
         TMP_LocationText.font = font;
 
-        for(int i = 0; i< GameMNG.Instance.g_cCurrentLocationInfo.CharacterList.Count; i++)
-        {
-            GameObject CharTemp = Resources.Load<GameObject>("Prefab/ChoosableText");
-
-            CharTemp.GetComponent<ChoiceTextCTR>().mainSceneMNG = gameObject.transform.GetComponent<MainSceneMNG>();
-            CharTemp.GetComponent<ChoiceTextCTR>().g_iCharacterIndex = i;
-            CharTemp.GetComponent<ChoiceTextCTR>().g_sTextType = "Character_Name_Text";
-            CharTemp.GetComponent<TextMeshProUGUI>().text = GameMNG.Instance.g_cCurrentLocationInfo.CharacterList[i].Name;
-
-
-            GameObject CharTemp_Temp = Instantiate(CharTemp,Canvas_MainScene.transform);
-
-            RectTransform rect = CharTemp_Temp.transform.GetComponent<RectTransform>();
-            rect.anchorMax = new Vector2(0.0f, 0.5f);
-            rect.anchorMin = new Vector2(0.0f, 0.5f);
-            rect.sizeDelta = new Vector2(300, 80);
-            CharTemp_Temp.transform.tag = "CharacterText";
-            Vector3 Pos = new Vector3(220.0f, 280.0f, 0.0f);
-            Pos.x -= 80 * i;
-            rect.anchoredPosition = Pos;
-        }
-        m_iCurrentDialogIndex = 0;
-        g_cCurrentDialog = GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog;
-
-        TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
-
-        TMP_LocationText.text = GameMNG.Instance.g_cCurrentLocationInfo.LocationName;
+        InitCharacter();
+        InitText();
     }
 
     private void ChangeLocationInit(JsonMNG.LocationInfo_Contains_ALL location)
     {
+        //장소를 바꿨을 때의 초기화입니다.
         GameMNG.Instance.g_cCurrentLocationInfo = location;
-        g_cChrrentCharacter = null;
+        g_cCurrentCharacter = null;
         GameObject[] Destroys = GameObject.FindGameObjectsWithTag("CharacterText");
         for(int i = 0; i< Destroys.Length;i++)
         {
             Destroy(Destroys[i]);
         }
 
+        InitCharacter();
+        InitText();
+
+    }
+    private void InitCharacter()
+    {
+        //장소에 속한 캐릭터들을 초기화하는 기능입니다.
         for (int i = 0; i < GameMNG.Instance.g_cCurrentLocationInfo.CharacterList.Count; i++)
         {
             GameObject CharTemp = Resources.Load<GameObject>("Prefab/ChoosableText");
@@ -175,13 +158,14 @@ public class MainSceneMNG : MonoBehaviour
             Pos.x -= 80 * i;
             rect.anchoredPosition = Pos;
         }
+    }
+    private void InitText()
+    {
+        //텍스트들을 초기화합니다.
         m_iCurrentDialogIndex = 0;
         g_cCurrentDialog = GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog;
-
         TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
-
         TMP_LocationText.text = GameMNG.Instance.g_cCurrentLocationInfo.LocationName;
-
     }
     #endregion
 }
