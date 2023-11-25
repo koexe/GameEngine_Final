@@ -50,6 +50,7 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
         if (g_sTextType == "Character_Name_Text")
         {
             mainSceneMNG.ChangeCharacter(g_cCharacterInfo);
+            int TextAmount = 0;
             for (int i = 0; i < g_cCharacterInfo.LinkedQuests.Count; i++)
             {
                 if (GameObject.Find(g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName) == null)
@@ -60,7 +61,8 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
                         for (int j = 0; j < g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestShowTrigger.Count; j++)
                         {
 
-                            if (GameMNG.Instance.g_PlayerTriggerDic[g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestShowTrigger[j].Trigger_Dialog] != g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestShowTrigger[j].Type)
+                            if (GameMNG.Instance.g_PlayerTriggerDic[g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestShowTrigger[j].Trigger_Dialog] 
+                                != g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestShowTrigger[j].Type)
                             {
                                 isShow_Temp = false;
                             }
@@ -68,17 +70,19 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
                     }
                     if (isShow_Temp == true)
                     {
+                        
                         Character_QuestText.GetComponent<TextMeshProUGUI>().text = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName;
-                        //뒤쪽의 인덱스는 Save 기능 제작 이후에 수정 예정
                         Character_QuestText.GetComponent<ChoiceTextCTR>().g_sTextType = "Quest_Text";
                         Character_QuestText.GetComponent<ChoiceTextCTR>().g_cDialogInfo = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0];
                         GameObject Character_QuestText_Temp = Instantiate(Character_QuestText, Canvas_MainScene.transform);
                         Character_QuestText_Temp.name = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName;
+                        Character_QuestText_Temp.tag = "QuestText";
                         RectTransform rect = Character_QuestText_Temp.transform.GetComponent<RectTransform>();
                         rect.anchorMax = new Vector2(0.5f, 0.0f);
                         rect.anchorMin = new Vector2(0.5f, 0.0f);
 
-                        Vector3 Pos = new Vector3(-400.0f, 300.0f, 0.0f);
+                        Vector3 Pos = new Vector3(-400.0f, 300.0f - 50 * TextAmount, 0.0f);
+                        TextAmount++;
                         rect.anchoredPosition = Pos;
                     }
                 }

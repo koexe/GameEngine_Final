@@ -29,6 +29,7 @@ public class MainSceneMNG : MonoBehaviour
         m_iCurrentDialogIndex = 0;
         g_cCurrentDialog = dialogs;
         TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
+        GameMNG.Instance.g_PlayerTriggerDic[dialogs.DialogID] = true;
         isChangeText = true;
 
     }
@@ -60,6 +61,7 @@ public class MainSceneMNG : MonoBehaviour
                 if (m_iCurrentDialogIndex >= g_cCurrentDialog.Dialog.Count && g_cCurrentDialog.Choices.Count == 0)
                 {
                     m_iCurrentDialogIndex = 0;
+                    ChangeDialog(GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog);
                 }
                 else if (m_iCurrentDialogIndex >= g_cCurrentDialog.Dialog.Count && g_cCurrentDialog.Choices.Count != 0)
                 {

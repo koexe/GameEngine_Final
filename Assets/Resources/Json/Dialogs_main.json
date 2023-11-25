@@ -80,6 +80,15 @@
     },
     {
         "DialogType":"Quest",
+        "QuestID":"Sec_Que",
+        "QuestShowTrigger":[{"Trigger_Dialog":"Quest_Main_1_2","Type":"true"}],
+        "DialogId":"Sec_Que_1",
+        "QuestName":"김성태와 함께",
+        "Dialog":["출발출발 출출발"],
+        "Choices":[]
+    },
+    {
+        "DialogType":"Quest",
         "QuestID":"Quest_Sub",
         "QuestShowTrigger":[{"Trigger_Dialog":"Quest_Main_1_3","Type":"true"}],
         "DialogId":"Quest_Sub_1",

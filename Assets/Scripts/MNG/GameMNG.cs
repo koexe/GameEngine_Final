@@ -52,11 +52,10 @@ public class GameMNG : MonoBehaviour
         public bool First_Trigger;
         public bool Second_Trigger;
     }
-    public void SaveFunc(Dictionary<string, bool> Save)
+    public void SaveFunc()
     {
         string path = Application.persistentDataPath + "Save.json";
-
-        string SaveData = JsonConvert.SerializeObject(Save);
+        string SaveData = JsonConvert.SerializeObject(g_PlayerTriggerDic);
         File.WriteAllText(path,SaveData);
         Debug.Log("Save Complete");
     }
@@ -72,7 +71,7 @@ public class GameMNG : MonoBehaviour
         }
         else
         {
-            SaveFunc(g_PlayerTriggerDic);
+            SaveFunc();
             LoadFunc();
             Debug.Log("Savefile missed. created new Savefile");
         }

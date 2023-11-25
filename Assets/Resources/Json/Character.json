@@ -4,7 +4,7 @@
         "Name":"Main_Character",
         "Location":"Main",
         "CharacterBasicDialog":"기본 캐릭터 다이얼로그입니다.",
-        "LinkedQuests":["Quest_Main"]
+        "LinkedQuests":["Quest_Main","Sec_Que"]
     },
     {
         "Name":"SUb_Character_1",
