@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class MainSceneMNG : MonoBehaviour
 {
@@ -9,8 +10,12 @@ public class MainSceneMNG : MonoBehaviour
     public TextMeshProUGUI TMP_CharacterText;
     public TextMeshProUGUI TMP_LocationText;
     public GameObject Canvas_MainScene;
+    public GameObject Character_Background;
+    public Image BackGroundImage;
+    public Image CharacterImage;
     public JsonMNG.Dialogs g_cCurrentDialog;
     public JsonMNG.Character_Contains_Quest g_cCurrentCharacter;
+
     private int m_iCurrentDialogIndex;
     public bool isChangeText = true;
 
@@ -36,6 +41,7 @@ public class MainSceneMNG : MonoBehaviour
     public void ChangeCharacter(JsonMNG.Character_Contains_Quest character)
     {
         //캐릭터 클릭 시 해당 캐릭터의 퀘스트와 다이얼로그를 보여주는 기능
+        DestoyAllObjectsWithTag("QuestText");
         TMP_DialogText.text = character.CharacterBasicDialog;
         g_cCurrentCharacter = character;
         isChangeText = false;
@@ -102,7 +108,14 @@ public class MainSceneMNG : MonoBehaviour
         }
     }
 
-
+    public void DestoyAllObjectsWithTag(string tag)
+    {
+        GameObject[] Destroy_Temp = GameObject.FindGameObjectsWithTag(tag);
+        for (int i = 0; i < Destroy_Temp.Length; i++)
+        {
+            Destroy(Destroy_Temp[i]);
+        }
+    }
     #endregion
     #region 내부에서 사용할 기능들
     private void FirstInit()
@@ -111,14 +124,17 @@ public class MainSceneMNG : MonoBehaviour
         Canvas_MainScene = GameObject.Find("Canvas");
         TMP_DialogText = GameObject.Find("DialogText").GetComponent<TextMeshProUGUI>();
         TMP_LocationText = GameObject.Find("LocationText").GetComponent<TextMeshProUGUI>();
+        Character_Background = GameObject.Find("CharacterBackground");
         TMP_FontAsset font = Resources.Load<TMP_FontAsset>("Font/BasicFont");
         g_cCurrentCharacter = null;
 
         TMP_DialogText.font = font;
         TMP_LocationText.font = font;
 
-        InitCharacter();
-        InitText();
+        BackGroundImage = GameObject.Find("BackgroundImage").GetComponent<Image>();
+        CharacterImage = GameObject.Find("CharacterImage").GetComponent<Image>();
+
+        ChangeLocation("Main");
     }
 
     private void ChangeLocationInit(JsonMNG.LocationInfo_Contains_ALL location)
@@ -126,12 +142,10 @@ public class MainSceneMNG : MonoBehaviour
         //장소를 바꿨을 때의 초기화입니다.
         GameMNG.Instance.g_cCurrentLocationInfo = location;
         g_cCurrentCharacter = null;
-        GameObject[] Destroys = GameObject.FindGameObjectsWithTag("CharacterText");
-        for(int i = 0; i< Destroys.Length;i++)
-        {
-            Destroy(Destroys[i]);
-        }
+        BackGroundImage.sprite = location.LocationBackGroundImage;
+        if (location.LocationBackGroundImage == null) { Debug.Log("Missing BacgroundImage"); }
 
+        DestoyAllObjectsWithTag("CharacterText");
         InitCharacter();
         InitText();
 
@@ -147,17 +161,18 @@ public class MainSceneMNG : MonoBehaviour
             CharTemp.GetComponent<ChoiceTextCTR>().g_iCharacterIndex = i;
             CharTemp.GetComponent<ChoiceTextCTR>().g_sTextType = "Character_Name_Text";
             CharTemp.GetComponent<TextMeshProUGUI>().text = GameMNG.Instance.g_cCurrentLocationInfo.CharacterList[i].Name;
+            CharTemp.GetComponent<TextMeshProUGUI>().fontSize = GameMNG.Instance.FontSize_Character;
+            CharTemp.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
 
 
-            GameObject CharTemp_Temp = Instantiate(CharTemp, Canvas_MainScene.transform);
+            GameObject CharTemp_Temp = Instantiate(CharTemp, Character_Background.transform);
 
             RectTransform rect = CharTemp_Temp.transform.GetComponent<RectTransform>();
             CharTemp_Temp.transform.tag = "CharacterText";
-            rect.anchorMax = new Vector2(0.0f, 0.5f);
-            rect.anchorMin = new Vector2(0.0f, 0.5f);
-            rect.sizeDelta = new Vector2(300, 80);
-            Vector3 Pos = new Vector3(220.0f, 280.0f, 0.0f);
-            Pos.x -= 80 * i;
+            rect.anchorMax = new Vector2(0.5f, 0.5f);
+            rect.anchorMin = new Vector2(0.5f, 0.5f);
+            rect.sizeDelta = new Vector2(250, 80);
+            Vector3 Pos = new Vector3(0.0f, 280.0f - 80 * i, 0.0f);
             rect.anchoredPosition = Pos;
         }
     }

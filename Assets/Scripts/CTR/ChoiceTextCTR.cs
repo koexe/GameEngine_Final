@@ -9,6 +9,7 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
     public MainSceneMNG mainSceneMNG;
     public GameObject Character_QuestText;
     public GameObject Canvas_MainScene;
+    public TextMeshProUGUI Text;
 
     //텍스트 종류를 구분하기 위하여 TextType string 을 사용, Character_Name_Text, Quest_Text, Choice_Text로 구분
 
@@ -72,9 +73,12 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
                     {
                         
                         Character_QuestText.GetComponent<TextMeshProUGUI>().text = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName;
+                        Character_QuestText.GetComponent<TextMeshProUGUI>().fontSize = GameMNG.Instance.FontSize_Choice;
                         Character_QuestText.GetComponent<ChoiceTextCTR>().g_sTextType = "Quest_Text";
                         Character_QuestText.GetComponent<ChoiceTextCTR>().g_cDialogInfo = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0];
                         GameObject Character_QuestText_Temp = Instantiate(Character_QuestText, Canvas_MainScene.transform);
+
+
                         Character_QuestText_Temp.name = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName;
                         Character_QuestText_Temp.tag = "QuestText";
                         RectTransform rect = Character_QuestText_Temp.transform.GetComponent<RectTransform>();
@@ -91,7 +95,7 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
         else if (g_sTextType == "Quest_Text")
         {
             mainSceneMNG.ChangeDialog(g_cDialogInfo);
-            Destroy(gameObject);
+            mainSceneMNG.DestoyAllObjectsWithTag("QuestText");
         }
         else if (g_sTextType == "Choice_Text")
         {

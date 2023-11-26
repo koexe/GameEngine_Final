@@ -2,14 +2,15 @@
 "Locations":[
     {
         "LocationName":"Main",
-        "LocationContainCharacter":["Main_Character"],
+        "LocationContainCharacter":["Main_Character","Main_Character_2"],
+        "LocationBackgroundImage":"Cave_Enterance",
         "LocationDescription":"Description_Main_1"
     },
     {
         "LocationName":"Sub_1",
         "LocationContainCharacter":["SUb_Character_1"],
+        "LocationBackgroundImage":"null",
         "LocationDescription":"Description_Sub_1"
-
     }
 ]
 }

@@ -12,6 +12,10 @@ public class GameMNG : MonoBehaviour
     public JsonMNG.LocationInfo_Contains_ALL g_cCurrentLocationInfo;
     public List<JsonMNG.LocationInfo_Contains_ALL> g_AllLocationInfoList;
     public Dictionary<string,bool> g_PlayerTriggerDic = new Dictionary<string,bool>();
+    public int FontSize_Character = 70;
+    public int FontSize_Choice = 50;
+
+
 
     // 인스턴스에 접근하기 위한 프로퍼티
     public static GameMNG Instance
