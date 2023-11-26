@@ -15,7 +15,7 @@
         "DialogId":"Description_Main_1",
         "QuestName" :"null",
         "Dialog":["메인 화면입니다","메인 화면 다이얼로그 2번입니다."],
-        "DialogImage":[],
+        "Dialog_CharacterInfo":[[],[]],
         "Choices":[]
     },
     {
@@ -25,7 +25,7 @@
         "DialogId":"Description_Sub_1",
         "QuestName":"null",
         "Dialog":["추가 화면 입니다","추가 화면 다이얼로그 2번 입니다."],
-        "DialogImage":[],
+        "Dialog_CharacterInfo":[[],[]],
         "Choices":[]
     },
     {
@@ -34,8 +34,12 @@
         "QuestShowTrigger":[],
         "DialogId":"Quest_Main_1",
         "QuestName":"First_Quest",
-        "Dialog":["메인 퀘스트 1번 다이얼로그입니다..","메인 퀘스트 다이얼로그 2번 입니다."],
-        "DialogImage":[],
+        "Dialog":["메인 퀘스트 1번 다이얼로그입니다..",
+                    "메인 퀘스트 다이얼로그 2번 입니다."],
+        "Dialog_CharacterInfo":[
+            [{"Character":"Player","isTalking":"true","ImageType":"Default"}],
+            [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"Bot","isTalking":"true","ImageType":"Default"}]
+        ],
         "Choices":[
             {
                 "ChoiceTrigger":[],
@@ -61,7 +65,7 @@
         "DialogId":"Quest_Main_1_1",
         "QuestName":"First_Quest",
         "Dialog":["메인 퀘스트 선택지 1번 선택 후 다이얼로그입니다.."],
-        "DialogImage":[],
+        "Dialog_CharacterInfo":[[]],
         "Choices":[]
     },
     {
@@ -71,7 +75,7 @@
         "DialogId":"Quest_Main_1_2",
         "QuestName":"First_Quest",
         "Dialog":["메인 퀘스트 선택지 2번 선택 후 다이얼로그입니다.."],
-        "DialogImage":[],
+        "Dialog_CharacterInfo":[[]],
         "Choices":[]
     },
     {
@@ -81,7 +85,7 @@
         "DialogId":"Quest_Main_1_3",
         "QuestName":"First_Quest",
         "Dialog":["메인 퀘스트 선택지 3번 선택 후 다이얼로그입니다.."],
-        "DialogImage":[],
+        "Dialog_CharacterInfo":[[]],
         "Choices":[]
     },
     {
@@ -91,7 +95,7 @@
         "DialogId":"Sec_Que_1",
         "QuestName":"김성태와 함께",
         "Dialog":["출발출발 출출발"],
-        "DialogImage":[],
+        "Dialog_CharacterInfo":[[]],
         "Choices":[]
     },
     {
@@ -101,7 +105,7 @@
         "DialogId":"Quest_Sub_1",
         "QuestName":"Sub_Quest",
         "Dialog":["추가 퀘스트 1번 입니다."],
-        "DialogImage":[],
+        "Dialog_CharacterInfo":[[]],
         "Choices":[]
     },
     {
@@ -111,7 +115,7 @@
         "DialogId":"GameObject_Quest_Explain_1",
         "QuestName":"게임오브젝트가 뭐야?",
         "Dialog":["asdf"],
-        "DialogImage":[],
+        "Dialog_CharacterInfo":[[]],
         "Choices":[]
     }
 ]

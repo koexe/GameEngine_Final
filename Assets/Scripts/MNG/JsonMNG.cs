@@ -185,8 +185,15 @@ public class JsonMNG : MonoBehaviour
         public string DialogID;
         public string QuestName;
         public List<string> Dialog;
-        public string ImageID;
+        public List<List<Dialog_CharacterInfo>> Dialog_CharacterInfo;
         public List<Choice> Choices;
+    }
+    [System.Serializable]
+    public class Dialog_CharacterInfo
+    {
+        public string Character;
+        public bool isTalking;
+        public string ImageType;
     }
 
     [System.Serializable]

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
+public class ChoosableTextCTR : MonoBehaviour, IPointerClickHandler
 {
     public MainSceneMNG mainSceneMNG;
     public GameObject Character_QuestText;
@@ -71,21 +71,17 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
                     }
                     if (isShow_Temp == true)
                     {
-                        
-                        Character_QuestText.GetComponent<TextMeshProUGUI>().text = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName;
-                        Character_QuestText.GetComponent<TextMeshProUGUI>().fontSize = GameMNG.Instance.FontSize_Choice;
-                        Character_QuestText.GetComponent<ChoiceTextCTR>().g_sTextType = "Quest_Text";
-                        Character_QuestText.GetComponent<ChoiceTextCTR>().g_cDialogInfo = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0];
-                        GameObject Character_QuestText_Temp = Instantiate(Character_QuestText, Canvas_MainScene.transform);
-
+                        GameObject Character_QuestText_Temp = Instantiate(Character_QuestText, mainSceneMNG.Background_Dialog.transform);
+                        Character_QuestText_Temp.GetComponentInChildren<TextMeshProUGUI>().text = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName;
+                        Character_QuestText_Temp.GetComponentInChildren<TextMeshProUGUI>().fontSize = GameMNG.Instance.FontSize_Choice;
+                        Character_QuestText_Temp.GetComponent<ChoosableTextCTR>().g_sTextType = "Quest_Text";
+                        Character_QuestText_Temp.GetComponent<ChoosableTextCTR>().g_cDialogInfo = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0];
 
                         Character_QuestText_Temp.name = g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName;
                         Character_QuestText_Temp.tag = "QuestText";
                         RectTransform rect = Character_QuestText_Temp.transform.GetComponent<RectTransform>();
-                        rect.anchorMax = new Vector2(0.5f, 0.0f);
-                        rect.anchorMin = new Vector2(0.5f, 0.0f);
 
-                        Vector3 Pos = new Vector3(-400.0f, 300.0f - 50 * TextAmount, 0.0f);
+                        Vector3 Pos = new Vector3(-560.0f, 0.0f - 50 * TextAmount, 0.0f);
                         TextAmount++;
                         rect.anchoredPosition = Pos;
                     }
@@ -95,7 +91,7 @@ public class ChoiceTextCTR : MonoBehaviour, IPointerClickHandler
         else if (g_sTextType == "Quest_Text")
         {
             mainSceneMNG.ChangeDialog(g_cDialogInfo);
-            mainSceneMNG.DestoyAllObjectsWithTag("QuestText");
+            mainSceneMNG.DestroyAllObjectsWithTag("QuestText");
         }
         else if (g_sTextType == "Choice_Text")
         {
