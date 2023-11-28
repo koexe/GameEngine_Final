@@ -150,12 +150,12 @@ MonoBehaviour:
     DialogID: 
     QuestName: 
     Dialog: []
-    ImageID: 
     Choices: []
   g_cChoiceInfo:
     ChoiceTrigger: []
     ChoiceDialog: 
     ChoiceLinkedDialogID: 
+    ChoiceAfterFunction: 
 --- !u!65 &6680121357839610907
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -237,8 +237,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ffac875b37cf11147a0e25615b31a0d7, type: 2}
-  m_sharedMaterial: {fileID: -5184832995713293913, guid: ffac875b37cf11147a0e25615b31a0d7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c05c70fe58ef15d46954182dcb094d0d, type: 2}
+  m_sharedMaterial: {fileID: -5239278165602730790, guid: c05c70fe58ef15d46954182dcb094d0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

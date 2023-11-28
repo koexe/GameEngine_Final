@@ -2,121 +2,146 @@
 "__comment__":[{"dialogType":"이 대화문이 퀘스트 대화문인지 설명 대화문인지를 나타냅니다. Description은 설명, Quest는 퀘스트를 의미합니다.",
                 "QuestID":"한 퀘스트의 대화문을 C#스크립트에서 Dictionary로 묶기 위하여 사용되는 값입니다. 같은 퀘스트는 같은 QuestID를 가져야 합니다.",
                 "DialogID":"한 퀘스트 안에서 분기를 나누기 위하여 사용되는 값입니다. 퀘스트 ID + _번호로 나타내며, 퀘스트의 분기마다 번호를 추가해야 합니다. 예를 들어, 1번 퀘스트가 3가지 분기를 가지고 있다면, Quest_1_1부터 Quest1_3이 되며, 2번 선택지를 고른 뒤 또 분기가 있다면, Quest_1_2_1식으로 진행되게 됩니다. 만약 중간에 분기가 합쳐진다면, 첫 번째 번호를 바꾸어 다음 장으로 이동했다는 것을 나타냅니다.",
+                "QuestShowTrigger":"어떤 조건을 만족하면 Quest를 보여줄 것인지 지정하는 값입니다.Trigger_Dialog는 어떤 Dialog를 확인/미확인하면 나올지 지정하고, Type는 확인/미확인중 어떤 것을 조건으로 할지 정하는 역할입니다.",
                 "QuestName":"진행중인 퀘스트를 확인할 수 있는 탭에서 사용하기 위하여 저장되어 있는 퀘스트 이름입니다.",
-                "Dialog": "대화문을 Dictionary 형태로 저장하고 있습니다.",
+                "Dialog": "대화문을 String List 형태로 저장하고 있습니다.",
+                "Dialog_CharacterInfo":"어떤 캐릭터가 말하고 있는지, 화면에 나올 캐릭터는 무엇인지를 저장합니다. Dialog의 Index와 맞춰 Character, isTalking, ImageType으로 저장하는데, Character는 캐릭터, isTalking은 이름 창에 표시할 이름을 확인하기 위하여 존재하는 값으로, true인 모든 캐릭터의 이름이 표시됩니다. ImageType은 캐릭터의 어떤 이미지를 사용할지 지정합니다.",
                 "Choices":"선택문에 관한 내용을 저장합니다. 정보는 ChoiceTrigger:트리거 되는 정보를 의미합니다. 이 트리거가 충족된다면 이 선택지는 대화문에 나타나게 됩니다. ChoiceDialog: 선택지에 나올 대화문 입니다. ChoiceLinkedDialogID:이 선택지가 어떤 퀘스트로 연결될지 지정하는 값입니다."
 }
 ],
 "Dialog_ALL":[
     {
         "DialogType":"Description",
-        "QuestID":"Description_Main_1",
+        "QuestID":"Scene_1_Story",
         "QuestShowTrigger":[],
-        "DialogId":"Description_Main_1",
+        "DialogId":"Scene_1_Story",
         "QuestName" :"null",
-        "Dialog":["메인 화면입니다","메인 화면 다이얼로그 2번입니다."],
+        "Dialog":["모닥불이 밝게 타오르고 있다.","asdf"],
         "Dialog_CharacterInfo":[[],[]],
         "Choices":[]
     },
+
     {
-        "DialogType":"Description",
-        "QuestID":"Description_Sub_1",
+        "DialogType":"Quest",
+        "QuestID":"Scene1_Father",
         "QuestShowTrigger":[],
-        "DialogId":"Description_Sub_1",
-        "QuestName":"null",
-        "Dialog":["추가 화면 입니다","추가 화면 다이얼로그 2번 입니다."],
-        "Dialog_CharacterInfo":[[],[]],
-        "Choices":[]
+        "DialogId":"Scene1_Father_1",
+        "QuestName":"아버지와 대화",
+        "Dialog":["생일 축하한다 아들아. 이건 생일 선물이란다.",
+                  "그 로봇은 피티. 유니티 봇이란다. 앞으로 네가 위험에 처할 때, 너에게 지혜를 빌려주고 위험에서 빠져나오게 도와줄거야",
+                  "건네받은 상자에는 작은 로봇이 눈을 감은 채 잠들어있었다.",
+                  "아빠는 이제부터 중요한 할일이 있어 다시 떠나야 한단다.",
+                  "네가 준비됐다고 느낀다면, 시련에 동굴에 도전해서 유니티 엔지니어가 되면 다시 보자꾸나",
+                  "그 말과 함께 아버지는 자리에서 일어나 엷은 미소와 함께 떠났다."],
+        "Dialog_CharacterInfo":[[{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"Player","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"Player","isTalking":"false","ImageType":"Default"}],
+                                [],
+                                [{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"Player","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"Player","isTalking":"false","ImageType":"Default"}],
+                                []
+                            ],
+        "Choices":[{"ChoiceTrigger":[],
+                    "ChoiceDialog":"아버지는 떠났다.",
+                    "ChoiceLinkedDialogID":"",
+                    "ChoiceAfterFunction":"DisableFather"}]
     },
     {
         "DialogType":"Quest",
-        "QuestID":"Quest_Main",
+        "QuestID":"Scene1_MeetPiti",
+        "QuestShowTrigger":[{"Trigger_Dialog":"Scene1_Father_1","Type":"true"}],
+        "DialogId":"Scene1_MeetPiti_1",
+        "QuestName":"버튼을 누른다",
+        "Dialog":["피티의 눈에서 빛이 나오며 전원이 들어오자 피티는 공중을 한바퀴 돌고 내 앞으로 돌아왔다.",
+                  "안녕하세요! 전 유니티 봇 피티입니다. 앞으로 당신이 유니티 엔지니어가 되는데 도움을 드리겠습니다!"],
+        "Dialog_CharacterInfo":[[],
+                                [{"Character":"피티","isTalking":"true","ImageType":"Default"},{"Character":"Player","isTalking":"false","ImageType":"Default"}]
+                                ],
+        "Choices":[            {
+            "ChoiceTrigger":[],
+            "ChoiceDialog":"유니티 봇이 무엇인지 물어본다.",
+            "ChoiceLinkedDialogID":"Scene1_MeetPiti_1_1",
+            "ChoiceAfterFunction":""
+        },
+        {
+            "ChoiceTrigger":[],
+            "ChoiceDialog":"피티에 대해 물어본다.",
+            "ChoiceLinkedDialogID":"Scene1_MeetPiti_1_2",
+            "ChoiceAfterFunction":""
+        },
+        {
+            "ChoiceTrigger":[{"Trigger_Dialog":"Scene1_MeetPiti_1_1","Type":"true"},{"Trigger_Dialog":"Scene1_MeetPiti_1_2","Type":"true"}],
+            "ChoiceDialog":"아버지는 어디로 갔는지 물어본다.",
+            "ChoiceLinkedDialogID":"Scene1_MeetPiti_1_3",
+            "ChoiceAfterFunction":""
+        }]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene1_MeetPiti",
         "QuestShowTrigger":[],
-        "DialogId":"Quest_Main_1",
-        "QuestName":"First_Quest",
-        "Dialog":["메인 퀘스트 1번 다이얼로그입니다..",
-                    "메인 퀘스트 다이얼로그 2번 입니다."],
-        "Dialog_CharacterInfo":[
-            [{"Character":"Player","isTalking":"true","ImageType":"Default"}],
-            [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"Bot","isTalking":"true","ImageType":"Default"}]
-        ],
-        "Choices":[
-            {
-                "ChoiceTrigger":[],
-                "ChoiceDialog":"퀘스트 선택지 1번입니다.",
-                "ChoiceLinkedDialogID":"Quest_Main_1_1"
-            },
-            {
-                "ChoiceTrigger":[],
-                "ChoiceDialog":"퀘스트 선택지 2번입니다.",
-                "ChoiceLinkedDialogID":"Quest_Main_1_2"
-            },
-            {
-                "ChoiceTrigger":[],
-                "ChoiceDialog":"퀘스트 선택지 3번입니다.",
-                "ChoiceLinkedDialogID":"Quest_Main_1_3"
-            }
-        ]
+        "DialogId":"Scene1_MeetPiti_1_1",
+        "QuestName":"유니티봇 설명",
+        "Dialog":["유니티 봇은 유니티 엔지니어링에 대한 개념을 설명하고 그 개념을 세상에 적용하는데 필요한 로봇입니다.",
+                  "그렇다면 유니티 요소를 통해 물체를 조작하거나 바꿀수 있다는거야?",
+                  "물론입니다! 유니티 개념을 정확히 이해하고 저에게 지시를 내리면 물체에 적용해드리겠습니다!"],
+        "Dialog_CharacterInfo":[[],
+                                [{"Character":"Player","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"피티","isTalking":"true","ImageType":"Default"}]
+                                ],
+        "Choices":[{"ChoiceTrigger":[],
+        "ChoiceDialog":"다른 것을 물어본다.",
+        "ChoiceLinkedDialogID":"Scene1_MeetPiti_1",
+        "ChoiceAfterFunction":""}]
     },
     {
         "DialogType":"Quest",
-        "QuestID":"Quest_Main",
+        "QuestID":"Scene1_MeetPiti",
         "QuestShowTrigger":[],
-        "DialogId":"Quest_Main_1_1",
-        "QuestName":"First_Quest",
-        "Dialog":["메인 퀘스트 선택지 1번 선택 후 다이얼로그입니다.."],
-        "Dialog_CharacterInfo":[[]],
-        "Choices":[]
+        "DialogId":"Scene1_MeetPiti_1_2",
+        "QuestName":"피티에 대한 것",
+        "Dialog":[  "저는 윤익희님이 디자인하고 만든 유니티 봇입니다. 윤익희님께 당신을 유니티 엔지니어가 되도록 도와달라는 명령을 받았습니다.",
+                    "도와줄 일이 있으면 언제든 기쁘게 도와드리겠습니다!",
+                    "기쁘다니... 너한테는 감정이 있는거야?",
+                    "그렇습니다! 저는 만들어질 때 부터 감정을 느낄 수 있는 모듈이 설치되어 감정을 느끼고 반응할 수 있습니다.",
+                    "아버지는 왜 나에게 이런 로봇을 맡긴걸까..?"
+                ],
+        "Dialog_CharacterInfo":[[{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                []
+                                ],
+        "Choices":[{"ChoiceTrigger":[],
+        "ChoiceDialog":"다른 것을 물어본다.",
+        "ChoiceLinkedDialogID":"Scene1_MeetPiti_1",
+        "ChoiceAfterFunction":""}]
     },
     {
         "DialogType":"Quest",
-        "QuestID":"Quest_Main",
+        "QuestID":"Scene1_MeetPiti",
         "QuestShowTrigger":[],
-        "DialogId":"Quest_Main_1_2",
-        "QuestName":"First_Quest",
-        "Dialog":["메인 퀘스트 선택지 2번 선택 후 다이얼로그입니다.."],
-        "Dialog_CharacterInfo":[[]],
-        "Choices":[]
-    },
-    {
-        "DialogType":"Quest",
-        "QuestID":"Quest_Main",
-        "QuestShowTrigger":[],
-        "DialogId":"Quest_Main_1_3",
-        "QuestName":"First_Quest",
-        "Dialog":["메인 퀘스트 선택지 3번 선택 후 다이얼로그입니다.."],
-        "Dialog_CharacterInfo":[[]],
-        "Choices":[]
-    },
-    {
-        "DialogType":"Quest",
-        "QuestID":"Sec_Que",
-        "QuestShowTrigger":[{"Trigger_Dialog":"Quest_Main_1_2","Type":"true"}],
-        "DialogId":"Sec_Que_1",
-        "QuestName":"김성태와 함께",
-        "Dialog":["출발출발 출출발"],
-        "Dialog_CharacterInfo":[[]],
-        "Choices":[]
-    },
-    {
-        "DialogType":"Quest",
-        "QuestID":"Quest_Sub",
-        "QuestShowTrigger":[{"Trigger_Dialog":"Quest_Main_1_3","Type":"true"}],
-        "DialogId":"Quest_Sub_1",
-        "QuestName":"Sub_Quest",
-        "Dialog":["추가 퀘스트 1번 입니다."],
-        "Dialog_CharacterInfo":[[]],
-        "Choices":[]
-    },
-    {
-        "DialogType":"Quest",
-        "QuestID":"GameObject_Quest_Explain",
-        "QuestShowTrigger":[],
-        "DialogId":"GameObject_Quest_Explain_1",
-        "QuestName":"게임오브젝트가 뭐야?",
-        "Dialog":["asdf"],
-        "Dialog_CharacterInfo":[[]],
-        "Choices":[]
+        "DialogId":"Scene1_MeetPiti_1_3",
+        "QuestName":"아버지는 어디로",
+        "Dialog":[  "아버지는 어디로 떠나버린 거야?",
+                    "아쉽지만, 저도 윤익희님의 행방에 대해서는 잘 모르겠습니다. 하지만 윤익희님은 굉장한 유니티 엔지니어로, 그 능력으로 누군가를 도우러 간 것으로 예상됩니다.",
+                    "아버지가 굉장한 유니티 엔지니어였다고?",
+                    "윤익희씨는 전설적인 유니티 엔지니어로, 언리얼 엔지니어들과의 전쟁에서 큰 활약을 했습니다. 하지만 전쟁에서 패배하고 이곳으로 오게 됐습니다.",
+                    "전부 처음 듣는 소리야... 아버지에 대해 더 알려줘",
+                    "현재로써는 더이상 말씀드릴 정보가 없습니다.",
+                    "그렇게 아버지는 나에게 피티를 남기고 떠나갔다."],
+        "Dialog_CharacterInfo":[[],
+                                [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                []
+                                ],
+        "Choices":[{"ChoiceTrigger":[],
+        "ChoiceDialog":"더이상 물어볼 것은 없다.",
+        "ChoiceLinkedDialogID":"",
+        "ChoiceAfterFunction":""}]
     }
 ]
 }

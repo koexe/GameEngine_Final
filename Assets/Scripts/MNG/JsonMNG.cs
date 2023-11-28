@@ -172,10 +172,6 @@ public class JsonMNG : MonoBehaviour
         }
     }
 
-    
-
-
-
     [System.Serializable]
     public class Dialogs
     {
@@ -199,9 +195,10 @@ public class JsonMNG : MonoBehaviour
     [System.Serializable]
     public class Choice
     {
-        public List<string> ChoiceTrigger;
+        public List<Trigger> ChoiceTrigger;
         public string ChoiceDialog;
         public string ChoiceLinkedDialogID;
+        public string ChoiceAfterFunction;
     }
     [System.Serializable]
     public class Trigger

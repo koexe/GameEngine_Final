@@ -9,19 +9,20 @@ using System;
 
 public class MainSceneMNG : MonoBehaviour
 {
-    public TextMeshProUGUI TMP_DialogText;
-    public TextMeshProUGUI TMP_CharacterText;
-    public TextMeshProUGUI TMP_LocationText;
-    public TextMeshProUGUI TMP_CharacterNameText;
+    private TextMeshProUGUI TMP_DialogText;
+    private TextMeshProUGUI TMP_CharacterText;
+    private TextMeshProUGUI TMP_LocationText;
+    private TextMeshProUGUI TMP_CharacterNameText;
     public GameObject Canvas_MainScene;
-    public GameObject Background_Character;
+    private GameObject Background_Character;
     public GameObject Background_Dialog;
-    public GameObject ChoosableTextPrefab;
-    public GameObject CharacterImage;
-    public GameObject CharacterImage_Right;
-    public GameObject CharacterImage_Left;
-    public GameObject Test;
-    public Image BackGroundImage;
+    private GameObject ChoosableTextPrefab;
+    private GameObject CharacterImage;
+    private GameObject CharacterImage_Right;
+    private GameObject CharacterImage_Left;
+    private GameObject Prefab_CharacterIcon;
+    private GameObject Prefab_LogText;
+    private Image BackGroundImage;
 
     public JsonMNG.Dialogs g_cCurrentDialog;
     public JsonMNG.Character_Contains_Quest g_cCurrentCharacter;
@@ -34,7 +35,7 @@ public class MainSceneMNG : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameMNG.Instance.g_cCurrentLocationInfo = GameMNG.Instance.g_AllLocationInfoList[0];
+        //GameMNG.Instance.g_cCurrentLocationInfo = GameMNG.Instance.g_AllLocationInfoList[0];
         FirstInit();
     }
 
@@ -42,7 +43,14 @@ public class MainSceneMNG : MonoBehaviour
     public void ChangeDialog(JsonMNG.Dialogs dialogs)
     {
         // 현재 진행되는 다이얼로그를 변경하는 기능
-        m_iCurrentDialogIndex = 0;
+        if (GameMNG.Instance.g_PlayerTriggerDic[dialogs.DialogID] == true)
+        {
+            m_iCurrentDialogIndex = dialogs.Dialog.Count-1;
+        }
+        else
+        {
+            m_iCurrentDialogIndex = 0;
+        }
         g_cCurrentDialog = dialogs;
         TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
         GameMNG.Instance.g_PlayerTriggerDic[dialogs.DialogID] = true;
@@ -67,29 +75,7 @@ public class MainSceneMNG : MonoBehaviour
         ChangeLocationInit(GameMNG.Instance.g_AllLocationInfoList[GameMNG.Instance.g_AllLocationInfoList.FindIndex(item => item.LocationName == Name)]);
         Destroy(GameObject.Find("ScrollBar"));
     }
-    private void ChoiceShowFunc()
-    {
-        for (int i = 0; i < g_cCurrentDialog.Choices.Count; i++)
-        {
-            GameObject Choice_Temp = Instantiate(ChoosableTextPrefab, Background_Dialog.transform);
-            ChoosableTextCTR choosableTextCTR_Temp = Choice_Temp.GetComponent<ChoosableTextCTR>();
-            choosableTextCTR_Temp.mainSceneMNG = gameObject.transform.GetComponent<MainSceneMNG>();
-            choosableTextCTR_Temp.g_cChoiceInfo = g_cCurrentDialog.Choices[i];
-            choosableTextCTR_Temp.g_sTextType = "Choice_Text";
-            choosableTextCTR_Temp.Text.text = g_cCurrentDialog.Choices[i].ChoiceDialog;
 
-            RectTransform rect_Image = Choice_Temp.transform.GetChild(0).GetComponent<RectTransform>();
-            RectTransform rect_Text = Choice_Temp.transform.GetChild(1).GetComponent<RectTransform>();
-            RectTransform rect_BG = Choice_Temp.transform.GetComponent<RectTransform>();
-            Vector2 Size = new Vector2(1000, 80);
-            rect_Image.sizeDelta = Size;
-            rect_Text.sizeDelta = Size;
-
-            Vector3 Pos = new Vector3(-450.0f, 0.0f - 50 * i, 0.0f);
-            Choice_Temp.transform.tag = "ChoiceText";
-            rect_BG.anchoredPosition = Pos;
-        }
-    }
 
     public void OnMouseDownEvent_DIalogWindow()
     {
@@ -98,9 +84,9 @@ public class MainSceneMNG : MonoBehaviour
         {
             if (isChangeText)
             {
-                m_iCurrentDialogIndex++;
                 ChangeText();
                 ChangeImage();
+                ChangeName();
                 TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
             }
         }
@@ -113,6 +99,7 @@ public class MainSceneMNG : MonoBehaviour
             CharacterImage.transform.GetChild(j).GetComponent<Image>().sprite = null;
             CharacterImage.transform.GetChild(j).GetComponent<Image>().color = new Color(0, 0, 0, 0);
         }
+        Debug.Log(m_iCurrentDialogIndex);
 
         if (g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex].Count != 0 && g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex] != null)
         {
@@ -123,8 +110,10 @@ public class MainSceneMNG : MonoBehaviour
                     g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].ImageType);
 
                 CharacterImage.transform.GetChild(i).GetComponent<Image>().color = new Color(255, 255, 255, 100);
+                CharacterImage.transform.GetChild(i).GetComponent<Image>().SetNativeSize();
             }
         }
+        //Debug.Log("ChangeImage 호출됨");
     }
 
     #endregion
@@ -142,9 +131,8 @@ public class MainSceneMNG : MonoBehaviour
         {
             m_iCurrentDialogIndex = g_cCurrentDialog.Dialog.Count - 1;
             ChoiceShowFunc();
-            ChangeName();
         }
-
+        //Debug.Log("ChangeText 호출됨");
     }
 
     private void ChangeName()
@@ -171,6 +159,8 @@ public class MainSceneMNG : MonoBehaviour
     {
         //초기화 함수, 텍스트 요소들을 초기화합니다.
         ChoosableTextPrefab = Resources.Load<GameObject>("Prefab/ChoosableText");
+        Prefab_LogText = Resources.Load<GameObject>("Prefab/LogScreen");
+        Prefab_CharacterIcon = Resources.Load<GameObject>("Prefab/CharacterIcon");
 
         Canvas_MainScene = GameObject.Find("Canvas");
         TMP_DialogText = GameObject.Find("DialogText").GetComponent<TextMeshProUGUI>();
@@ -181,9 +171,10 @@ public class MainSceneMNG : MonoBehaviour
         CharacterImage_Right = GameObject.Find("CharacterImage_Right");
         CharacterImage_Left = GameObject.Find("CharacterImage_Left");
         CharacterImage = GameObject.Find("CharacterImage");
+        
 
 
-        TMP_FontAsset font = Resources.Load<TMP_FontAsset>("Font/BasicFont");
+        TMP_FontAsset font = Resources.Load<TMP_FontAsset>("Font/malgun668 SDF 1");
         g_cCurrentCharacter = null;
 
         TMP_DialogText.font = font;
@@ -192,7 +183,7 @@ public class MainSceneMNG : MonoBehaviour
         BackGroundImage = GameObject.Find("BackgroundImage").GetComponent<Image>();
 
 
-        ChangeLocation("Main");
+        ChangeLocation("Scene_1");
     }
 
     private void ChangeLocationInit(JsonMNG.LocationInfo_Contains_ALL location)
@@ -202,7 +193,7 @@ public class MainSceneMNG : MonoBehaviour
         g_cCurrentCharacter = null;
         g_cCurrentDialog = location.DescriptionDialog;
         BackGroundImage.sprite = location.LocationBackGroundImage;
-        if (location.LocationBackGroundImage == null) { Debug.Log("Missing BacgroundImage"); }
+        if (location.LocationBackGroundImage == null) { Debug.Log("Missing BackgroundImage"); }
 
         DestroyAllObjectsWithTag("CharacterText");
         DestroyAllObjectsWithTag("ChoiceText");
@@ -219,30 +210,25 @@ public class MainSceneMNG : MonoBehaviour
         //장소에 속한 캐릭터들을 초기화하는 기능입니다.
         for (int i = 0; i < GameMNG.Instance.g_cCurrentLocationInfo.CharacterList.Count; i++)
         {
-            GameObject CharcterTextTemp = Instantiate(ChoosableTextPrefab, Background_Character.transform);
+            GameObject CharcterTextTemp = Instantiate(Prefab_CharacterIcon, Background_Character.transform);
 
-            ChoosableTextCTR choosableTextCTR_Temp = CharcterTextTemp.GetComponent<ChoosableTextCTR>();
-            choosableTextCTR_Temp.mainSceneMNG = gameObject.transform.GetComponent<MainSceneMNG>();
-            choosableTextCTR_Temp.GetComponent<ChoosableTextCTR>().g_iCharacterIndex = i;
-            choosableTextCTR_Temp.g_sTextType = "Character_Name_Text";
-            choosableTextCTR_Temp.Text.text = GameMNG.Instance.g_cCurrentLocationInfo.CharacterList[i].Name;
-            choosableTextCTR_Temp.Text.fontSize = 30;
-            choosableTextCTR_Temp.Text.alignment = TextAlignmentOptions.Center;
+            ChoosableTextCTR ChoosableTextCTR_Temp = CharcterTextTemp.transform.GetComponentInChildren<ChoosableTextCTR>();
+            ChoosableTextCTR_Temp.mainSceneMNG = gameObject.transform.GetComponent<MainSceneMNG>();
+            ChoosableTextCTR_Temp.transform.GetComponentInChildren<ChoosableTextCTR>().g_iCharacterIndex = i;
+            ChoosableTextCTR_Temp.g_sTextType = "Character_Name_Text";
+            ChoosableTextCTR_Temp.Text.text = GameMNG.Instance.g_cCurrentLocationInfo.CharacterList[i].Name;
+            ChoosableTextCTR_Temp.Text.fontSize = 30;
+            ChoosableTextCTR_Temp.Text.alignment = TextAlignmentOptions.Center;
+            CharcterTextTemp.transform.GetChild(1).GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/" + GameMNG.Instance.g_cCurrentLocationInfo.CharacterList[i].Name + "/Icon");
 
 
 
             RectTransform rect = CharcterTextTemp.transform.GetComponent<RectTransform>();
-            RectTransform rect_Image = CharcterTextTemp.transform.GetChild(0).GetComponent<RectTransform>();
-            RectTransform rect_Text = CharcterTextTemp.transform.GetChild(1).GetComponent<RectTransform>();
 
 
             CharcterTextTemp.transform.tag = "CharacterText";
-            Vector2 Size = new Vector2(250, 80);
-            rect.sizeDelta = Size;
-            rect_Image.sizeDelta = Size;
-            rect_Text.sizeDelta = Size;
 
-            Vector3 Pos = new Vector3(0.0f, 280.0f - 80 * i, 0.0f);
+            Vector3 Pos = new Vector3(0.0f, 200.0f - 180 * i, 0.0f);
             rect.anchoredPosition = Pos;
         }
     }
@@ -257,7 +243,73 @@ public class MainSceneMNG : MonoBehaviour
     }
     #endregion
 
+    #region 메뉴 기능
+
+    public void LogShowFunc()
+    {
+        string LogText_Temp = "";
+        for (int i = 0; i <= m_iCurrentDialogIndex; i++)
+        {
+            LogText_Temp += g_cCurrentDialog.Dialog[i];
+            LogText_Temp += "\n";
+        }
+        GameObject LogText_Instance = Instantiate(Prefab_LogText, Canvas_MainScene.transform);
+        LogText_Instance.GetComponentInChildren<Button>().onClick.AddListener(DestroyLogText);
+        LogText_Instance.GetComponentInChildren<TextMeshProUGUI>().text = LogText_Temp;  
+    }
+
+    public void Skip()
+    {
+
+    }
+
+    public void ShowMenu()
+    {
+
+    }
+
+    #endregion
+
     #region 유틸리티 기능
+    private void ChoiceShowFunc()
+    {
+        DestroyAllObjectsWithTag("ChoiceText");
+        for (int i = 0; i < g_cCurrentDialog.Choices.Count; i++)
+        {
+            bool isShow_Temp = true;
+            if (g_cCurrentDialog.Choices[i].ChoiceTrigger.Count!= 0)
+            {
+                for (int j = 0; j < g_cCurrentDialog.Choices[i].ChoiceTrigger.Count; j++)
+                {
+                    if (GameMNG.Instance.g_PlayerTriggerDic[g_cCurrentDialog.Choices[i].ChoiceTrigger[j].Trigger_Dialog] !=
+                    g_cCurrentDialog.Choices[i].ChoiceTrigger[j].Type)
+                    {
+                        isShow_Temp = false;
+                    }
+                }
+            }
+            if(isShow_Temp)
+            {
+                GameObject Choice_Temp = Instantiate(ChoosableTextPrefab, Background_Dialog.transform);
+                ChoosableTextCTR choosableTextCTR_Temp = Choice_Temp.GetComponent<ChoosableTextCTR>();
+                choosableTextCTR_Temp.mainSceneMNG = gameObject.transform.GetComponent<MainSceneMNG>();
+                choosableTextCTR_Temp.g_cChoiceInfo = g_cCurrentDialog.Choices[i];
+                choosableTextCTR_Temp.g_sTextType = "Choice_Text";
+                choosableTextCTR_Temp.Text.text = g_cCurrentDialog.Choices[i].ChoiceDialog;
+
+                RectTransform rect_Image = Choice_Temp.transform.GetChild(0).GetComponent<RectTransform>();
+                RectTransform rect_Text = Choice_Temp.transform.GetChild(1).GetComponent<RectTransform>();
+                RectTransform rect_BG = Choice_Temp.transform.GetComponent<RectTransform>();
+                Vector2 Size = new Vector2(1000, 80);
+                rect_Image.sizeDelta = Size;
+                rect_Text.sizeDelta = Size;
+
+                Vector3 Pos = new Vector3(-450.0f, -50.0f - 50 * i, 0.0f);
+                Choice_Temp.transform.tag = "ChoiceText";
+                rect_BG.anchoredPosition = Pos;
+            }
+        }
+    }
     public void DestroyAllObjectsWithTag(string tag)
     {
         GameObject[] Destroy_Temp = GameObject.FindGameObjectsWithTag(tag);
@@ -283,6 +335,10 @@ public class MainSceneMNG : MonoBehaviour
             Console.WriteLine("Field not found");
             return null;
         }
+    }
+    public void DestroyLogText()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("LogText"));
     }
     #endregion
 }

@@ -95,16 +95,21 @@ public class ChoosableTextCTR : MonoBehaviour, IPointerClickHandler
         }
         else if (g_sTextType == "Choice_Text")
         {
-            JsonMNG.Dialogs ChoiceLinkedDialog = mainSceneMNG.g_cCurrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID]
-                [mainSceneMNG.g_cCurrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID].
-                FindIndex(LinkedQuest => LinkedQuest.DialogID == g_cChoiceInfo.ChoiceLinkedDialogID)];
-            mainSceneMNG.ChangeDialog(ChoiceLinkedDialog);
-            GameObject[] DestroyTemp = GameObject.FindGameObjectsWithTag("ChoiceText");
-
-            for (int i = 0; i < DestroyTemp.Length; i++)
+            if(g_cChoiceInfo.ChoiceLinkedDialogID != "") 
             {
-                Destroy(DestroyTemp[i]);
+                JsonMNG.Dialogs ChoiceLinkedDialog = mainSceneMNG.g_cCurrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID]
+                    [mainSceneMNG.g_cCurrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID].
+                FindIndex(LinkedQuest => LinkedQuest.DialogID == g_cChoiceInfo.ChoiceLinkedDialogID)];
+                mainSceneMNG.ChangeDialog(ChoiceLinkedDialog);
+                mainSceneMNG.DestroyAllObjectsWithTag("ChoiceText");
+
             }
+            else
+            {
+                mainSceneMNG.ChangeDialog(GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog);
+                mainSceneMNG.DestroyAllObjectsWithTag("ChoiceText");
+            }
+
         }
     }
 }

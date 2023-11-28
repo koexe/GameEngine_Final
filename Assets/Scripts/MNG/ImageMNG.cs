@@ -32,15 +32,15 @@ public class ImageMNG : MonoBehaviour
     public abstract class _Image
     {
         public Sprite Default;
-
-        public Delegate getDefault;
-        
-        
     }
 
     public class Image_Player : _Image 
     {
         
+
+    }
+    public class Image_Father : _Image
+    {
 
     }
     public class Image_Bot : _Image 
@@ -55,10 +55,11 @@ public class ImageMNG : MonoBehaviour
             GameMNG.Instance.g_ImageDIc = new Dictionary<string, _Image> ();
         }
         Image_Player Player = LoadImage<Image_Player>("Player");
+        Image_Father Father = LoadImage<Image_Father>("¿±¿Õ»Ò");
         Image_Bot Bot = LoadImage<Image_Bot>("Bot");
         GameMNG.Instance.g_ImageDIc.Add("Player", Player);
-        GameMNG.Instance.g_ImageDIc.Add("Bot", Bot);
-
+        GameMNG.Instance.g_ImageDIc.Add("¿±¿Õ»Ò", Father);
+        GameMNG.Instance.g_ImageDIc.Add("««∆º", Bot);
     }
 
     private T LoadImage<T>(string CharacterName)where T : _Image ,new()
@@ -69,7 +70,4 @@ public class ImageMNG : MonoBehaviour
 
         return instance;
     }
-
-
-
 }

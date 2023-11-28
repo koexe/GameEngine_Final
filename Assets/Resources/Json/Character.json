@@ -1,32 +1,18 @@
 {
 "Characters":[
     {
-        "Name":"Main_Character",
-        "Location":"Main",
-        "CharacterBasicDialog":"기본 캐릭터 다이얼로그입니다.",
+        "Name":"피티",
+        "Location":"Scene_1",
+        "CharacterBasicDialog":"치직...치지직...",
         "CharacterBasicImage":"null",
-        "LinkedQuests":["Quest_Main","Sec_Que"]
+        "LinkedQuests":["Scene1_MeetPiti"]
     },
     {
-        "Name":"Main_Character_2",
-        "Location":"Main",
-        "CharacterBasicDialog":"기본 캐릭터 다이얼로그 아님.",
+        "Name":"윤익희",
+        "Location":"Scene_1",
+        "CharacterBasicDialog":"아버지는 당신에게 할말이 있어 보인다",
         "CharacterBasicImage":"null",
-        "LinkedQuests":[]
-    },
-    {
-        "Name":"GameObject",
-        "Location":"Main",
-        "CharacterBasicDialog":"난 게임오브젝트야. 뭐가 궁금해?",
-        "CharacterBasicImage":"null",
-        "LinkedQuests":["GameObject_Quest_Explain"]
-    },
-    {
-        "Name":"SUb_Character_1",
-        "Location":"Sub_1",
-        "CharacterBasicDialog":"추가 캐릭터 다이얼로그입니다.",
-        "CharacterBasicImage":"null",
-        "LinkedQuests":["Quest_Sub"]
+        "LinkedQuests":["Scene1_Father"]
     }
 ]
 }
