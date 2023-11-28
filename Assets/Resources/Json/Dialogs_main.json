@@ -85,8 +85,8 @@
                   "그렇다면 유니티 요소를 통해 물체를 조작하거나 바꿀수 있다는거야?",
                   "물론입니다! 유니티 개념을 정확히 이해하고 저에게 지시를 내리면 물체에 적용해드리겠습니다!"],
         "Dialog_CharacterInfo":[[],
-                                [{"Character":"Player","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"피티","isTalking":"true","ImageType":"Default"}]
+                                [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]
                                 ],
         "Choices":[{"ChoiceTrigger":[],
         "ChoiceDialog":"다른 것을 물어본다.",
