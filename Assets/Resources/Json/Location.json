@@ -5,6 +5,12 @@
         "LocationContainCharacter":["피티","윤익희"],
         "LocationBackgroundImage":"Cave_Enterance",
         "LocationDescription":"Scene_1_Story"
+    },
+    {
+        "LocationName":"Scene_2",
+        "LocationContainCharacter":["피티","동굴 입구"],
+        "LocationBackgroundImage":"Cave_Enterance",
+        "LocationDescription":"Scene_2_Story"
     }
 ]
 }

@@ -16,34 +16,33 @@
         "QuestShowTrigger":[],
         "DialogId":"Scene_1_Story",
         "QuestName" :"null",
-        "Dialog":["모닥불이 밝게 타오르고 있다.","asdf"],
+        "Dialog":["모닥불이 밝게 타오르고 있다.","아버지는 이쪽을 보며 생각에 잠겨있다."],
         "Dialog_CharacterInfo":[[],[]],
         "Choices":[]
     },
-
     {
         "DialogType":"Quest",
         "QuestID":"Scene1_Father",
         "QuestShowTrigger":[],
         "DialogId":"Scene1_Father_1",
         "QuestName":"아버지와 대화",
-        "Dialog":["생일 축하한다 아들아. 이건 생일 선물이란다.",
-                  "그 로봇은 피티. 유니티 봇이란다. 앞으로 네가 위험에 처할 때, 너에게 지혜를 빌려주고 위험에서 빠져나오게 도와줄거야",
+        "Dialog":["이건 너를 위한 선물이다. 한번 꺼내 봐",
                   "건네받은 상자에는 작은 로봇이 눈을 감은 채 잠들어있었다.",
-                  "아빠는 이제부터 중요한 할일이 있어 다시 떠나야 한단다.",
-                  "네가 준비됐다고 느낀다면, 시련에 동굴에 도전해서 유니티 엔지니어가 되면 다시 보자꾸나",
+                  "그 로봇은 피티. 유니티 봇이란다. 앞으로 네가 위험에 처할 때, 너에게 지혜를 빌려주고 위험에서 빠져나오게 도와줄거야",
+                  "아빠는 네가 혼자도 잘 지낼거라고 믿는다. 나는 이제부터 중요한 할일이 있어 떠나야 한단다.",
+                  "네가 준비됐다고 느낀다면, 시련에 동굴에 도전해서 유니티 엔지니어가 되어 언젠가 다시 보자꾸나",
                   "그 말과 함께 아버지는 자리에서 일어나 엷은 미소와 함께 떠났다."],
-        "Dialog_CharacterInfo":[[{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"Player","isTalking":"false","ImageType":"Default"}],
-                                [{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"Player","isTalking":"false","ImageType":"Default"}],
+        "Dialog_CharacterInfo":[[{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"윤이진","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"윤이진","isTalking":"false","ImageType":"Default"}],
                                 [],
-                                [{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"Player","isTalking":"false","ImageType":"Default"}],
-                                [{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"Player","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"윤이진","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"윤이진","isTalking":"false","ImageType":"Default"}],
                                 []
                             ],
         "Choices":[{"ChoiceTrigger":[],
                     "ChoiceDialog":"아버지는 떠났다.",
                     "ChoiceLinkedDialogID":"",
-                    "ChoiceAfterFunction":"DisableFather"}]
+                    "ChoiceAfterFunction":""}]
     },
     {
         "DialogType":"Quest",
@@ -52,9 +51,9 @@
         "DialogId":"Scene1_MeetPiti_1",
         "QuestName":"버튼을 누른다",
         "Dialog":["피티의 눈에서 빛이 나오며 전원이 들어오자 피티는 공중을 한바퀴 돌고 내 앞으로 돌아왔다.",
-                  "안녕하세요! 전 유니티 봇 피티입니다. 앞으로 당신이 유니티 엔지니어가 되는데 도움을 드리겠습니다!"],
+                  "나는 피티! 윤익희 님에게 네가 유니티 엔지니어가 될 수 있게 도와달라고 들었어."],
         "Dialog_CharacterInfo":[[],
-                                [{"Character":"피티","isTalking":"true","ImageType":"Default"},{"Character":"Player","isTalking":"false","ImageType":"Default"}]
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]
                                 ],
         "Choices":[            {
             "ChoiceTrigger":[],
@@ -81,12 +80,12 @@
         "QuestShowTrigger":[],
         "DialogId":"Scene1_MeetPiti_1_1",
         "QuestName":"유니티봇 설명",
-        "Dialog":["유니티 봇은 유니티 엔지니어링에 대한 개념을 설명하고 그 개념을 세상에 적용하는데 필요한 로봇입니다.",
+        "Dialog":["유니티 봇은 유니티 엔지니어링에 대한 개념을 설명하고 그 개념을 세상에 적용하는데 필요한 로봇이야!",
                   "그렇다면 유니티 요소를 통해 물체를 조작하거나 바꿀수 있다는거야?",
-                  "물론입니다! 유니티 개념을 정확히 이해하고 저에게 지시를 내리면 물체에 적용해드리겠습니다!"],
+                  "물론! 유니티 개념을 정확히 이해하고 나에게 부탁하면 못해줄 것도 없지!"],
         "Dialog_CharacterInfo":[[],
-                                [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
-                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]
                                 ],
         "Choices":[{"ChoiceTrigger":[],
         "ChoiceDialog":"다른 것을 물어본다.",
@@ -99,16 +98,16 @@
         "QuestShowTrigger":[],
         "DialogId":"Scene1_MeetPiti_1_2",
         "QuestName":"피티에 대한 것",
-        "Dialog":[  "저는 윤익희님이 디자인하고 만든 유니티 봇입니다. 윤익희님께 당신을 유니티 엔지니어가 되도록 도와달라는 명령을 받았습니다.",
-                    "도와줄 일이 있으면 언제든 기쁘게 도와드리겠습니다!",
+        "Dialog":[  "나는 윤익희님이 디자인하고 만든 유니티 봇이야. 윤익희님이 네가 유니티 엔지니어가 되도록 도와달라고 했어.",
+                    "도와줄 일이 있으면 부탁하라고! 언제든 기쁘게 도와줄테니까!",
                     "기쁘다니... 너한테는 감정이 있는거야?",
-                    "그렇습니다! 저는 만들어질 때 부터 감정을 느낄 수 있는 모듈이 설치되어 감정을 느끼고 반응할 수 있습니다.",
+                    "응! 윤익희님은 나를 만들 때 감정 모듈을 설치해서 감정을 느끼고 반응도 할 수 있어.",
                     "아버지는 왜 나에게 이런 로봇을 맡긴걸까..?"
                 ],
-        "Dialog_CharacterInfo":[[{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
-                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 []
                                 ],
         "Choices":[{"ChoiceTrigger":[],
@@ -123,25 +122,152 @@
         "DialogId":"Scene1_MeetPiti_1_3",
         "QuestName":"아버지는 어디로",
         "Dialog":[  "아버지는 어디로 떠나버린 거야?",
-                    "아쉽지만, 저도 윤익희님의 행방에 대해서는 잘 모르겠습니다. 하지만 윤익희님은 굉장한 유니티 엔지니어로, 그 능력으로 누군가를 도우러 간 것으로 예상됩니다.",
+                    "나도 윤익희님의 행방에 대해서는 잘 모르겠어.. 하지만 윤익희님은 굉장한 유니티 엔지니어야. 아마도 그 능력으로 누군가를 도우러 간 걸거야!.",
                     "아버지가 굉장한 유니티 엔지니어였다고?",
-                    "윤익희씨는 전설적인 유니티 엔지니어로, 언리얼 엔지니어들과의 전쟁에서 큰 활약을 했습니다. 하지만 전쟁에서 패배하고 이곳으로 오게 됐습니다.",
+                    "윤익희씨는 전설적인 유니티 엔지니어고, 언리얼 엔지니어들과의 전쟁에서 큰 활약을 했어. 하지만 전쟁에서 패배하고 어쩔 수 없이 이곳으로 왔지...",
                     "전부 처음 듣는 소리야... 아버지에 대해 더 알려줘",
-                    "현재로써는 더이상 말씀드릴 정보가 없습니다.",
-                    "그렇게 아버지는 나에게 피티를 남기고 떠나갔다."],
-        "Dialog_CharacterInfo":[[],
-                                [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
-                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
-                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"Player","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
-                                [{"Character":"Player","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
-                                []
+                    "미안하지만 나도 그 이상은 듣지 못했어... 하지만 언젠가 꼭 다시 만날 수 있을거야!"
+                    ],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]
                                 ],
         "Choices":[{"ChoiceTrigger":[],
         "ChoiceDialog":"더이상 물어볼 것은 없다.",
         "ChoiceLinkedDialogID":"",
-        "ChoiceAfterFunction":""}]
+        "ChoiceAfterFunction":"Move_Scene_2"}]
+    },
+    {
+        "DialogType":"Description",
+        "QuestID":"Scene_2_Story",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene_2_Story",
+        "QuestName" :"null",
+        "Dialog":[  "아버지가 떠난 뒤 1년 후..",
+                    "이곳이 시련의 동굴 입구인가?",
+                    "맞아! 이곳에서 도전을 성공하면 너도 어엿한 유니티 엔지니어가 되었다고 할 수 있지.",
+                    "빠뜨린 물건은 없지? 그렇다면 바로 도전하러 가보자!",
+                    "빠뜨린 물건........앗!",
+                    "허리춤에 찬 검집을 보니 검이 꽂혀있지 않았다.",
+                    "피티... 나 검을 집에 두고온거같아....",
+                    "으휴..이진아 그러니까 중요한 물건에는 싱글톤 패턴을 구현해 놓을라고 했잖아!",
+                    "싱글톤 패턴?",
+                    "싱글톤 패턴은 데이터 구조 패턴중 하나로, 객체의 인스턴스를 하나만 생성하는 것을 말해.",
+                    "그러면 왜 싱글톤 패턴을 중요한 물건에 적용해놓아야 하는거야?",
+                    "싱글톤 패턴으로 생성한 인스턴스는 프로그램이 실행되는 동안 하나의 인스턴스만 가지고 있어 여러 곳에서 동시에 접근할 수 있어.",
+                    "메모리 측면에서도 인스턴스를 하나만 생성하니 이득이고, 여러 곳에서 같은 인스턴스를 활용하니 다양한 곳에서 활용되는 정보를 쉽게 공유할 수 있으니 이득이야!",
+                    "고마워 피티...",
+                    "피티에게 말을 걸어 검에 싱글톤 패턴을 구현해 보자."],
+        "Dialog_CharacterInfo":[[],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                []],
+        "Choices":[]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene2_Singleton",
+        "QuestShowTrigger":[{"Trigger_Dialog":"Scene_2_Story","Type":"true"}],
+        "DialogId":"Scene2_Singleton_1",
+        "QuestName":"싱글톤을 적용시켜줘.",
+        "Dialog":["피티 내 검에 싱글톤 패턴을 적용시켜줘!.",
+                  "좋아! 하지만 그 전에 네가 싱글톤을 정확히 이해했는지 확인해볼게!",
+                  "여기서 틀린 설명을 찾아봐!"],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]
+                                ],
+        "Choices":[            {
+            "ChoiceTrigger":[],
+            "ChoiceDialog":"싱글톤 패턴은 객체를 하나만 생성한다.",
+            "ChoiceLinkedDialogID":"Scene2_Singleton_1_1",
+            "ChoiceAfterFunction":""
+        },
+        {
+            "ChoiceTrigger":[],
+            "ChoiceDialog":"싱글톤 패턴은 접근 속도에 있어서 강점을 갖는다.",
+            "ChoiceLinkedDialogID":"Scene2_Singleton_1_2",
+            "ChoiceAfterFunction":""
+        },
+        {
+            "ChoiceTrigger":[],
+            "ChoiceDialog":"싱글톤 패턴은 다양한 곳에서 공유하는 정보를 사용할 때 편리하다.",
+            "ChoiceLinkedDialogID":"Scene2_Singleton_1_3",
+            "ChoiceAfterFunction":""
+        }]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene2_Singleton",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene2_Singleton_1_1",
+        "QuestName":"틀렸어!",
+        "Dialog":["틀렸어 이진아! 싱글톤은 객체를 하나만 생성하는 데이터 구조 패턴이야."],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]                            
+                                ],
+        "Choices":[]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene2_Singleton",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene2_Singleton_1_2",
+        "QuestName":"정답!",
+        "Dialog":["정답이야! 싱글톤 패턴은 하나의 인스턴스만 생성하기 때문에 접근 속도가 아닌 메모리 관리에 있어서 유리해!",
+                  "이제 네 검에 싱글톤 패턴을 적용시킬게.",
+                  "피티가 잠시 빛나더니 이내 잠잠해졌다.",
+                  "싱글톤 패턴을 적용했으니 한번 눈을 감고 검을 잡는다고 생각해봐!",
+                  "눈을 감고, 검이 내 손에 있다고 생각하고 손을 감아쥐니 검 손잡이의 감촉이 손에 느껴졌다.",
+                  "자 이제 검도 챙겼으니 본격적으로 시련의 동굴에 도전해볼까?"],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]
+                                ],
+        "Choices":[]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene2_Singleton",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene2_Singleton_1_3",
+        "QuestName":"틀렸어!",
+        "Dialog":["틀렸어 이진아! 싱글톤은 하나의 객체만 사용하고, 다양한 곳에서 접근 할 수 있어 공유되는 정보를 이용하는데 편리해."],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]                            
+                                ],
+        "Choices":[]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene2_EnterCave",
+        "QuestShowTrigger":[{"Trigger_Dialog":"Scene2_Singleton_1_2","Type":"true"}],
+        "DialogId":"Scene2_EnterCave",
+        "QuestName":"검도 챙겼으니 시련의 동굴에 도전해보자",
+        "Dialog":["동굴에선 무시무시한 기운이 느껴진다."],
+        "Dialog_CharacterInfo":[[]                            
+                                ],
+        "Choices":[        {
+            "ChoiceTrigger":[],
+            "ChoiceDialog":"동굴로 들어간다..",
+            "ChoiceLinkedDialogID":"",
+            "ChoiceAfterFunction":""
+        }]
     }
 ]
 }

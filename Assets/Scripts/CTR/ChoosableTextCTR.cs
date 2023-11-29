@@ -54,6 +54,7 @@ public class ChoosableTextCTR : MonoBehaviour, IPointerClickHandler
             int TextAmount = 0;
             for (int i = 0; i < g_cCharacterInfo.LinkedQuests.Count; i++)
             {
+                //이 부분에서 오류나면 캐릭터 퀘스트쪽 확인할것.
                 if (GameObject.Find(g_cCharacterInfo.Dialog_Info[g_cCharacterInfo.LinkedQuests[i]][0].QuestName) == null)
                 {
                     bool isShow_Temp = true;
@@ -97,16 +98,25 @@ public class ChoosableTextCTR : MonoBehaviour, IPointerClickHandler
         {
             if(g_cChoiceInfo.ChoiceLinkedDialogID != "") 
             {
-                JsonMNG.Dialogs ChoiceLinkedDialog = mainSceneMNG.g_cCurrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID]
-                    [mainSceneMNG.g_cCurrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID].
-                FindIndex(LinkedQuest => LinkedQuest.DialogID == g_cChoiceInfo.ChoiceLinkedDialogID)];
+                string CurrentQuestID = mainSceneMNG.g_cCurrentDialog.QuestID;
+                List<JsonMNG.Dialogs> CurrentCharacterDialogInfo = mainSceneMNG.g_cCurrentCharacter.Dialog_Info[mainSceneMNG.g_cCurrentDialog.QuestID];
+                JsonMNG.Dialogs ChoiceLinkedDialog = mainSceneMNG.g_cCurrentCharacter.Dialog_Info[CurrentQuestID]
+                    [CurrentCharacterDialogInfo.FindIndex(LinkedQuest => LinkedQuest.DialogID == g_cChoiceInfo.ChoiceLinkedDialogID)];
+
                 mainSceneMNG.ChangeDialog(ChoiceLinkedDialog);
                 mainSceneMNG.DestroyAllObjectsWithTag("ChoiceText");
 
             }
             else
             {
-                mainSceneMNG.ChangeDialog(GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog);
+                if (g_cChoiceInfo.ChoiceAfterFunction != "")
+                {
+                    mainSceneMNG.g_dicChoiceAfterFunc[g_cChoiceInfo.ChoiceAfterFunction]();
+                }
+                else
+                {
+                    mainSceneMNG.ChangeDialog(GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog);
+                }
                 mainSceneMNG.DestroyAllObjectsWithTag("ChoiceText");
             }
 

@@ -57,7 +57,7 @@ public class ImageMNG : MonoBehaviour
         Image_Player Player = LoadImage<Image_Player>("Player");
         Image_Father Father = LoadImage<Image_Father>("¿±¿Õ»Ò");
         Image_Bot Bot = LoadImage<Image_Bot>("Bot");
-        GameMNG.Instance.g_ImageDIc.Add("Player", Player);
+        GameMNG.Instance.g_ImageDIc.Add("¿±¿Ã¡¯", Player);
         GameMNG.Instance.g_ImageDIc.Add("¿±¿Õ»Ò", Father);
         GameMNG.Instance.g_ImageDIc.Add("««∆º", Bot);
     }

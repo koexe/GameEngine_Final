@@ -24,11 +24,15 @@ public class MainSceneMNG : MonoBehaviour
     private GameObject Prefab_LogText;
     private Image BackGroundImage;
 
+    public Dictionary<string, ChoiceAfterFuncDelegate> g_dicChoiceAfterFunc;
+    public delegate void ChoiceAfterFuncDelegate();
+
     public JsonMNG.Dialogs g_cCurrentDialog;
     public JsonMNG.Character_Contains_Quest g_cCurrentCharacter;
 
     private int m_iCurrentDialogIndex;
     public bool isChangeText = true;
+    public bool isChangeCharacter = true;
    
 
     private string m_sLocation;
@@ -42,6 +46,7 @@ public class MainSceneMNG : MonoBehaviour
     #region 장소, 캐릭터, 다이얼로그 변경 기능
     public void ChangeDialog(JsonMNG.Dialogs dialogs)
     {
+        isChangeCharacter = false;
         // 현재 진행되는 다이얼로그를 변경하는 기능
         if (GameMNG.Instance.g_PlayerTriggerDic[dialogs.DialogID] == true)
         {
@@ -72,6 +77,7 @@ public class MainSceneMNG : MonoBehaviour
     public void ChangeLocation(string Name)
     {
         //장소의 이름으로 Location을 변경하는 기능
+        isChangeText = true;
         ChangeLocationInit(GameMNG.Instance.g_AllLocationInfoList[GameMNG.Instance.g_AllLocationInfoList.FindIndex(item => item.LocationName == Name)]);
         Destroy(GameObject.Find("ScrollBar"));
     }
@@ -89,6 +95,9 @@ public class MainSceneMNG : MonoBehaviour
                 ChangeName();
                 TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
             }
+            else {
+                ChangeDialog(GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog);
+            }
         }
     }
 
@@ -99,7 +108,6 @@ public class MainSceneMNG : MonoBehaviour
             CharacterImage.transform.GetChild(j).GetComponent<Image>().sprite = null;
             CharacterImage.transform.GetChild(j).GetComponent<Image>().color = new Color(0, 0, 0, 0);
         }
-        Debug.Log(m_iCurrentDialogIndex);
 
         if (g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex].Count != 0 && g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex] != null)
         {
@@ -125,6 +133,7 @@ public class MainSceneMNG : MonoBehaviour
         if (m_iCurrentDialogIndex >= g_cCurrentDialog.Dialog.Count && g_cCurrentDialog.Choices.Count == 0)
         {
             m_iCurrentDialogIndex = 0;
+            isChangeCharacter = true;
             ChangeDialog(GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog);
         }
         else if (m_iCurrentDialogIndex >= g_cCurrentDialog.Dialog.Count && g_cCurrentDialog.Choices.Count != 0)
@@ -132,6 +141,7 @@ public class MainSceneMNG : MonoBehaviour
             m_iCurrentDialogIndex = g_cCurrentDialog.Dialog.Count - 1;
             ChoiceShowFunc();
         }
+
         //Debug.Log("ChangeText 호출됨");
     }
 
@@ -143,7 +153,6 @@ public class MainSceneMNG : MonoBehaviour
         {
             if (g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].isTalking)
             {
-                Debug.Log(g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].Character);
                 if (count > 0)
                 { Text += ", ";}
                 Text += g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].Character;
@@ -182,7 +191,7 @@ public class MainSceneMNG : MonoBehaviour
 
         BackGroundImage = GameObject.Find("BackgroundImage").GetComponent<Image>();
 
-
+        InitChoiceAfterFuncDic();
         ChangeLocation("Scene_1");
     }
 
@@ -232,6 +241,14 @@ public class MainSceneMNG : MonoBehaviour
             rect.anchoredPosition = Pos;
         }
     }
+    public void InitChoiceAfterFuncDic()
+    {
+        g_dicChoiceAfterFunc = new Dictionary<string, ChoiceAfterFuncDelegate>();
+
+
+        g_dicChoiceAfterFunc.Add("Move_Scene_2", Move_Scene_2);
+    }
+
 
     private void InitText()
     {
@@ -250,6 +267,21 @@ public class MainSceneMNG : MonoBehaviour
         string LogText_Temp = "";
         for (int i = 0; i <= m_iCurrentDialogIndex; i++)
         {
+            string Text = "";
+            int count = 0;
+            for (int j = 0; j < g_cCurrentDialog.Dialog_CharacterInfo[i].Count; j++)
+            {
+                if (g_cCurrentDialog.Dialog_CharacterInfo[i][j].isTalking)
+                {
+                    if (count > 0)
+                    { Text += ", "; }
+                    Text += g_cCurrentDialog.Dialog_CharacterInfo[i][j].Character;
+                    count++;
+                }
+            }
+            LogText_Temp += Text;
+            LogText_Temp += "\n";
+            
             LogText_Temp += g_cCurrentDialog.Dialog[i];
             LogText_Temp += "\n";
         }
@@ -341,4 +373,14 @@ public class MainSceneMNG : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("LogText"));
     }
     #endregion
+
+    #region ChoiceAfterFunc
+    public void Move_Scene_2()
+    {
+        ChangeLocation("Scene_2");
+        Debug.Log("asdf");
+    }
+
+    #endregion
+
 }

@@ -69,6 +69,8 @@ public class GameMNG : MonoBehaviour
         string path = Application.persistentDataPath + "Save.json";
         if (File.Exists(path))
         {
+            System.IO.File.Delete(path);
+            SaveFunc();
             string JsonDataTemp = File.ReadAllText(path);
             g_PlayerTriggerDic = JsonConvert.DeserializeObject<Dictionary<string, bool>>(JsonDataTemp);
             Debug.Log(path);

@@ -13,6 +13,20 @@
         "CharacterBasicDialog":"아버지는 당신에게 할말이 있어 보인다",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene1_Father"]
+    },
+    {
+        "Name":"피티",
+        "Location":"Scene_2",
+        "CharacterBasicDialog":"도와줄게 있어?",
+        "CharacterBasicImage":"null",
+        "LinkedQuests":["Scene2_Singleton"]
+    },
+    {
+        "Name":"동굴 입구",
+        "Location":"Scene_2",
+        "CharacterBasicDialog":"검이 없으면 시련에 동굴에 들어갈 수 없다.",
+        "CharacterBasicImage":"null",
+        "LinkedQuests":["Scene2_EnterCave"]
     }
 ]
 }

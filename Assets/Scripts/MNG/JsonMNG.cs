@@ -81,7 +81,12 @@ public class JsonMNG : MonoBehaviour
 
         foreach (Dialogs dialogs in Dial.Dialog_ALL)
         {
+            //Dialog info 와 dialog의 index를 비교
+            if(dialogs.Dialog.Count != dialogs.Dialog_CharacterInfo.Count)
+                Debug.Log("Dialog info index is not match in " + dialogs.DialogID + "Check this DialogID");
+            
             GameMNG.Instance.g_PlayerTriggerDic.Add(dialogs.DialogID, false);
+
             //Dialog를 Character_Contains_Quest 형식에 QuestID를 기준으로 넣고, CharacterTempList를 초기화함
             if (dialogs.DialogType == "Description")
             {
