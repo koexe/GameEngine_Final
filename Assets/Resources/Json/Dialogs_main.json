@@ -216,7 +216,7 @@
         "QuestShowTrigger":[],
         "DialogId":"Scene2_Singleton_1_1",
         "QuestName":"틀렸어!",
-        "Dialog":["틀렸어 이진아! 싱글톤은 객체를 하나만 생성하는 데이터 구조 패턴이야."],
+        "Dialog":["틀렸어 이진아! 싱글톤은 객체를 하나만 생성하는 데이터 구조 패턴이 맞아."],
         "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]                            
                                 ],
         "Choices":[]
@@ -262,12 +262,149 @@
         "Dialog":["동굴에선 무시무시한 기운이 느껴진다."],
         "Dialog_CharacterInfo":[[]                            
                                 ],
-        "Choices":[        {
+        "Choices":[{
+            "ChoiceTrigger":[],
+            "ChoiceDialog":"동굴로 들어간다..",
+            "ChoiceLinkedDialogID":"",
+            "ChoiceAfterFunction":"Move_Scene_3"
+        }]
+    },
+    {
+        "DialogType":"Description",
+        "QuestID":"Scene_3_Story",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene_3_Story",
+        "QuestName" :"null",
+        "Dialog":["동굴에 들어와 30분쯤, 막다른길에 도착했다.",
+                  "막다른 길이야 피티... 우리가 길을 잘못 온걸까?",
+                  "음...분명 전에 윤익희님과 왔을때는 이 길이 맞았는데...",
+                  "피티는 막힌 길의 앞을 날아다니며 조사한다,",
+                  "이진아! 이 앞에서 바람이 느껴져! 막힌 길을 보니 동굴 위에서 바위가 떨어져 길이 막힌것 같아.",
+                  "그렇다면 어떻게 지나가야 하지?음...다른 길이 있을까..?",
+                  "피티는 가까이 다가와 얼굴 주변을 맴돈다.",
+                  "아마도 다른 길은 없을거야.",
+                  "그럼 어떻게 해야하지...?",
+                  "피티는 더욱 가까이 다가와 눈을 빛내고 있다.",
+                  "저걸 다 치우려면 중장비를 가져와야겠는걸?",
+                  "피티는 거의 코에 닿을 거리까지 와서 이진이를 쳐다보고 있다",
+                  "오늘은 돌아가고 중장비를 가져와야겠다!",
+                  "나를 쓰라고!! 나를!!!!!",
+                  "이진이는 피티의 귀여운 반응을 보고 기분이 좋아졌다."],
+        "Dialog_CharacterInfo":[[],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                []
+                            
+                            ],
+        "Choices":[]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene3_Transform",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene3_Transform_1",
+        "QuestName":"바위를 치우는 법",
+        "Dialog":["피티 그래서 이 바위는 어떻게 치워야 할까?",
+                  "유니티 엔진에서 오브젝트를 옮기기 위해선 트랜스폼을 이용해.",
+                  "트랜스폼은 오브젝트의 위치나 회전뿐만 아니라 물체에 붙어있는 컴포넌트나 오브젝트의의 자식 오브젝트도 저장하고 있어.",
+                  "그리고 하나의 오브젝트에는 하나의 트랜스폼이 반드시 하나가 존재해.",
+                  "유니티 엔진에서 아주 중요한 요소라고 할 수 있지!",
+                  "고마워 피티!",
+                  "그러면 바위의 트랜스폼을 옮기기 위해 잘 이해했는지 확인해볼게!",
+                  "다음 중 맞는 설명을 골라봐!"],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]                      
+                                ],
+        "Choices":[
+        {
+            "ChoiceTrigger":[],
+            "ChoiceDialog":"트랜스폼은 게임오브젝트에 존재하지 않아도 된다.",
+            "ChoiceLinkedDialogID":"Scene3_Transform_1_1",
+            "ChoiceAfterFunction":""
+        },
+        {
+            "ChoiceTrigger":[],
+            "ChoiceDialog":"트랜스폼은 게임오브젝트의 위치나 회전의 정보만 가지고 있다..",
+            "ChoiceLinkedDialogID":"Scene3_Transform_1_2",
+            "ChoiceAfterFunction":""
+        },
+        {
+            "ChoiceTrigger":[],
+            "ChoiceDialog":"하나의 게임오브젝트에 트랜스폼 하나가 반드시 존재한다.",
+            "ChoiceLinkedDialogID":"Scene3_Transform_1_3",
+            "ChoiceAfterFunction":""
+        }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene3_Transform",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene3_Transform_1_1",
+        "QuestName":"틀렸어!",
+        "Dialog":["틀렸어 이진아! 트랜스폼은 게임오브젝트에 반드시 존재해야 해!"],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]                            
+                                ],
+        "Choices":[]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene3_Transform",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene3_Transform_1_2",
+        "QuestName":"틀렸어!",
+        "Dialog":["틀렸어 이진아! 트랜스폼은 위치와 회전 뿐만 아니라 오브젝트의 자식 오브젝트 정보 등 다양한 정보를 가지고 있어!"],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]                            
+                                ],
+        "Choices":[]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene3_Transform",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene3_Transform_1_3",
+        "QuestName":"정답!",
+        "Dialog":["정답이야! 하나의 게임오브젝트에는 반드시 하나의 트랜스폼이 존재해야 해!"],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]                            
+                                ],
+        "Choices":[]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene3_RemoveRocks",
+        "QuestShowTrigger":[{"Trigger_Dialog":"Scene3_Transform_1_3","Type":"true"}],
+        "DialogId":"Scene3_RemoveRocks",
+        "QuestName":"바위의 트랜스폼을 옮긴다.",
+        "Dialog":["피티 저기있는 바위들의 트랜스폼을 옮겨줘!",
+                  "피티의 눈이 빛나더니 바위가 하나둘씩 옮겨지더니 숨겨져 있던 길이 나왔다.",
+                  "고마워 피티 이제 동굴 안쪽으로 들어가볼까?"],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]                            
+                                ],
+        "Choices":[{
             "ChoiceTrigger":[],
             "ChoiceDialog":"동굴로 들어간다..",
             "ChoiceLinkedDialogID":"",
             "ChoiceAfterFunction":""
         }]
+
     }
+
 ]
 }

@@ -57,7 +57,8 @@ public class JsonMNG : MonoBehaviour
             Loc_all_temp.CharacterList = new List<Character_Contains_Quest>();
             Loc_all_temp.LocationDescriptionID = Location_Temp.LocationDescription;
             Loc_all_temp.LocationBackGroundImage = Resources.Load<Sprite>("Images/" + Location_Temp.LocationBackgroundImage);
-            Debug.Log("Images/" + Location_Temp.LocationBackgroundImage + ".jpg");
+            Loc_all_temp.LocationShowTrigger = Location_Temp.LocationShowTrigger;
+            //Debug.Log("Images/" + Location_Temp.LocationBackgroundImage + ".jpg");
             Loc_all_temp.LocationContainCharacter = Location_Temp.LocationContainCharacter;
 
             locationInfo_ALL.Add(Loc_all_temp);
@@ -219,6 +220,7 @@ public class JsonMNG : MonoBehaviour
         public List<string> LocationContainCharacter;
         public string LocationBackgroundImage;
         public string LocationDescription;
+        public List<Trigger> LocationShowTrigger;
     }
 
     [System.Serializable]
@@ -252,6 +254,7 @@ public class JsonMNG : MonoBehaviour
         public string LocationDescriptionID;
         public Sprite LocationBackGroundImage;
         public Dialogs DescriptionDialog;
+        public List<Trigger> LocationShowTrigger;
     }
     public class Character_Contains_Quest
     {

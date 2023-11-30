@@ -27,6 +27,24 @@
         "CharacterBasicDialog":"검이 없으면 시련에 동굴에 들어갈 수 없다.",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene2_EnterCave"]
+    },
+    {
+        "Name":"피티",
+        "Location":"Scene_3",
+        "CharacterBasicDialog":"흠흠 나만 믿으라고!",
+        "CharacterBasicImage":"null",
+        "LinkedQuests":["Scene3_Transform"]
+
+    },
+    {
+        "Name":"바위더미",
+        "Location":"Scene_3",
+        "CharacterBasicDialog":"바위더미가 길을 막고있다.",
+        "CharacterBasicImage":"null",
+        "LinkedQuests":[""]
+
     }
+
+
 ]
 }

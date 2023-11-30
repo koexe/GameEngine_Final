@@ -247,6 +247,7 @@ public class MainSceneMNG : MonoBehaviour
 
 
         g_dicChoiceAfterFunc.Add("Move_Scene_2", Move_Scene_2);
+        g_dicChoiceAfterFunc.Add("Move_Scene_3", Move_Scene_3);
     }
 
 
@@ -311,14 +312,7 @@ public class MainSceneMNG : MonoBehaviour
             bool isShow_Temp = true;
             if (g_cCurrentDialog.Choices[i].ChoiceTrigger.Count!= 0)
             {
-                for (int j = 0; j < g_cCurrentDialog.Choices[i].ChoiceTrigger.Count; j++)
-                {
-                    if (GameMNG.Instance.g_PlayerTriggerDic[g_cCurrentDialog.Choices[i].ChoiceTrigger[j].Trigger_Dialog] !=
-                    g_cCurrentDialog.Choices[i].ChoiceTrigger[j].Type)
-                    {
-                        isShow_Temp = false;
-                    }
-                }
+                isShow_Temp = CheckTrigger(g_cCurrentDialog.Choices[i].ChoiceTrigger);
             }
             if(isShow_Temp)
             {
@@ -342,6 +336,41 @@ public class MainSceneMNG : MonoBehaviour
             }
         }
     }
+    public void ShowQuest(JsonMNG.Character_Contains_Quest Character)
+    {
+        ChangeCharacter(Character);
+        int TextAmount = 0;
+        for (int i = 0; i < Character.LinkedQuests.Count; i++)
+        {
+            //이 부분에서 오류나면 캐릭터 퀘스트쪽 확인할것.
+            if (GameObject.Find(Character.Dialog_Info[Character.LinkedQuests[i]][0].QuestName) == null)
+            {
+                bool isShow_Temp = true;
+                if (Character.Dialog_Info[Character.LinkedQuests[i]][0].QuestShowTrigger.Count != 0)
+                {
+                    isShow_Temp = CheckTrigger(Character.Dialog_Info[Character.LinkedQuests[i]][0].QuestShowTrigger);
+                }
+                if (isShow_Temp == true)
+                {
+                    GameObject Character_QuestText_Temp = Instantiate(ChoosableTextPrefab, Background_Dialog.transform);
+                    Character_QuestText_Temp.GetComponentInChildren<TextMeshProUGUI>().text = Character.Dialog_Info[Character.LinkedQuests[i]][0].QuestName;
+                    Character_QuestText_Temp.GetComponentInChildren<TextMeshProUGUI>().fontSize = GameMNG.Instance.FontSize_Choice;
+                    Character_QuestText_Temp.GetComponent<ChoosableTextCTR>().g_sTextType = "Quest_Text";
+                    Character_QuestText_Temp.GetComponent<ChoosableTextCTR>().g_cDialogInfo = Character.Dialog_Info[Character.LinkedQuests[i]][0];
+
+                    Character_QuestText_Temp.name = Character.Dialog_Info[Character.LinkedQuests[i]][0].QuestName;
+                    Character_QuestText_Temp.tag = "QuestText";
+                    RectTransform rect = Character_QuestText_Temp.transform.GetComponent<RectTransform>();
+
+                    Vector3 Pos = new Vector3(-560.0f, 0.0f - 50 * TextAmount, 0.0f);
+                    TextAmount++;
+                    rect.anchoredPosition = Pos;
+                }
+            }
+        }
+    }
+
+
     public void DestroyAllObjectsWithTag(string tag)
     {
         GameObject[] Destroy_Temp = GameObject.FindGameObjectsWithTag(tag);
@@ -355,7 +384,6 @@ public class MainSceneMNG : MonoBehaviour
     {
         // Reflection을 사용하여 필드를 찾음
         FieldInfo field = instance.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
         if (field != null)
         {
             // 필드의 값을 가져옴
@@ -372,13 +400,29 @@ public class MainSceneMNG : MonoBehaviour
     {
         Destroy(GameObject.FindGameObjectWithTag("LogText"));
     }
+
+    public bool CheckTrigger(List<JsonMNG.Trigger> trigger)
+    {
+        bool isShow = true;
+        for (int i = 0; i < trigger.Count; i++)
+        {
+            if (GameMNG.Instance.g_PlayerTriggerDic[trigger[i].Trigger_Dialog] != trigger[i].Type)
+            {
+                isShow = false;
+            }
+        }
+        return isShow;
+    }
     #endregion
 
     #region ChoiceAfterFunc
     public void Move_Scene_2()
     {
         ChangeLocation("Scene_2");
-        Debug.Log("asdf");
+    }
+    public void Move_Scene_3()
+    {
+        ChangeLocation("Scene_3");
     }
 
     #endregion
