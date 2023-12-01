@@ -16,8 +16,8 @@
         "QuestShowTrigger":[],
         "DialogId":"Scene_1_Story",
         "QuestName" :"null",
-        "Dialog":["모닥불이 밝게 타오르고 있다.","아버지는 이쪽을 보며 생각에 잠겨있다."],
-        "Dialog_CharacterInfo":[[],[]],
+        "Dialog":["모닥불이 밝게 타오르고 있다.","아버지는 이쪽을 보며 생각에 잠겨있다.",""],
+        "Dialog_CharacterInfo":[[],[],[]],
         "Choices":[]
     },
     {
@@ -29,8 +29,8 @@
         "Dialog":["이건 너를 위한 선물이다. 한번 꺼내 봐",
                   "건네받은 상자에는 작은 로봇이 눈을 감은 채 잠들어있었다.",
                   "그 로봇은 피티. 유니티 봇이란다. 앞으로 네가 위험에 처할 때, 너에게 지혜를 빌려주고 위험에서 빠져나오게 도와줄거야",
-                  "아빠는 네가 혼자도 잘 지낼거라고 믿는다. 나는 이제부터 중요한 할일이 있어 떠나야 한단다.",
-                  "네가 준비됐다고 느낀다면, 시련에 동굴에 도전해서 유니티 엔지니어가 되어 언젠가 다시 보자꾸나",
+                  "아빠는 이진이와 잠시 떨어져 지내야 할 것 같구나. 함께 있어주고 싶지만 그러지 못하는 나를 용서해다오.",
+                  "네가 준비됐다고 느낀다면, 시련의 동굴에 끝에 유니티 신전에 가서 축복을 받아 훌륭한 유니티 엔지니어가 되어 다시 보자꾸나. 미안하다.",
                   "그 말과 함께 아버지는 자리에서 일어나 엷은 미소와 함께 떠났다."],
         "Dialog_CharacterInfo":[[{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"윤이진","isTalking":"false","ImageType":"Default"}],
                                 [{"Character":"윤익희","isTalking":"true","ImageType":"Default"},{"Character":"윤이진","isTalking":"false","ImageType":"Default"}],
@@ -153,14 +153,13 @@
                     "빠뜨린 물건........앗!",
                     "허리춤에 찬 검집을 보니 검이 꽂혀있지 않았다.",
                     "피티... 나 검을 집에 두고온거같아....",
-                    "으휴..이진아 그러니까 중요한 물건에는 싱글톤 패턴을 구현해 놓을라고 했잖아!",
+                    "으휴..이진아 그러니까 중요한 물건에는 싱글톤 패턴을 구현해 놓으라고 했잖아!",
                     "싱글톤 패턴?",
-                    "싱글톤 패턴은 데이터 구조 패턴중 하나로, 객체의 인스턴스를 하나만 생성하는 것을 말해.",
-                    "그러면 왜 싱글톤 패턴을 중요한 물건에 적용해놓아야 하는거야?",
-                    "싱글톤 패턴으로 생성한 인스턴스는 프로그램이 실행되는 동안 하나의 인스턴스만 가지고 있어 여러 곳에서 동시에 접근할 수 있어.",
-                    "메모리 측면에서도 인스턴스를 하나만 생성하니 이득이고, 여러 곳에서 같은 인스턴스를 활용하니 다양한 곳에서 활용되는 정보를 쉽게 공유할 수 있으니 이득이야!",
-                    "고마워 피티...",
-                    "피티에게 말을 걸어 검에 싱글톤 패턴을 구현해 보자."],
+                    "싱글톤은 어디를 가더라도 언제든 꺼내 쓸 수 있는 기능이야",
+                    "싱글톤을 적용시킨 물건은 어디서든 가져올 수 있게 싱글톤 주머니에 들어가게 되는거지!",
+                    "싱글톤 주머니 안에 들어간 물건은 어디서든 꺼낼 수 있어서 쓸 때마다 새로 만들 필요가 없으니 편리해.",
+                    "고마워 피티! 그렇다면 검에 싱글톤을 적용시켜줘!",
+                    ""],
         "Dialog_CharacterInfo":[[],
                                 [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
@@ -171,7 +170,6 @@
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
@@ -184,7 +182,7 @@
         "QuestShowTrigger":[{"Trigger_Dialog":"Scene_2_Story","Type":"true"}],
         "DialogId":"Scene2_Singleton_1",
         "QuestName":"싱글톤을 적용시켜줘.",
-        "Dialog":["피티 내 검에 싱글톤 패턴을 적용시켜줘!.",
+        "Dialog":["피티 내 검에 싱글톤 패턴을 적용시켜줘!",
                   "좋아! 하지만 그 전에 네가 싱글톤을 정확히 이해했는지 확인해볼게!",
                   "여기서 틀린 설명을 찾아봐!"],
         "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
@@ -193,19 +191,19 @@
                                 ],
         "Choices":[            {
             "ChoiceTrigger":[],
-            "ChoiceDialog":"싱글톤 패턴은 객체를 하나만 생성한다.",
+            "ChoiceDialog":"싱글톤을 지정하면 어디서든 꺼내볼 수 있다.",
             "ChoiceLinkedDialogID":"Scene2_Singleton_1_1",
             "ChoiceAfterFunction":""
         },
         {
             "ChoiceTrigger":[],
-            "ChoiceDialog":"싱글톤 패턴은 접근 속도에 있어서 강점을 갖는다.",
+            "ChoiceDialog":"싱글톤을 지정한 물건은 쓸 때 마다 새로 생성된다.",
             "ChoiceLinkedDialogID":"Scene2_Singleton_1_2",
             "ChoiceAfterFunction":""
         },
         {
             "ChoiceTrigger":[],
-            "ChoiceDialog":"싱글톤 패턴은 다양한 곳에서 공유하는 정보를 사용할 때 편리하다.",
+            "ChoiceDialog":"중요하거나 여러 곳에서 사용되는 물건은 싱글톤을 적용해 놓으면 편리하다.",
             "ChoiceLinkedDialogID":"Scene2_Singleton_1_3",
             "ChoiceAfterFunction":""
         }]
@@ -216,7 +214,7 @@
         "QuestShowTrigger":[],
         "DialogId":"Scene2_Singleton_1_1",
         "QuestName":"틀렸어!",
-        "Dialog":["틀렸어 이진아! 싱글톤은 객체를 하나만 생성하는 데이터 구조 패턴이 맞아."],
+        "Dialog":["틀렸어 이진아! 싱글톤을 지정한 물체는 어디서든 꺼내볼 수 있어."],
         "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]                            
                                 ],
         "Choices":[]
@@ -227,17 +225,19 @@
         "QuestShowTrigger":[],
         "DialogId":"Scene2_Singleton_1_2",
         "QuestName":"정답!",
-        "Dialog":["정답이야! 싱글톤 패턴은 하나의 인스턴스만 생성하기 때문에 접근 속도가 아닌 메모리 관리에 있어서 유리해!",
+        "Dialog":["정답이야! 싱글톤 패턴은 미리 생성된 물건을 필요할 때 마다 꺼내 쓰는거야!",
                   "이제 네 검에 싱글톤 패턴을 적용시킬게.",
-                  "피티가 잠시 빛나더니 이내 잠잠해졌다.",
+                  "피티의 눈이 잠시 빛나더니 이내 잠잠해졌다.",
                   "싱글톤 패턴을 적용했으니 한번 눈을 감고 검을 잡는다고 생각해봐!",
                   "눈을 감고, 검이 내 손에 있다고 생각하고 손을 감아쥐니 검 손잡이의 감촉이 손에 느껴졌다.",
+                  "싱글톤 패턴에 대해서 더 자세하게 알고싶다면 다시 나에게 말을 걸어줘!",
                   "자 이제 검도 챙겼으니 본격적으로 시련의 동굴에 도전해볼까?"],
         "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]
                                 ],
         "Choices":[]
@@ -248,8 +248,29 @@
         "QuestShowTrigger":[],
         "DialogId":"Scene2_Singleton_1_3",
         "QuestName":"틀렸어!",
-        "Dialog":["틀렸어 이진아! 싱글톤은 하나의 객체만 사용하고, 다양한 곳에서 접근 할 수 있어 공유되는 정보를 이용하는데 편리해."],
+        "Dialog":["틀렸어 이진아! 중요하거나 여러 곳에서 사용되는 물건을 싱글톤 패턴으로 구현해 놓으면 편리해!"],
         "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]                            
+                                ],
+        "Choices":[]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene2_Singleton_Explain",
+        "QuestShowTrigger":[{"Trigger_Dialog":"Scene2_Singleton_1_2","Type":"true"}],
+        "DialogId":"Scene2_Singleton_Explain_1",
+        "QuestName":"자세한 설명을 듣는다.",
+        "Dialog":[
+                    "싱글톤 패턴은 디자인 패턴중 하나로, 객체의 인스턴스를 하나만 생성하고, 그 객체를 이용할 때 새로 생성하지 않고 미리 생성된 인스턴스를 가져오는 패턴이야..",
+                    "왜 인스턴스를 하나만 생성하는거야?",
+                    "싱글톤 패턴으로 생성한 인스턴스는 프로그램이 실행되는 동안 하나의 인스턴스만 가지고 있어 여러 곳에서 동시에 접근할 수 있어.",
+                    "메모리 측면에서도 인스턴스를 하나만 생성하니 이득이고, 여러 곳에서 같은 인스턴스를 활용하니 다양한 곳에서 활용되는 정보를 쉽게 공유할 수 있으니 이득이야!",
+                    "고마워 피티!"
+                ],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]                          
                                 ],
         "Choices":[]
     },
@@ -278,9 +299,9 @@
         "Dialog":["동굴에 들어와 30분쯤, 막다른길에 도착했다.",
                   "막다른 길이야 피티... 우리가 길을 잘못 온걸까?",
                   "음...분명 전에 윤익희님과 왔을때는 이 길이 맞았는데...",
-                  "피티는 막힌 길의 앞을 날아다니며 조사한다,",
+                  "피티는 막힌 길의 앞을 날아다니며 조사한다.",
                   "이진아! 이 앞에서 바람이 느껴져! 막힌 길을 보니 동굴 위에서 바위가 떨어져 길이 막힌것 같아.",
-                  "그렇다면 어떻게 지나가야 하지?음...다른 길이 있을까..?",
+                  "그렇다면 어떻게 지나가야 하지? 음...다른 길이 있을까..?",
                   "피티는 가까이 다가와 얼굴 주변을 맴돈다.",
                   "아마도 다른 길은 없을거야.",
                   "그럼 어떻게 해야하지...?",
@@ -289,7 +310,8 @@
                   "피티는 거의 코에 닿을 거리까지 와서 이진이를 쳐다보고 있다",
                   "오늘은 돌아가고 중장비를 가져와야겠다!",
                   "나를 쓰라고!! 나를!!!!!",
-                  "이진이는 피티의 귀여운 반응을 보고 기분이 좋아졌다."],
+                  "이진이는 피티의 귀여운 반응을 보고 기분이 좋아졌다.",
+                  ""],
         "Dialog_CharacterInfo":[[],
                                 [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
@@ -304,8 +326,8 @@
                                 [],
                                 [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [],
                                 []
-                            
                             ],
         "Choices":[]
     },
@@ -316,9 +338,9 @@
         "DialogId":"Scene3_Transform_1",
         "QuestName":"바위를 치우는 법",
         "Dialog":["피티 그래서 이 바위는 어떻게 치워야 할까?",
-                  "유니티 엔진에서 오브젝트를 옮기기 위해선 트랜스폼을 이용해.",
-                  "트랜스폼은 오브젝트의 위치나 회전뿐만 아니라 물체에 붙어있는 컴포넌트나 오브젝트의의 자식 오브젝트도 저장하고 있어.",
-                  "그리고 하나의 오브젝트에는 하나의 트랜스폼이 반드시 하나가 존재해.",
+                  "유니티 엔진에서 무언가를 옮기기 위해선 트랜스폼을 이용해.",
+                  "트랜스폼은 오브젝트의 위치나 회전뿐만 아니라 물체의 구성요소들을 포함하고 있어.",
+                  "그리고 하나의 물건에는 하나의 트랜스폼이 반드시 하나가 존재해.",
                   "유니티 엔진에서 아주 중요한 요소라고 할 수 있지!",
                   "고마워 피티!",
                   "그러면 바위의 트랜스폼을 옮기기 위해 잘 이해했는지 확인해볼게!",
@@ -328,24 +350,26 @@
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]                      
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]                      
                                 ],
         "Choices":[
         {
             "ChoiceTrigger":[],
-            "ChoiceDialog":"트랜스폼은 게임오브젝트에 존재하지 않아도 된다.",
+            "ChoiceDialog":"트랜스폼은 물건에 존재하지 않아도 된다.",
             "ChoiceLinkedDialogID":"Scene3_Transform_1_1",
             "ChoiceAfterFunction":""
         },
         {
             "ChoiceTrigger":[],
-            "ChoiceDialog":"트랜스폼은 게임오브젝트의 위치나 회전의 정보만 가지고 있다..",
+            "ChoiceDialog":"트랜스폼은 물건의 위치나 회전의 정보만 가지고 있다..",
             "ChoiceLinkedDialogID":"Scene3_Transform_1_2",
             "ChoiceAfterFunction":""
         },
         {
             "ChoiceTrigger":[],
-            "ChoiceDialog":"하나의 게임오브젝트에 트랜스폼 하나가 반드시 존재한다.",
+            "ChoiceDialog":"하나의 물건에 트랜스폼 하나가 반드시 존재한다.",
             "ChoiceLinkedDialogID":"Scene3_Transform_1_3",
             "ChoiceAfterFunction":""
         }
@@ -357,7 +381,7 @@
         "QuestShowTrigger":[],
         "DialogId":"Scene3_Transform_1_1",
         "QuestName":"틀렸어!",
-        "Dialog":["틀렸어 이진아! 트랜스폼은 게임오브젝트에 반드시 존재해야 해!"],
+        "Dialog":["틀렸어 이진아! 트랜스폼은 물건에 반드시 존재해야 해!"],
         "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]                            
                                 ],
         "Choices":[]
@@ -368,7 +392,7 @@
         "QuestShowTrigger":[],
         "DialogId":"Scene3_Transform_1_2",
         "QuestName":"틀렸어!",
-        "Dialog":["틀렸어 이진아! 트랜스폼은 위치와 회전 뿐만 아니라 오브젝트의 자식 오브젝트 정보 등 다양한 정보를 가지고 있어!"],
+        "Dialog":["틀렸어 이진아! 트랜스폼은 위치와 회전 뿐만 아니라 물체의 구성 요소들을 포함하고 있어!"],
         "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]                            
                                 ],
         "Choices":[]
@@ -379,11 +403,29 @@
         "QuestShowTrigger":[],
         "DialogId":"Scene3_Transform_1_3",
         "QuestName":"정답!",
-        "Dialog":["정답이야! 하나의 게임오브젝트에는 반드시 하나의 트랜스폼이 존재해야 해!"],
-        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]                            
-                                ],
+        "Dialog":["정답이야! 하나의 물건에는 반드시 하나의 트랜스폼이 존재해야 해!",
+                  "더 자세한 설명이 필요하면 나에게 다시 물어봐!"],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],                            
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]],
         "Choices":[]
     },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene3_Transform_Explain",
+        "QuestShowTrigger":[{"Trigger_Dialog":"Scene3_Transform_1_3","Type":"true"}],
+        "DialogId":"Scene3_Transform_Explain",
+        "QuestName":"자세한 설명을 듣는다.",
+        "Dialog":["트랜스폼은 유니티에서 게임오브젝트의 위치나 회전, 부모와 자식 오브젝트 등을 포함하는 요소야.",
+                  "게임오브젝트 하나에는 반드시 하나의 트랜스폼이 존재해야 하고, Position, Scale, Rotation 과 parent, child 등 게임오브젝트의 다양한 정보를 가지고 있지.",
+                  "유니티에서 게임오브젝트를 다루기 위해 꼭 필요한 요소니 기억해 두라고!",
+                  "고마워 피티!"],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],                            
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]],
+        "Choices":[]
+    },
+
     {
         "DialogType":"Quest",
         "QuestID":"Scene3_RemoveRocks",
@@ -392,7 +434,7 @@
         "QuestName":"바위의 트랜스폼을 옮긴다.",
         "Dialog":["피티 저기있는 바위들의 트랜스폼을 옮겨줘!",
                   "피티의 눈이 빛나더니 바위가 하나둘씩 옮겨지더니 숨겨져 있던 길이 나왔다.",
-                  "고마워 피티 이제 동굴 안쪽으로 들어가볼까?"],
+                  "고마워 피티! 이제 동굴 안쪽으로 들어가볼까?"],
         "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
                                 [],
                                 [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]                            

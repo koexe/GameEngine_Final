@@ -84,7 +84,7 @@ public class JsonMNG : MonoBehaviour
         {
             //Dialog info 와 dialog의 index를 비교
             if(dialogs.Dialog.Count != dialogs.Dialog_CharacterInfo.Count)
-                Debug.Log("Dialog info index is not match in " + dialogs.DialogID + "Check this DialogID");
+                Debug.Log("Dialog info index is not match in " + dialogs.DialogID + " Please Check this DialogID");
             
             GameMNG.Instance.g_PlayerTriggerDic.Add(dialogs.DialogID, false);
 
@@ -102,7 +102,7 @@ public class JsonMNG : MonoBehaviour
                 int index = CharacterTempList.FindIndex(item => item.LinkedQuests.Any(LinkedQuest => LinkedQuest == dialogs.QuestID));
                 if (index == -1)
                 {
-                    Debug.Log("Character Quest DialogID Match Error");
+                    Debug.Log("Character Quest DialogID Match Error in " +dialogs.DialogID );
                 }
                 else
                 {

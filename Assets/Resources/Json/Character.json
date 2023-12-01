@@ -19,7 +19,7 @@
         "Location":"Scene_2",
         "CharacterBasicDialog":"도와줄게 있어?",
         "CharacterBasicImage":"null",
-        "LinkedQuests":["Scene2_Singleton"]
+        "LinkedQuests":["Scene2_Singleton","Scene2_Singleton_Explain"]
     },
     {
         "Name":"동굴 입구",
@@ -31,9 +31,9 @@
     {
         "Name":"피티",
         "Location":"Scene_3",
-        "CharacterBasicDialog":"흠흠 나만 믿으라고!",
+        "CharacterBasicDialog":"나만 믿으라고!",
         "CharacterBasicImage":"null",
-        "LinkedQuests":["Scene3_Transform"]
+        "LinkedQuests":["Scene3_Transform","Scene3_Transform_Explain"]
 
     },
     {
@@ -41,7 +41,7 @@
         "Location":"Scene_3",
         "CharacterBasicDialog":"바위더미가 길을 막고있다.",
         "CharacterBasicImage":"null",
-        "LinkedQuests":[""]
+        "LinkedQuests":["Scene3_RemoveRocks"]
 
     }
 

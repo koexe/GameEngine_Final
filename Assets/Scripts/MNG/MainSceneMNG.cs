@@ -326,11 +326,11 @@ public class MainSceneMNG : MonoBehaviour
                 RectTransform rect_Image = Choice_Temp.transform.GetChild(0).GetComponent<RectTransform>();
                 RectTransform rect_Text = Choice_Temp.transform.GetChild(1).GetComponent<RectTransform>();
                 RectTransform rect_BG = Choice_Temp.transform.GetComponent<RectTransform>();
-                Vector2 Size = new Vector2(1000, 80);
+                Vector2 Size = new Vector2(1500, 80);
                 rect_Image.sizeDelta = Size;
                 rect_Text.sizeDelta = Size;
 
-                Vector3 Pos = new Vector3(-450.0f, -50.0f - 50 * i, 0.0f);
+                Vector3 Pos = new Vector3(-350.0f, -50.0f - 50 * i, 0.0f);
                 Choice_Temp.transform.tag = "ChoiceText";
                 rect_BG.anchoredPosition = Pos;
             }
@@ -360,11 +360,17 @@ public class MainSceneMNG : MonoBehaviour
 
                     Character_QuestText_Temp.name = Character.Dialog_Info[Character.LinkedQuests[i]][0].QuestName;
                     Character_QuestText_Temp.tag = "QuestText";
-                    RectTransform rect = Character_QuestText_Temp.transform.GetComponent<RectTransform>();
+                    RectTransform rect_BG = Character_QuestText_Temp.transform.GetComponent<RectTransform>();
+                    RectTransform rect_Image = Character_QuestText_Temp.transform.GetChild(0).GetComponent<RectTransform>();
+                    RectTransform rect_Text = Character_QuestText_Temp.transform.GetChild(1).GetComponent<RectTransform>();
+                    Vector2 Size = new Vector2(800, 80);
+                    rect_Image.sizeDelta = Size;
+                    rect_Text.sizeDelta = Size;
 
-                    Vector3 Pos = new Vector3(-560.0f, 0.0f - 50 * TextAmount, 0.0f);
+
+                    Vector3 Pos = new Vector3(-500.0f, 0.0f - 50 * TextAmount, 0.0f);
                     TextAmount++;
-                    rect.anchoredPosition = Pos;
+                    rect_BG.anchoredPosition = Pos;
                 }
             }
         }
