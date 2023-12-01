@@ -62,6 +62,7 @@ public class MainSceneMNG : MonoBehaviour
         isChangeText = true;
         ChangeImage();
         ChangeName();
+        InitCheckImage();
     }
     public void ChangeCharacter(JsonMNG.Character_Contains_Quest character)
     {
@@ -211,7 +212,7 @@ public class MainSceneMNG : MonoBehaviour
         InitText();
         ChangeImage();
         ChangeName();
-
+        ChangeDialog(g_cCurrentDialog);
     }
 
     private void InitCharacter()
@@ -259,11 +260,24 @@ public class MainSceneMNG : MonoBehaviour
         TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
         TMP_LocationText.text = GameMNG.Instance.g_cCurrentLocationInfo.LocationName;
     }
-    #endregion
+    private void InitCheckImage()
+    {
+        GameObject[] Character_Temp = GameObject.FindGameObjectsWithTag("CharacterText");
 
-    #region 메뉴 기능
+        for(int i = 0; i< Character_Temp.Length; i++)
+        {
+            ChoosableTextCTR choosableTextCTR_Temp = Character_Temp[i].GetComponentInChildren< ChoosableTextCTR>();
 
-    public void LogShowFunc()
+            choosableTextCTR_Temp.CheckImage.SetActive(CheckSeenDialog(choosableTextCTR_Temp.g_cCharacterInfo));
+        }
+
+    }
+
+#endregion
+
+#region 메뉴 기능
+
+public void LogShowFunc()
     {
         string LogText_Temp = "";
         for (int i = 0; i <= m_iCurrentDialogIndex; i++)
@@ -419,10 +433,34 @@ public class MainSceneMNG : MonoBehaviour
         }
         return isShow;
     }
-    #endregion
 
-    #region ChoiceAfterFunc
-    public void Move_Scene_2()
+    public bool CheckSeenDialog(JsonMNG.Character_Contains_Quest character)
+    {
+        //true면 이미지 보이기, false면 이미지 숨기기
+        bool Check_Temp = false;
+        if (character != null)
+        {
+            for (int i = 0; i < character.LinkedQuests.Count; i++)
+            {
+                string QuestName = character.LinkedQuests[i];
+                string DialogID = character.Dialog_Info[QuestName][0].DialogID;
+                if (CheckTrigger(character.Dialog_Info[QuestName][0].QuestShowTrigger))
+                {
+                    if (GameMNG.Instance.g_PlayerTriggerDic[DialogID] == false)
+                    {
+                        Check_Temp = true;
+                    }
+                }
+            }
+            return Check_Temp;
+        }
+        return false;
+    }
+
+        #endregion
+
+        #region ChoiceAfterFunc
+        public void Move_Scene_2()
     {
         ChangeLocation("Scene_2");
     }

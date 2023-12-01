@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ChoosableTextCTR : MonoBehaviour, IPointerClickHandler
 {
@@ -10,6 +11,8 @@ public class ChoosableTextCTR : MonoBehaviour, IPointerClickHandler
     public GameObject Character_QuestText;
     public GameObject Canvas_MainScene;
     public TextMeshProUGUI Text;
+    public GameObject CheckImage;
+
 
     //텍스트 종류를 구분하기 위하여 TextType string 을 사용, Character_Name_Text, Quest_Text, Choice_Text로 구분
 
@@ -19,7 +22,6 @@ public class ChoosableTextCTR : MonoBehaviour, IPointerClickHandler
     public JsonMNG.Character_Contains_Quest g_cCharacterInfo;
     public JsonMNG.Dialogs g_cDialogInfo;
     public JsonMNG.Choice g_cChoiceInfo;
-
 
     private void Start()
     {
@@ -32,6 +34,8 @@ public class ChoosableTextCTR : MonoBehaviour, IPointerClickHandler
             g_cCharacterInfo = GameMNG.Instance.g_cCurrentLocationInfo.CharacterList[g_iCharacterIndex];
             g_cDialogInfo = null;
             g_cChoiceInfo = null;
+
+            CheckImage.SetActive(mainSceneMNG.CheckSeenDialog(g_cCharacterInfo));
         }
         if (g_sTextType == "Quest_Text")
         {

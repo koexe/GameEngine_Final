@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class GameMNG : MonoBehaviour
 {
@@ -13,6 +13,7 @@ public class GameMNG : MonoBehaviour
     public List<JsonMNG.LocationInfo_Contains_ALL> g_AllLocationInfoList;
     public Dictionary<string,bool> g_PlayerTriggerDic = new Dictionary<string,bool>();
     public Dictionary<string, ImageMNG._Image> g_ImageDIc;
+
     public int FontSize_Character = 30;
     public int FontSize_Choice = 50;
 
