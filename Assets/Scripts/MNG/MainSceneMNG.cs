@@ -249,6 +249,8 @@ public class MainSceneMNG : MonoBehaviour
 
         g_dicChoiceAfterFunc.Add("Move_Scene_2", Move_Scene_2);
         g_dicChoiceAfterFunc.Add("Move_Scene_3", Move_Scene_3);
+        g_dicChoiceAfterFunc.Add("Move_Scene_4", Move_Scene_4);
+        g_dicChoiceAfterFunc.Add("Move_Scene_5", Move_Scene_5);
     }
 
 
@@ -460,7 +462,7 @@ public void LogShowFunc()
         #endregion
 
         #region ChoiceAfterFunc
-        public void Move_Scene_2()
+    public void Move_Scene_2()
     {
         ChangeLocation("Scene_2");
     }
@@ -468,7 +470,14 @@ public void LogShowFunc()
     {
         ChangeLocation("Scene_3");
     }
-
+    public void Move_Scene_4()
+    {
+        ChangeLocation("Scene_4");
+    }
+    public void Move_Scene_5()
+    {
+        ChangeLocation("Scene_5");
+    }
     #endregion
 
 }

@@ -46,6 +46,10 @@ public class ImageMNG : MonoBehaviour
     public class Image_Bot : _Image 
     { 
     }
+    public class Image_Monster: _Image
+    {
+
+    }
 
 
     private void ImageInit()
@@ -54,12 +58,14 @@ public class ImageMNG : MonoBehaviour
         {
             GameMNG.Instance.g_ImageDIc = new Dictionary<string, _Image> ();
         }
-        Image_Player Player = LoadImage<Image_Player>("Player");
+        Image_Player Player = LoadImage<Image_Player>("윤이진");
         Image_Father Father = LoadImage<Image_Father>("윤익희");
-        Image_Bot Bot = LoadImage<Image_Bot>("Bot");
+        Image_Bot Bot = LoadImage<Image_Bot>("피티");
+        Image_Monster Monster = LoadImage<Image_Monster>("언리얼 몬스터");
         GameMNG.Instance.g_ImageDIc.Add("윤이진", Player);
         GameMNG.Instance.g_ImageDIc.Add("윤익희", Father);
         GameMNG.Instance.g_ImageDIc.Add("피티", Bot);
+        GameMNG.Instance.g_ImageDIc.Add("언리얼 몬스터", Monster);
     }
 
     private T LoadImage<T>(string CharacterName)where T : _Image ,new()

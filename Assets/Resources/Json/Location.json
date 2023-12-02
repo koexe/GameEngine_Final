@@ -21,6 +21,20 @@
         "LocationBackgroundImage":"Cave_Enterance",
         "LocationDescription":"Scene_3_Story",
         "LocationShowTrigger":[]
+    },
+    {
+        "LocationName":"Scene_4",
+        "LocationContainCharacter":["피티"],
+        "LocationBackgroundImage":"Cave_Enterance",
+        "LocationDescription":"Scene_4_Story",
+        "LocationShowTrigger":[]
+    },
+    {
+        "LocationName":"Scene_5",
+        "LocationContainCharacter":["피티"],
+        "LocationBackgroundImage":"Cave_Enterance",
+        "LocationDescription":"Scene_5_Story",
+        "LocationShowTrigger":[]
     }
 ]
 }

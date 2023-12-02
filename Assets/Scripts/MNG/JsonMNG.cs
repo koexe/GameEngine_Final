@@ -56,7 +56,7 @@ public class JsonMNG : MonoBehaviour
             Loc_all_temp.LocationName = Location_Temp.LocationName;
             Loc_all_temp.CharacterList = new List<Character_Contains_Quest>();
             Loc_all_temp.LocationDescriptionID = Location_Temp.LocationDescription;
-            Loc_all_temp.LocationBackGroundImage = Resources.Load<Sprite>("Images/" + Location_Temp.LocationBackgroundImage);
+            Loc_all_temp.LocationBackGroundImage = Resources.Load<Sprite>("Images/Backgrounds/" + Location_Temp.LocationBackgroundImage);
             Loc_all_temp.LocationShowTrigger = Location_Temp.LocationShowTrigger;
             //Debug.Log("Images/" + Location_Temp.LocationBackgroundImage + ".jpg");
             Loc_all_temp.LocationContainCharacter = Location_Temp.LocationContainCharacter;

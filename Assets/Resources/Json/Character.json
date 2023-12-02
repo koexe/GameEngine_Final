@@ -43,8 +43,29 @@
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene3_RemoveRocks"]
 
+    },
+    {
+        "Name":"피티",
+        "Location":"Scene_4",
+        "CharacterBasicDialog":"쉿 몬스터들이 앞에 있어!",
+        "CharacterBasicImage":"null",
+        "LinkedQuests":["Scene4_RigidBody"]
+    },
+    {
+        "Name":"피티",
+        "Location":"Scene_5",
+        "CharacterBasicDialog":"쉿 몬스터들이 앞에 있어!",
+        "CharacterBasicImage":"null",
+        "LinkedQuests":["Scene5_Collider"]
+    },
+    {
+        "Name":"언리얼 몬스터",
+        "Location":"Scene_5",
+        "CharacterBasicDialog":"쉿 몬스터들이 앞에 있어!",
+        "CharacterBasicImage":"null",
+        "LinkedQuests":["Scene5_Monster"]
     }
-
+    
 
 ]
 }
