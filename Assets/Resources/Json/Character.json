@@ -54,14 +54,14 @@
     {
         "Name":"피티",
         "Location":"Scene_5",
-        "CharacterBasicDialog":"쉿 몬스터들이 앞에 있어!",
+        "CharacterBasicDialog":"이진아 위험해!",
         "CharacterBasicImage":"null",
-        "LinkedQuests":["Scene5_Collider"]
+        "LinkedQuests":["Scene5_Collider","Scene5_ColliderExplain"]
     },
     {
         "Name":"언리얼 몬스터",
         "Location":"Scene_5",
-        "CharacterBasicDialog":"쉿 몬스터들이 앞에 있어!",
+        "CharacterBasicDialog":"이제 끝이다 애송이들!",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene5_Monster"]
     }

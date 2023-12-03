@@ -23,14 +23,16 @@ public class MainSceneMNG : MonoBehaviour
     private GameObject Prefab_CharacterIcon;
     private GameObject Prefab_LogText;
     private Image BackGroundImage;
+    private Coroutine cr_ShowText;
 
     public Dictionary<string, ChoiceAfterFuncDelegate> g_dicChoiceAfterFunc;
     public delegate void ChoiceAfterFuncDelegate();
-
+    
     public JsonMNG.Dialogs g_cCurrentDialog;
     public JsonMNG.Character_Contains_Quest g_cCurrentCharacter;
 
     private int m_iCurrentDialogIndex;
+    public float g_fTextShowSpeed = 0.5f;
     public bool isChangeText = true;
     public bool isChangeCharacter = true;
    
@@ -39,7 +41,6 @@ public class MainSceneMNG : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //GameMNG.Instance.g_cCurrentLocationInfo = GameMNG.Instance.g_AllLocationInfoList[0];
         FirstInit();
     }
 
@@ -57,7 +58,7 @@ public class MainSceneMNG : MonoBehaviour
             m_iCurrentDialogIndex = 0;
         }
         g_cCurrentDialog = dialogs;
-        TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
+        cr_ShowText = StartCoroutine(ShowText(g_cCurrentDialog.Dialog[m_iCurrentDialogIndex]));
         GameMNG.Instance.g_PlayerTriggerDic[dialogs.DialogID] = true;
         isChangeText = true;
         ChangeImage();
@@ -70,7 +71,8 @@ public class MainSceneMNG : MonoBehaviour
         DestroyAllObjectsWithTag("QuestText");
         DestroyAllObjectsWithTag("ChoiceText");
         TMP_CharacterNameText.text = character.Name;
-        TMP_DialogText.text = character.CharacterBasicDialog;
+        cr_ShowText = StartCoroutine(ShowText(character.CharacterBasicDialog));
+
         g_cCurrentCharacter = character;
         isChangeText = false;
 
@@ -94,10 +96,11 @@ public class MainSceneMNG : MonoBehaviour
                 ChangeText();
                 ChangeImage();
                 ChangeName();
-                TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
+                cr_ShowText = StartCoroutine(ShowText(g_cCurrentDialog.Dialog[m_iCurrentDialogIndex]));
             }
-            else {
-                ChangeDialog(GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog);
+            else 
+            {
+                //ChangeDialog(GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog);
             }
         }
     }
@@ -114,35 +117,37 @@ public class MainSceneMNG : MonoBehaviour
         {
             for (int i = 0; i < g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex].Count; i++)
             {
-                CharacterImage.transform.GetChild(i).GetComponent<Image>().sprite =
-                    (Sprite)GetFieldValue(GameMNG.Instance.g_ImageDIc[g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].Character],
-                    g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].ImageType);
+                ImageMNG._Image Image = GameMNG.Instance.g_ImageDIc[g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].Character];
+                string ImageType = g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].ImageType;
+
+                Sprite ChracterSprite =(Sprite)GetFieldValue(Image, ImageType);
+                CharacterImage.transform.GetChild(i).GetComponent<Image>().sprite = ChracterSprite;
 
                 CharacterImage.transform.GetChild(i).GetComponent<Image>().color = new Color(255, 255, 255, 100);
                 CharacterImage.transform.GetChild(i).GetComponent<Image>().SetNativeSize();
             }
         }
-        //Debug.Log("ChangeImage 호출됨");
     }
 
     #endregion
 
     #region Text 제어
     private void ChangeText()
-    {   
+    {
         m_iCurrentDialogIndex++;
+        
         if (m_iCurrentDialogIndex >= g_cCurrentDialog.Dialog.Count && g_cCurrentDialog.Choices.Count == 0)
         {
             m_iCurrentDialogIndex = 0;
             isChangeCharacter = true;
             ChangeDialog(GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog);
         }
-        else if (m_iCurrentDialogIndex >= g_cCurrentDialog.Dialog.Count && g_cCurrentDialog.Choices.Count != 0)
+        else if (m_iCurrentDialogIndex + 1 >= g_cCurrentDialog.Dialog.Count && g_cCurrentDialog.Choices.Count != 0)
         {
             m_iCurrentDialogIndex = g_cCurrentDialog.Dialog.Count - 1;
             ChoiceShowFunc();
         }
-
+        
         //Debug.Log("ChangeText 호출됨");
     }
 
@@ -161,6 +166,21 @@ public class MainSceneMNG : MonoBehaviour
             }
         }
         TMP_CharacterNameText.text = Text;
+    }
+
+    private IEnumerator ShowText(string text)
+    {
+        string text_temp = "";
+        isChangeText = false;
+        for (int i = 0; i < text.Length; i++)
+        {
+            text_temp += text[i];
+            TMP_DialogText.text = text_temp;
+            yield return new WaitForSeconds(g_fTextShowSpeed);
+        }
+        isChangeText = true;
+        if (cr_ShowText != null)
+            StopCoroutine(cr_ShowText);
     }
     #endregion
 
@@ -259,6 +279,7 @@ public class MainSceneMNG : MonoBehaviour
         //텍스트들을 초기화합니다.
         m_iCurrentDialogIndex = 0;
         g_cCurrentDialog = GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog;
+        cr_ShowText = StartCoroutine(ShowText(g_cCurrentDialog.Dialog[m_iCurrentDialogIndex]));
         TMP_DialogText.text = g_cCurrentDialog.Dialog[m_iCurrentDialogIndex];
         TMP_LocationText.text = GameMNG.Instance.g_cCurrentLocationInfo.LocationName;
     }
@@ -277,7 +298,7 @@ public class MainSceneMNG : MonoBehaviour
 
 #endregion
 
-#region 메뉴 기능
+    #region 메뉴 기능
 
 public void LogShowFunc()
     {
@@ -312,9 +333,15 @@ public void LogShowFunc()
 
     }
 
-    public void ShowMenu()
+    public void ShowSetting()
     {
+        GameObject Setting = Instantiate(Resources.Load<GameObject>("Prefab/Setting"),Canvas_MainScene.transform);
+        Setting.tag = "Setting";
+    }
 
+    public void CommitSetting(float TextShowSpeed)
+    {
+        g_fTextShowSpeed = TextShowSpeed;
     }
 
     #endregion
@@ -459,9 +486,9 @@ public void LogShowFunc()
         return false;
     }
 
-        #endregion
+    #endregion
 
-        #region ChoiceAfterFunc
+    #region ChoiceAfterFunc
     public void Move_Scene_2()
     {
         ChangeLocation("Scene_2");

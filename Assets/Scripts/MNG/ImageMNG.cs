@@ -32,8 +32,10 @@ public class ImageMNG : MonoBehaviour
     public abstract class _Image
     {
         public Sprite Default;
+        public Sprite Smile;
+        public Sprite Sad;
+        public Sprite Angry;
     }
-
     public class Image_Player : _Image 
     {
         
@@ -44,7 +46,9 @@ public class ImageMNG : MonoBehaviour
 
     }
     public class Image_Bot : _Image 
-    { 
+    {
+
+
     }
     public class Image_Monster: _Image
     {
@@ -73,6 +77,10 @@ public class ImageMNG : MonoBehaviour
         T instance = new T();
 
         instance.Default = Resources.Load<Sprite>("Images/" + CharacterName + "/Default");
+        instance.Smile = Resources.Load<Sprite>("Images/" + CharacterName + "/Smile");
+        instance.Sad = Resources.Load<Sprite>("Images/" + CharacterName + "/Sad");
+        instance.Angry = Resources.Load<Sprite>("Images/" + CharacterName + "/Angry");
+
 
         return instance;
     }
