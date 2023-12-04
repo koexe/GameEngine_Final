@@ -759,6 +759,403 @@
                 "ChoiceAfterFunction":""
             }
         ]
+    },
+    {
+        "DialogType":"Description",
+        "QuestID":"Scene_6_Story",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene_6_Story",
+        "QuestName" :"null",
+        "Dialog":["유니티 신전에 가까워질수록 신전의 모습이 뚜렷해진다.",
+                  "신전은 환한 빛과 함께 웅장하게 서있었다.",
+                  "우와....여기가...",
+                  "유니티 신전...",
+                  "저기 여신님의 동상이 있어. 저 밑에 가면 축복을 받을 수 있을거야.",
+                  "이진아. 준비됐지?",
+                  "응. 가자."],
+        "Dialog_CharacterInfo":[[],
+                                [],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}]
+                            ],
+        "Choices":[]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_BlessOfGoddes",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_BlessOfGoddes_1",
+        "QuestName":"무릎을 꿇는다.",
+        "Dialog":["신전의 유리창에서 빛이 들어와 윤이진을 비췄다.",
+                  "저는 유니티의 여신. 여기까지 잘 오셨습니다. 당신이 축복을 받기 전 자격이 있는지 확인해보겠습니다.",
+                  "네 알겠습니다.",
+                  "여기서부터는 피티의 도움을 받을 수 없다...",
+                  "물체의 충돌 범위를 정하는 기능을 무엇이라고 합니까?"
+                ],
+        "Dialog_CharacterInfo":[[],
+                                [],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"}],
+                                [],
+                                []                            
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"트랜스폼.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_1_1",
+                "ChoiceAfterFunction":""
+            },
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"싱글톤.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_1_1",
+                "ChoiceAfterFunction":""
+            },
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"콜라이더.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_1_2",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_BlessOfGoddes",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_BlessOfGoddes_1_1",
+        "QuestName":"문제 - 정답아님.",
+        "Dialog":[   
+                    "아쉽지만 정답이 아닙니다."
+                ],
+        "Dialog_CharacterInfo":[[]                                 
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"다시 문제를 푼다.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_1",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_BlessOfGoddes",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_BlessOfGoddes_1_2",
+        "QuestName":"문제 - 정답.",
+        "Dialog":[   
+                    "정답입니다."
+                ],
+        "Dialog_CharacterInfo":[[]                                 
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"다음 문제를 푼다.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_2",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_BlessOfGoddes",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_BlessOfGoddes_2",
+        "QuestName":"문제 2.",
+        "Dialog":[   
+                    "다음 문제입니다.",
+                    "물체에 작용하는 힘을 제어하는 기능을 무엇이라 합니까?"
+                ],
+        "Dialog_CharacterInfo":[[],
+                                []                                 
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"리지드바디.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_2_2",
+                "ChoiceAfterFunction":""
+            },
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"싱글톤.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_2_1",
+                "ChoiceAfterFunction":""
+            },
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"트랜스폼.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_2_1",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_BlessOfGoddes",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_BlessOfGoddes_2_1",
+        "QuestName":"문제 - 정답아님.",
+        "Dialog":[   
+                    "아쉽지만 정답이 아닙니다."
+                ],
+        "Dialog_CharacterInfo":[[]                                 
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"다시 문제를 푼다.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_2",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_BlessOfGoddes",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_BlessOfGoddes_2_2",
+        "QuestName":"문제 - 정답.",
+        "Dialog":[   
+                    "정답입니다."
+                ],
+        "Dialog_CharacterInfo":[[]                                 
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"다음 문제를 푼다.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_3",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_BlessOfGoddes",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_BlessOfGoddes_3",
+        "QuestName":"문제3.",
+        "Dialog":[   
+                    "마지막 문제입니다.",
+                    "어디서든 쉽게 접근하기 위하여 사용하는 것은 무엇입니까?"
+                ],
+        "Dialog_CharacterInfo":[[],
+                                []                                 
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"콜라이더.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_3_1",
+                "ChoiceAfterFunction":""
+            },
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"싱글톤.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_3_2",
+                "ChoiceAfterFunction":""
+            },
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"트랜스폼.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_3_1",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_BlessOfGoddes",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_BlessOfGoddes_3_1",
+        "QuestName":"문제 - 정답아님.",
+        "Dialog":[   
+                    "아쉽지만 정답이 아닙니다."
+                ],
+        "Dialog_CharacterInfo":[[]                                 
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"다시 문제를 푼다.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_3",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_BlessOfGoddes",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_BlessOfGoddes_3_2",
+        "QuestName":"문제 - 정답.",
+        "Dialog":[   
+                    "정답입니다.",
+                    "당신은 유니티의 축복을 받을 준비가 되었습니다... 제 앞에 무플을 꿇으십시오",
+                    "윤이진은 동상 앞에 무릎을 꿇었고, 신전의 창문에서 내려온 빛이 그를 감쌌다.",
+                    "빛에 싸인 윤이진은 자신의 몸에 들어온 강한 힘을 느꼈다.",
+                    "이것이...유니티의 축복.... 이제 시작이구나...",
+                    "아버지, 훌륭한 유니티 엔지니어가 되어 꼭 다시 찾겠습니다. 아버지의 말씀에 따라 사악한 것에 맞서겠습니다.",
+                    "윤이진의 모험은 이제 막 시작되었고, 윤이진의 심장이 크게 뛰기 시작했다. 그것이 두려움인지, 기대인지는 크게 중요하지 않았다."
+                ],
+        "Dialog_CharacterInfo":[[],
+                                [],
+                                [],
+                                [],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"}],
+                                []                        
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"다음 문제를 푼다.",
+                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_3",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_Description",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_Description_1",
+        "QuestName":"마지막으로 설명을 들려줄게!.",
+        "Dialog":["마지막으로 배운 것들을 다시 알려줄게.",
+                  "어떤 설명을 듣고싶어?"
+                ],
+        "Dialog_CharacterInfo":[
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]                        
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"싱글톤.",
+                "ChoiceLinkedDialogID":"Scene6_Description_1_1",
+                "ChoiceAfterFunction":""
+            },
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"트랜스폼.",
+                "ChoiceLinkedDialogID":"Scene6_Description_1_2",
+                "ChoiceAfterFunction":""
+            },
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"리지드바디.",
+                "ChoiceLinkedDialogID":"Scene6_Description_1_3",
+                "ChoiceAfterFunction":""
+            },
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"콜라이더.",
+                "ChoiceLinkedDialogID":"Scene6_Description_1_4",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_Description",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_Description_1_1",
+        "QuestName":"마지막으로 설명을 들려줄게!.",
+        "Dialog":[  "싱글톤은 어디를 가더라도 언제든 꺼내 쓸 수 있는 기능이야",
+                    "싱글톤을 적용시킨 물건은 어디서든 가져올 수 있게 싱글톤 주머니에 들어가게 되는거지!",
+                    "싱글톤 주머니 안에 들어간 물건은 어디서든 꺼낼 수 있어서 쓸 때마다 새로 만들 필요가 없으니 편리해."
+                ],
+        "Dialog_CharacterInfo":[
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]                        
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"다른 설명을 듣는다.",
+                "ChoiceLinkedDialogID":"Scene6_Description_1",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_Description",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_Description_1_2",
+        "QuestName":"마지막으로 설명을 들려줄게!.",
+        "Dialog":[  "유니티 엔진에서 무언가를 옮기기 위해선 트랜스폼을 이용해.",
+                    "트랜스폼은 오브젝트의 위치나 회전뿐만 아니라 물체의 구성요소들을 포함하고 있어.",
+                    "그리고 하나의 물건에는 하나의 트랜스폼이 반드시 하나가 존재해.",
+                    "유니티 엔진에서 아주 중요한 요소라고 할 수 있지!"
+                ],
+        "Dialog_CharacterInfo":[
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]                        
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"다른 설명을 듣는다.",
+                "ChoiceLinkedDialogID":"Scene6_Description_1",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_Description",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_Description_1_3",
+        "QuestName":"마지막으로 설명을 들려줄게!.",
+        "Dialog":[  "리지드 바디를 이용하자! 리지드바디는 물체에 적용되는 힘을 제어하는 기능이야.",
+                    "물체들이 충돌했을 때 받는 힘이나 위에서 아래로 떨어지는 중력같은 힘을 제어할 수 있지."
+                ],
+        "Dialog_CharacterInfo":[
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]      
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"다른 설명을 듣는다.",
+                "ChoiceLinkedDialogID":"Scene6_Description_1",
+                "ChoiceAfterFunction":""
+            }
+        ]
+    },
+    {
+        "DialogType":"Quest",
+        "QuestID":"Scene6_Description",
+        "QuestShowTrigger":[],
+        "DialogId":"Scene6_Description_1_4",
+        "QuestName":"마지막으로 설명을 들려줄게!.",
+        "Dialog":[   
+            "콜라이더는 물체가 충돌할 범위를 정하는 기능이야. 리지드바디가 있어도, 콜라이더가 없다면 충돌에 영향을 줄 수 없어.",
+            "콜라이더의 모양에는 박스, 구, 캡슐 등 다양한 모양으로 설정할 수 있지!"
+                ],
+        "Dialog_CharacterInfo":[
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}]      
+                                ],
+        "Choices":[
+            {
+                "ChoiceTrigger":[],
+                "ChoiceDialog":"다른 설명을 듣는다.",
+                "ChoiceLinkedDialogID":"Scene6_Description_1",
+                "ChoiceAfterFunction":""
+            }
+        ]
     }
   ]
 }

@@ -100,7 +100,7 @@ public class MainSceneMNG : MonoBehaviour
             }
             else 
             {
-                //ChangeDialog(GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog);
+
             }
         }
     }
@@ -148,6 +148,7 @@ public class MainSceneMNG : MonoBehaviour
             ChoiceShowFunc();
         }
         
+        
         //Debug.Log("ChangeText »£√‚µ ");
     }
 
@@ -179,6 +180,9 @@ public class MainSceneMNG : MonoBehaviour
             yield return new WaitForSeconds(g_fTextShowSpeed);
         }
         isChangeText = true;
+        if (text.Length == 0)
+            TMP_DialogText.text = "";
+
         if (cr_ShowText != null)
             StopCoroutine(cr_ShowText);
     }
@@ -350,6 +354,7 @@ public void LogShowFunc()
     private void ChoiceShowFunc()
     {
         DestroyAllObjectsWithTag("ChoiceText");
+        isChangeText = false;
         for (int i = 0; i < g_cCurrentDialog.Choices.Count; i++)
         {
             bool isShow_Temp = true;

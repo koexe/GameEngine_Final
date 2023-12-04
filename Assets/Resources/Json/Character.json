@@ -64,8 +64,20 @@
         "CharacterBasicDialog":"이제 끝이다 애송이들!",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene5_Monster"]
+    },
+    {
+        "Name":"여신의 동상",
+        "Location":"Scene_6",
+        "CharacterBasicDialog":"여신의 동상이 있다.",
+        "CharacterBasicImage":"null",
+        "LinkedQuests":["Scene6_BlessOfGoddes"]
+    },
+    {
+        "Name":"피티",
+        "Location":"Scene_6",
+        "CharacterBasicDialog":"축복을 받기 전 마지막으로 듣고싶은 설명이 있어?",
+        "CharacterBasicImage":"null",
+        "LinkedQuests":["Scene6_Description"]
     }
-    
-
 ]
 }

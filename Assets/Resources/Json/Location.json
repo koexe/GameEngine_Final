@@ -35,6 +35,13 @@
         "LocationBackgroundImage":"Cave_Enterance",
         "LocationDescription":"Scene_5_Story",
         "LocationShowTrigger":[]
+    },
+    {
+        "LocationName":"Scene_6",
+        "LocationContainCharacter":["피티","여신의 동상"],
+        "LocationBackgroundImage":"Cave_Enterance",
+        "LocationDescription":"Scene_6_Story",
+        "LocationShowTrigger":[]
     }
 ]
 }

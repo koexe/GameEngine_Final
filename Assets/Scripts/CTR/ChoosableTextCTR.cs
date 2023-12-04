@@ -63,6 +63,7 @@ public class ChoosableTextCTR : MonoBehaviour, IPointerClickHandler
         }
         else if (g_sTextType == "Choice_Text")
         {
+            mainSceneMNG.isChangeText = true;
             if(g_cChoiceInfo.ChoiceLinkedDialogID != "") 
             {
                 string CurrentQuestID = mainSceneMNG.g_cCurrentDialog.QuestID;

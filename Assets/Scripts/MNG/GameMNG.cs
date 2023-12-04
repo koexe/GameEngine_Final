@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameMNG : MonoBehaviour
 {
@@ -83,5 +85,10 @@ public class GameMNG : MonoBehaviour
             LoadFunc();
             Debug.Log("Savefile missed. created new Savefile");
         }
+    }
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene("GameScene");
+
     }
 }
