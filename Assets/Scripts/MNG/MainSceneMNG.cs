@@ -112,10 +112,6 @@ public class MainSceneMNG : MonoBehaviour
                 cr_ShowText = StartCoroutine(ShowText(g_cCurrentDialog.Dialog[m_iCurrentDialogIndex]));
 
             }
-            else 
-            {
-
-            }
         }
     }
 
@@ -255,17 +251,21 @@ public class MainSceneMNG : MonoBehaviour
         g_cCurrentDialog = location.DescriptionDialog;
         BackGroundImage.sprite = location.LocationBackGroundImage;
         if (location.LocationBackGroundImage == null) { Debug.Log("Missing BackgroundImage"); }
-        Debug.Log(location.BackGroundMusic);
 
         AudioMNG.Instance.ChangeBGM(Resources.Load<AudioClip>("Audio/" + location.BackGroundMusic));
-
+        //화면에 남아있는 나머지 정보들 삭제
         DestroyAllObjectsWithTag("CharacterText");
         DestroyAllObjectsWithTag("ChoiceText");
         DestroyAllObjectsWithTag("QuestText");
+        //캐릭터 초기화
         InitCharacter();
+        //텍스트 초기화
         InitText();
+        //이미지 초기화
         ChangeImage();
+        //캐릭터 이름 초기화
         ChangeName();
+        //다이얼로그 바꾸기
         ChangeDialog(g_cCurrentDialog);
     }
 
@@ -306,8 +306,9 @@ public class MainSceneMNG : MonoBehaviour
         g_dicChoiceAfterFunc.Add("Move_Scene_4", Move_Scene_4);
         g_dicChoiceAfterFunc.Add("Move_Scene_5", Move_Scene_5);
         g_dicChoiceAfterFunc.Add("Move_Scene_6", Move_Scene_6);
-    }
+        g_dicChoiceAfterFunc.Add("Move_Scene_End", Move_Scene_End);
 
+    }
 
     private void InitText()
     {
@@ -549,7 +550,10 @@ public void LogShowFunc()
     {
         ChangeLocation("유니티 신전");
     }
-
+    public void Move_Scene_End()
+    {
+        GameMNG.Instance.ChangeScene("EndScene");
+        AudioMNG.Instance.ChangeBGM(Resources.Load<AudioClip>("Audio/Ending"));
+    }
     #endregion
-
 }

@@ -74,14 +74,16 @@ public class ImageMNG : MonoBehaviour
 
     private T LoadImage<T>(string CharacterName)where T : _Image ,new()
     {
+        //_Image 인스턴스 생성
         T instance = new T();
 
+        //각 이미지 Road
         instance.Default = Resources.Load<Sprite>("Images/" + CharacterName + "/Default");
         instance.Smile = Resources.Load<Sprite>("Images/" + CharacterName + "/Smile");
         instance.Sad = Resources.Load<Sprite>("Images/" + CharacterName + "/Sad");
         instance.Angry = Resources.Load<Sprite>("Images/" + CharacterName + "/Angry");
 
-
+        //Road된 이미지 반환
         return instance;
     }
 }

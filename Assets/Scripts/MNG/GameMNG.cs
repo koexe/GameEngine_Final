@@ -86,9 +86,8 @@ public class GameMNG : MonoBehaviour
             Debug.Log("Savefile missed. created new Savefile");
         }
     }
-    public void ChangeScene()
+    public void ChangeScene(string Scene)
     {
-        SceneManager.LoadScene("GameScene");
-
+        SceneManager.LoadScene(Scene);
     }
 }

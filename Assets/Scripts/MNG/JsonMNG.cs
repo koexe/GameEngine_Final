@@ -89,7 +89,7 @@ public class JsonMNG : MonoBehaviour
             
             GameMNG.Instance.g_PlayerTriggerDic.Add(dialogs.DialogID, false);
 
-            //Dialog를 Character_Contains_Quest 형식에 QuestID를 기준으로 넣고, CharacterTempList를 초기화함
+            //location의 기본 Description을 초기화
             if (dialogs.DialogType == "Description")
             {
                 for(int i = 0;i<locationInfo_ALL.Count;i++)
@@ -100,10 +100,11 @@ public class JsonMNG : MonoBehaviour
             }
             else if (dialogs.DialogType == "Quest")
             {
+                //Dialog를 Character_Contains_Quest 형식에 QuestID를 기준으로 넣고, CharacterTempList를 초기화함
                 int index = CharacterTempList.FindIndex(item => item.LinkedQuests.Any(LinkedQuest => LinkedQuest == dialogs.QuestID));
                 if (index == -1)
                 {
-                    Debug.Log("Character Quest DialogID Match Error in " +dialogs.DialogID );
+                    Debug.Log("Character Quest DialogID Match Error in " + dialogs.DialogID );
                 }
                 else
                 {
@@ -127,7 +128,7 @@ public class JsonMNG : MonoBehaviour
             else
                 Debug.Log("Dialog Type Error");
         }
-
+        //characterlist를 LocationInfo에 넣음
         foreach (Character_Contains_Quest chartemp in CharacterTempList)
         {
             for (int i = 0; i < locationInfo_ALL.Count; i++)
@@ -144,7 +145,6 @@ public class JsonMNG : MonoBehaviour
                     }
                 }
             }
-
         }
         GameMNG.Instance.g_cCurrentLocationInfo = Loc_con_all;
         GameMNG.Instance.g_AllLocationInfoList = locationInfo_ALL;
