@@ -10,7 +10,11 @@ public class SettingCTR : MonoBehaviour
     private string tempText = "텍스트가 나타나는 속도입니다.";
     public MainSceneMNG mainSceneMNG;
     public Scrollbar g_TextShowSpeedScrollBar;
+    public Scrollbar g_BGMVolumeScrollBar;
+    public Scrollbar g_SEVolumeScrollBar;
     public TextMeshProUGUI TextShowSpeed_Text;
+    public TextMeshProUGUI BGMText;
+    public TextMeshProUGUI SEText;
     public TextMeshProUGUI TextShowSpeed_TextTemp;
     public Button CommitButton;
     private Coroutine cr_ShowTextShowSpeed;
@@ -31,11 +35,14 @@ public class SettingCTR : MonoBehaviour
     { 
         m_fTextShowSpeed = (Mathf.Round(g_TextShowSpeedScrollBar.value * 100)/100);
 
+
         TextShowSpeed_Text.text = m_fTextShowSpeed.ToString();
+        BGMText.text = (Mathf.Round(g_BGMVolumeScrollBar.value * 100) / 100).ToString();
+        SEText.text = (Mathf.Round(g_SEVolumeScrollBar.value * 100) / 100).ToString();
     }
     public void onclickEvent_commitSetting()
     {
-        mainSceneMNG.CommitSetting(m_fTextShowSpeed);
+        mainSceneMNG.CommitSetting(m_fTextShowSpeed, g_BGMVolumeScrollBar.value, g_SEVolumeScrollBar.value);
         if(cr_ShowTextShowSpeed != null)
             StopCoroutine(cr_ShowTextShowSpeed);
         mainSceneMNG.DestroyAllObjectsWithTag("Setting");

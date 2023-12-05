@@ -25,7 +25,19 @@ public class AudioMNG : MonoBehaviour
     }
     private void Awake()
     {
-        
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        // 인스턴스가 존재하는 경우 새로생기는 인스턴스를 삭제한다.
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
+        // 아래의 함수를 사용하여 씬이 전환되더라도 선언되었던 인스턴스가 파괴되지 않는다.
+        DontDestroyOnLoad(gameObject);
+        Player_BGM = GameObject.Find("BGM_Player").GetComponent<AudioSource>();
+        Player_SE = GameObject.Find("SE_Player").GetComponent<AudioSource>();
     }
 
 
@@ -36,10 +48,20 @@ public class AudioMNG : MonoBehaviour
         {
             Player_BGM.Play();
         }
+
     }
     public void ChangeSE(AudioClip clip) 
     {  
         Player_SE.clip = clip;
         Player_SE.Play();
+    }
+
+    public void ChangeBGMVolume(float value)
+    {
+        Player_BGM.volume = value;
+    }
+    public void ChangeSEVolume(float value)
+    {
+        Player_SE.volume = value;
     }
 }

@@ -1,46 +1,52 @@
 {
 "Locations":[
     {
-        "LocationName":"Scene_1",
+        "LocationName":"1년 전",
         "LocationContainCharacter":["피티","윤익희"],
-        "LocationBackgroundImage":"Cave_Enterance",
+        "LocationBackgroundImage":"Woods",
         "LocationDescription":"Scene_1_Story",
+        "BackGroundMusic":"Scene0",
         "LocationShowTrigger":[]
     
     },
     {
-        "LocationName":"Scene_2",
+        "LocationName":"동굴 입구",
         "LocationContainCharacter":["피티","동굴 입구"],
         "LocationBackgroundImage":"Cave_Enterance",
         "LocationDescription":"Scene_2_Story",
+        "BackGroundMusic":"Cave",
         "LocationShowTrigger":[]
     },
     {
-        "LocationName":"Scene_3",
+        "LocationName":"동굴 안",
         "LocationContainCharacter":["피티"],
-        "LocationBackgroundImage":"Cave_Enterance",
+        "LocationBackgroundImage":"Inter_Cave",
         "LocationDescription":"Scene_3_Story",
+        "BackGroundMusic":"Cave",
         "LocationShowTrigger":[]
     },
     {
-        "LocationName":"Scene_4",
+        "LocationName":"동굴 안 2",
         "LocationContainCharacter":["피티"],
-        "LocationBackgroundImage":"Cave_Enterance",
+        "LocationBackgroundImage":"Inter_Cave2",
         "LocationDescription":"Scene_4_Story",
+        "BackGroundMusic":"Cave",
         "LocationShowTrigger":[]
     },
     {
-        "LocationName":"Scene_5",
-        "LocationContainCharacter":["피티"],
-        "LocationBackgroundImage":"Cave_Enterance",
+        "LocationName":"동굴 출구",
+        "LocationContainCharacter":["피티","몬스터"],
+        "LocationBackgroundImage":"Cave_Exit",
         "LocationDescription":"Scene_5_Story",
+        "BackGroundMusic":"Scene5",
         "LocationShowTrigger":[]
     },
     {
-        "LocationName":"Scene_6",
-        "LocationContainCharacter":["피티","여신의 동상"],
-        "LocationBackgroundImage":"Cave_Enterance",
+        "LocationName":"유니티 신전",
+        "LocationContainCharacter":["피티","동상"],
+        "LocationBackgroundImage":"Church",
         "LocationDescription":"Scene_6_Story",
+        "BackGroundMusic":"Scene6",
         "LocationShowTrigger":[]
     }
 ]

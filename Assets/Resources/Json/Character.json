@@ -2,35 +2,35 @@
 "Characters":[
     {
         "Name":"피티",
-        "Location":"Scene_1",
+        "Location":"1년 전",
         "CharacterBasicDialog":"치직...치지직...",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene1_MeetPiti"]
     },
     {
         "Name":"윤익희",
-        "Location":"Scene_1",
+        "Location":"1년 전",
         "CharacterBasicDialog":"아버지는 당신에게 할말이 있어 보인다",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene1_Father"]
     },
     {
         "Name":"피티",
-        "Location":"Scene_2",
+        "Location":"동굴 입구",
         "CharacterBasicDialog":"도와줄게 있어?",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene2_Singleton","Scene2_Singleton_Explain"]
     },
     {
         "Name":"동굴 입구",
-        "Location":"Scene_2",
+        "Location":"동굴 입구",
         "CharacterBasicDialog":"검이 없으면 시련에 동굴에 들어갈 수 없다.",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene2_EnterCave"]
     },
     {
         "Name":"피티",
-        "Location":"Scene_3",
+        "Location":"동굴 안",
         "CharacterBasicDialog":"나만 믿으라고!",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene3_Transform","Scene3_Transform_Explain"]
@@ -38,7 +38,7 @@
     },
     {
         "Name":"바위더미",
-        "Location":"Scene_3",
+        "Location":"동굴 안",
         "CharacterBasicDialog":"바위더미가 길을 막고있다.",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene3_RemoveRocks"]
@@ -46,35 +46,35 @@
     },
     {
         "Name":"피티",
-        "Location":"Scene_4",
+        "Location":"동굴 안 2",
         "CharacterBasicDialog":"쉿 몬스터들이 앞에 있어!",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene4_RigidBody"]
     },
     {
         "Name":"피티",
-        "Location":"Scene_5",
+        "Location":"동굴 출구",
         "CharacterBasicDialog":"이진아 위험해!",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene5_Collider","Scene5_ColliderExplain"]
     },
     {
-        "Name":"언리얼 몬스터",
-        "Location":"Scene_5",
+        "Name":"몬스터",
+        "Location":"동굴 출구",
         "CharacterBasicDialog":"이제 끝이다 애송이들!",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene5_Monster"]
     },
     {
-        "Name":"여신의 동상",
-        "Location":"Scene_6",
+        "Name":"동상",
+        "Location":"유니티 신전",
         "CharacterBasicDialog":"여신의 동상이 있다.",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene6_BlessOfGoddes"]
     },
     {
         "Name":"피티",
-        "Location":"Scene_6",
+        "Location":"유니티 신전",
         "CharacterBasicDialog":"축복을 받기 전 마지막으로 듣고싶은 설명이 있어?",
         "CharacterBasicImage":"null",
         "LinkedQuests":["Scene6_Description"]

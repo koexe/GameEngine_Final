@@ -43,6 +43,7 @@ public class LocationTextCTR : MonoBehaviour, IPointerClickHandler
             if (mainSceneMNG.CheckTrigger(GameMNG.Instance.g_AllLocationInfoList[i].LocationShowTrigger))
             {
                 button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = GameMNG.Instance.g_AllLocationInfoList[i].LocationName;
+                button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().font = Resources.Load<TMP_FontAsset>("Font/malgun668 SDF 1");
                 button.transform.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 30.0f - 50 * CountTemp, 0);
                 CountTemp++;
 

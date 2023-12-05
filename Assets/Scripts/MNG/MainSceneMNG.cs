@@ -24,6 +24,7 @@ public class MainSceneMNG : MonoBehaviour
     private GameObject Prefab_LogText;
     private Image BackGroundImage;
     private Coroutine cr_ShowText;
+    private AudioClip Click;
 
     public Dictionary<string, ChoiceAfterFuncDelegate> g_dicChoiceAfterFunc;
     public delegate void ChoiceAfterFuncDelegate();
@@ -42,6 +43,17 @@ public class MainSceneMNG : MonoBehaviour
     void Start()
     {
         FirstInit();
+    }
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            if(isChangeText)
+            {
+                AudioMNG.Instance.ChangeSE(Click);
+            }
+           
+        }
     }
 
     #region 장소, 캐릭터, 다이얼로그 변경 기능
@@ -71,7 +83,7 @@ public class MainSceneMNG : MonoBehaviour
         DestroyAllObjectsWithTag("QuestText");
         DestroyAllObjectsWithTag("ChoiceText");
         TMP_CharacterNameText.text = character.Name;
-        cr_ShowText = StartCoroutine(ShowText(character.CharacterBasicDialog));
+        TMP_DialogText.text = character.CharacterBasicDialog;
 
         g_cCurrentCharacter = character;
         isChangeText = false;
@@ -82,6 +94,7 @@ public class MainSceneMNG : MonoBehaviour
         //장소의 이름으로 Location을 변경하는 기능
         isChangeText = true;
         ChangeLocationInit(GameMNG.Instance.g_AllLocationInfoList[GameMNG.Instance.g_AllLocationInfoList.FindIndex(item => item.LocationName == Name)]);
+
         Destroy(GameObject.Find("ScrollBar"));
     }
 
@@ -97,6 +110,7 @@ public class MainSceneMNG : MonoBehaviour
                 ChangeImage();
                 ChangeName();
                 cr_ShowText = StartCoroutine(ShowText(g_cCurrentDialog.Dialog[m_iCurrentDialogIndex]));
+
             }
             else 
             {
@@ -112,12 +126,24 @@ public class MainSceneMNG : MonoBehaviour
             CharacterImage.transform.GetChild(j).GetComponent<Image>().sprite = null;
             CharacterImage.transform.GetChild(j).GetComponent<Image>().color = new Color(0, 0, 0, 0);
         }
-
         if (g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex].Count != 0 && g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex] != null)
         {
             for (int i = 0; i < g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex].Count; i++)
             {
                 ImageMNG._Image Image = GameMNG.Instance.g_ImageDIc[g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].Character];
+                if(g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].Character == "피티")
+                {
+
+                    Vector3 Pos = CharacterImage.transform.GetChild(i).GetComponent<RectTransform>().anchoredPosition;
+                    Pos.y = 0;
+                    CharacterImage.transform.GetChild(i).GetComponent<RectTransform>().anchoredPosition = Pos;
+                }
+                else
+                {
+                    Vector3 Pos = CharacterImage.transform.GetChild(i).GetComponent<RectTransform>().anchoredPosition;
+                    Pos.y = -152;
+                    CharacterImage.transform.GetChild(i).GetComponent<RectTransform>().anchoredPosition = Pos;
+                }
                 string ImageType = g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].ImageType;
 
                 Sprite ChracterSprite =(Sprite)GetFieldValue(Image, ImageType);
@@ -195,6 +221,7 @@ public class MainSceneMNG : MonoBehaviour
         ChoosableTextPrefab = Resources.Load<GameObject>("Prefab/ChoosableText");
         Prefab_LogText = Resources.Load<GameObject>("Prefab/LogScreen");
         Prefab_CharacterIcon = Resources.Load<GameObject>("Prefab/CharacterIcon");
+        Click = Resources.Load<AudioClip>("Audio/Click");
 
         Canvas_MainScene = GameObject.Find("Canvas");
         TMP_DialogText = GameObject.Find("DialogText").GetComponent<TextMeshProUGUI>();
@@ -217,7 +244,7 @@ public class MainSceneMNG : MonoBehaviour
         BackGroundImage = GameObject.Find("BackgroundImage").GetComponent<Image>();
 
         InitChoiceAfterFuncDic();
-        ChangeLocation("Scene_1");
+        ChangeLocation("1년 전");
     }
 
     private void ChangeLocationInit(JsonMNG.LocationInfo_Contains_ALL location)
@@ -228,6 +255,9 @@ public class MainSceneMNG : MonoBehaviour
         g_cCurrentDialog = location.DescriptionDialog;
         BackGroundImage.sprite = location.LocationBackGroundImage;
         if (location.LocationBackGroundImage == null) { Debug.Log("Missing BackgroundImage"); }
+        Debug.Log(location.BackGroundMusic);
+
+        AudioMNG.Instance.ChangeBGM(Resources.Load<AudioClip>("Audio/" + location.BackGroundMusic));
 
         DestroyAllObjectsWithTag("CharacterText");
         DestroyAllObjectsWithTag("ChoiceText");
@@ -343,9 +373,11 @@ public void LogShowFunc()
         Setting.tag = "Setting";
     }
 
-    public void CommitSetting(float TextShowSpeed)
+    public void CommitSetting(float TextShowSpeed, float BGM_Volume, float SE_Volume)
     {
         g_fTextShowSpeed = TextShowSpeed;
+        AudioMNG.Instance.ChangeBGMVolume(BGM_Volume);
+        AudioMNG.Instance.ChangeSEVolume(SE_Volume);
     }
 
     #endregion
@@ -434,6 +466,8 @@ public void LogShowFunc()
         }
     }
 
+    
+
     private static object GetFieldValue(object instance, string fieldName)
     {
         // Reflection을 사용하여 필드를 찾음
@@ -496,19 +530,19 @@ public void LogShowFunc()
     #region ChoiceAfterFunc
     public void Move_Scene_2()
     {
-        ChangeLocation("Scene_2");
+        ChangeLocation("동굴 입구");
     }
     public void Move_Scene_3()
     {
-        ChangeLocation("Scene_3");
+        ChangeLocation("동굴 안");
     }
     public void Move_Scene_4()
     {
-        ChangeLocation("Scene_4");
+        ChangeLocation("동굴 안 2");
     }
     public void Move_Scene_5()
     {
-        ChangeLocation("Scene_5");
+        ChangeLocation("동굴 출구");
     }
     #endregion
 

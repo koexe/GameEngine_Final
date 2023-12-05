@@ -1017,7 +1017,7 @@
             {
                 "ChoiceTrigger":[],
                 "ChoiceDialog":"다음 문제를 푼다.",
-                "ChoiceLinkedDialogID":"Scene6_BlessOfGoddes_3",
+                "ChoiceLinkedDialogID":"",
                 "ChoiceAfterFunction":""
             }
         ]
