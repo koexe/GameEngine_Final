@@ -39,6 +39,7 @@ public class SettingCTR : MonoBehaviour
         TextShowSpeed_Text.text = m_fTextShowSpeed.ToString();
         BGMText.text = (Mathf.Round(g_BGMVolumeScrollBar.value * 100) / 100).ToString();
         SEText.text = (Mathf.Round(g_SEVolumeScrollBar.value * 100) / 100).ToString();
+
     }
     public void onclickEvent_commitSetting()
     {

@@ -305,6 +305,7 @@ public class MainSceneMNG : MonoBehaviour
         g_dicChoiceAfterFunc.Add("Move_Scene_3", Move_Scene_3);
         g_dicChoiceAfterFunc.Add("Move_Scene_4", Move_Scene_4);
         g_dicChoiceAfterFunc.Add("Move_Scene_5", Move_Scene_5);
+        g_dicChoiceAfterFunc.Add("Move_Scene_6", Move_Scene_6);
     }
 
 
@@ -544,6 +545,11 @@ public void LogShowFunc()
     {
         ChangeLocation("동굴 출구");
     }
+    public void Move_Scene_6()
+    {
+        ChangeLocation("유니티 신전");
+    }
+
     #endregion
 
 }

@@ -65,11 +65,11 @@ public class ImageMNG : MonoBehaviour
         Image_Player Player = LoadImage<Image_Player>("윤이진");
         Image_Father Father = LoadImage<Image_Father>("윤익희");
         Image_Bot Bot = LoadImage<Image_Bot>("피티");
-        Image_Monster Monster = LoadImage<Image_Monster>("언리얼 몬스터");
+        Image_Monster Monster = LoadImage<Image_Monster>("몬스터");
         GameMNG.Instance.g_ImageDIc.Add("윤이진", Player);
         GameMNG.Instance.g_ImageDIc.Add("윤익희", Father);
         GameMNG.Instance.g_ImageDIc.Add("피티", Bot);
-        GameMNG.Instance.g_ImageDIc.Add("언리얼 몬스터", Monster);
+        GameMNG.Instance.g_ImageDIc.Add("몬스터", Monster);
     }
 
     private T LoadImage<T>(string CharacterName)where T : _Image ,new()

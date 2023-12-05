@@ -653,18 +653,18 @@
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [],
-                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"피티","isTalking":"true","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"false","ImageType":"Default"}],
-                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"false","ImageType":"Default"}],
-                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"몬스터","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"피티","isTalking":"true","ImageType":"Default"},{"Character":"몬스터","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"몬스터","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"몬스터","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"몬스터","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"몬스터","isTalking":"true","ImageType":"Default"}],
                                 [],
-                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"몬스터","isTalking":"false","ImageType":"Default"}],
                                 [],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
-                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"몬스터","isTalking":"true","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 []
@@ -709,16 +709,16 @@
                   "이진아 괜찮아...? 여기서 좀 휴식하고 유니티 신전으로 이동하자.",
                   "아니..! 분명 다른 곳에 있는 유니티 신전에도 몬스터를 보냈을거야. 지금은 한시라도 서둘러야해.",
                   "혹시 콜라이더에 대해서 더 궁금하다면 나한테 말해줘!"],
-        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"true","ImageType":"Default"}],
+        "Dialog_CharacterInfo":[[{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"몬스터","isTalking":"true","ImageType":"Default"}],
                                 [],
-                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"몬스터","isTalking":"false","ImageType":"Default"}],
                                 [],
                                 [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
                                 [],
-                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"true","ImageType":"Default"}],
-                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"언리얼 몬스터","isTalking":"false","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"몬스터","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"몬스터","isTalking":"true","ImageType":"Default"}],
+                                [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"몬스터","isTalking":"false","ImageType":"Default"}],
                                 [],
                                 [{"Character":"윤이진","isTalking":"true","ImageType":"Default"},{"Character":"피티","isTalking":"false","ImageType":"Default"}],
                                 [{"Character":"윤이진","isTalking":"false","ImageType":"Default"},{"Character":"피티","isTalking":"true","ImageType":"Default"}],
@@ -730,7 +730,7 @@
                 "ChoiceTrigger":[],
                 "ChoiceDialog":"유니티 신전에 들어간다.",
                 "ChoiceLinkedDialogID":"",
-                "ChoiceAfterFunction":""
+                "ChoiceAfterFunction":"Move_Scene_6"
             }
         ]
     },
@@ -756,7 +756,7 @@
                 "ChoiceTrigger":[],
                 "ChoiceDialog":"유니티 신전에 들어간다.",
                 "ChoiceLinkedDialogID":"",
-                "ChoiceAfterFunction":""
+                "ChoiceAfterFunction":"Move_Scene_6"
             }
         ]
     },
