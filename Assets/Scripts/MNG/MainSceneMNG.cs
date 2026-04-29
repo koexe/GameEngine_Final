@@ -30,7 +30,7 @@ public class MainSceneMNG : MonoBehaviour
     public delegate void ChoiceAfterFuncDelegate();
     
     public JsonMNG.Dialogs g_cCurrentDialog;
-    public JsonMNG.Character_Contains_Quest g_cCurrentCharacter;
+    public JsonMNG.CharacterData g_cCurrentCharacter;
 
     private int m_iCurrentDialogIndex;
     public float g_fTextShowSpeed = 0.5f;
@@ -56,11 +56,11 @@ public class MainSceneMNG : MonoBehaviour
         }
     }
 
-    #region Àå¼Ò, Ä³¸¯ÅÍ, ´ÙÀÌ¾ó·Î±× º¯°æ ±â´É
+    #region ï¿½ï¿½ï¿½, Ä³ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ì¾ï¿½Î±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     public void ChangeDialog(JsonMNG.Dialogs dialogs)
     {
         isChangeCharacter = false;
-        // ÇöÀç ÁøÇàµÇ´Â ´ÙÀÌ¾ó·Î±×¸¦ º¯°æÇÏ´Â ±â´É
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½Î±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
         if (GameMNG.Instance.g_PlayerTriggerDic[dialogs.DialogID] == true)
         {
             m_iCurrentDialogIndex = dialogs.Dialog.Count-1;
@@ -77,9 +77,9 @@ public class MainSceneMNG : MonoBehaviour
         ChangeName();
         InitCheckImage();
     }
-    public void ChangeCharacter(JsonMNG.Character_Contains_Quest character)
+    public void ChangeCharacter(JsonMNG.CharacterData character)
     {
-        //Ä³¸¯ÅÍ Å¬¸¯ ½Ã ÇØ´ç Ä³¸¯ÅÍÀÇ Äù½ºÆ®¿Í ´ÙÀÌ¾ó·Î±×¸¦ º¸¿©ÁÖ´Â ±â´É
+        //Ä³ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ ï¿½Ø´ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½Î±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
         DestroyAllObjectsWithTag("QuestText");
         DestroyAllObjectsWithTag("ChoiceText");
         TMP_CharacterNameText.text = character.Name;
@@ -91,7 +91,7 @@ public class MainSceneMNG : MonoBehaviour
     }
     public void ChangeLocation(string Name)
     {
-        //Àå¼ÒÀÇ ÀÌ¸§À¸·Î LocationÀ» º¯°æÇÏ´Â ±â´É
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ Locationï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
         isChangeText = true;
         ChangeLocationInit(GameMNG.Instance.g_AllLocationInfoList[GameMNG.Instance.g_AllLocationInfoList.FindIndex(item => item.LocationName == Name)]);
 
@@ -101,7 +101,7 @@ public class MainSceneMNG : MonoBehaviour
 
     public void OnMouseDownEvent_DIalogWindow()
     {
-        // ´ëÈ­Ã¢ Å¬¸¯ ½Ã ´ÙÀÌ¾ó·Î±×¸¦ ¾ÕÀ¸·Î ÁøÇà½ÃÅ°´Â ±â´É
+        // ï¿½ï¿½È­Ã¢ Å¬ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½Î±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (g_cCurrentDialog != null)
         {
             if (isChangeText)
@@ -127,7 +127,7 @@ public class MainSceneMNG : MonoBehaviour
             for (int i = 0; i < g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex].Count; i++)
             {
                 ImageMNG._Image Image = GameMNG.Instance.g_ImageDIc[g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].Character];
-                if(g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].Character == "ÇÇÆ¼")
+                if(g_cCurrentDialog.Dialog_CharacterInfo[m_iCurrentDialogIndex][i].Character == "ï¿½ï¿½Æ¼")
                 {
 
                     Vector3 Pos = CharacterImage.transform.GetChild(i).GetComponent<RectTransform>().anchoredPosition;
@@ -153,7 +153,7 @@ public class MainSceneMNG : MonoBehaviour
 
     #endregion
 
-    #region Text Á¦¾î
+    #region Text ï¿½ï¿½ï¿½ï¿½
     private void ChangeText()
     {
         m_iCurrentDialogIndex++;
@@ -171,7 +171,7 @@ public class MainSceneMNG : MonoBehaviour
         }
         
         
-        //Debug.Log("ChangeText È£ÃâµÊ");
+        //Debug.Log("ChangeText È£ï¿½ï¿½ï¿½");
     }
 
     private void ChangeName()
@@ -210,10 +210,10 @@ public class MainSceneMNG : MonoBehaviour
     }
     #endregion
 
-    #region Init ±â´Éµé
+    #region Init ï¿½ï¿½Éµï¿½
     private void FirstInit()
     {
-        //ÃÊ±âÈ­ ÇÔ¼ö, ÅØ½ºÆ® ¿ä¼ÒµéÀ» ÃÊ±âÈ­ÇÕ´Ï´Ù.
+        //ï¿½Ê±ï¿½È­ ï¿½Ô¼ï¿½, ï¿½Ø½ï¿½Æ® ï¿½ï¿½Òµï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½Õ´Ï´ï¿½.
         ChoosableTextPrefab = Resources.Load<GameObject>("Prefab/ChoosableText");
         Prefab_LogText = Resources.Load<GameObject>("Prefab/LogScreen");
         Prefab_CharacterIcon = Resources.Load<GameObject>("Prefab/CharacterIcon");
@@ -240,12 +240,12 @@ public class MainSceneMNG : MonoBehaviour
         BackGroundImage = GameObject.Find("BackgroundImage").GetComponent<Image>();
 
         InitChoiceAfterFuncDic();
-        ChangeLocation("1³â Àü");
+        ChangeLocation("1ë…„ ì „");
     }
 
-    private void ChangeLocationInit(JsonMNG.LocationInfo_Contains_ALL location)
+    private void ChangeLocationInit(JsonMNG.LocationData location)
     {
-        //Àå¼Ò¸¦ ¹Ù²åÀ» ¶§ÀÇ ÃÊ±âÈ­ÀÔ´Ï´Ù.
+        //ï¿½ï¿½Ò¸ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½Ô´Ï´ï¿½.
         GameMNG.Instance.g_cCurrentLocationInfo = location;
         g_cCurrentCharacter = null;
         g_cCurrentDialog = location.DescriptionDialog;
@@ -253,25 +253,25 @@ public class MainSceneMNG : MonoBehaviour
         if (location.LocationBackGroundImage == null) { Debug.Log("Missing BackgroundImage"); }
 
         AudioMNG.Instance.ChangeBGM(Resources.Load<AudioClip>("Audio/" + location.BackGroundMusic));
-        //È­¸é¿¡ ³²¾ÆÀÖ´Â ³ª¸ÓÁö Á¤º¸µé »èÁ¦
+        //È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         DestroyAllObjectsWithTag("CharacterText");
         DestroyAllObjectsWithTag("ChoiceText");
         DestroyAllObjectsWithTag("QuestText");
-        //Ä³¸¯ÅÍ ÃÊ±âÈ­
+        //Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         InitCharacter();
-        //ÅØ½ºÆ® ÃÊ±âÈ­
+        //ï¿½Ø½ï¿½Æ® ï¿½Ê±ï¿½È­
         InitText();
-        //ÀÌ¹ÌÁö ÃÊ±âÈ­
+        //ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         ChangeImage();
-        //Ä³¸¯ÅÍ ÀÌ¸§ ÃÊ±âÈ­
+        //Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½Ê±ï¿½È­
         ChangeName();
-        //´ÙÀÌ¾ó·Î±× ¹Ù²Ù±â
+        //ï¿½ï¿½ï¿½Ì¾ï¿½Î±ï¿½ ï¿½Ù²Ù±ï¿½
         ChangeDialog(g_cCurrentDialog);
     }
 
     private void InitCharacter()
     {
-        //Àå¼Ò¿¡ ¼ÓÇÑ Ä³¸¯ÅÍµéÀ» ÃÊ±âÈ­ÇÏ´Â ±â´ÉÀÔ´Ï´Ù.
+        //ï¿½ï¿½Ò¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
         for (int i = 0; i < GameMNG.Instance.g_cCurrentLocationInfo.CharacterList.Count; i++)
         {
             GameObject CharcterTextTemp = Instantiate(Prefab_CharacterIcon, Background_Character.transform);
@@ -312,7 +312,7 @@ public class MainSceneMNG : MonoBehaviour
 
     private void InitText()
     {
-        //ÅØ½ºÆ®µéÀ» ÃÊ±âÈ­ÇÕ´Ï´Ù.
+        //ï¿½Ø½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½Õ´Ï´ï¿½.
         m_iCurrentDialogIndex = 0;
         g_cCurrentDialog = GameMNG.Instance.g_cCurrentLocationInfo.DescriptionDialog;
         cr_ShowText = StartCoroutine(ShowText(g_cCurrentDialog.Dialog[m_iCurrentDialogIndex]));
@@ -334,7 +334,7 @@ public class MainSceneMNG : MonoBehaviour
 
 #endregion
 
-    #region ¸Þ´º ±â´É
+    #region ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½
 
 public void LogShowFunc()
     {
@@ -384,7 +384,7 @@ public void LogShowFunc()
 
     #endregion
 
-    #region À¯Æ¿¸®Æ¼ ±â´É
+    #region ï¿½ï¿½Æ¿ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½
     private void ChoiceShowFunc()
     {
         DestroyAllObjectsWithTag("ChoiceText");
@@ -418,13 +418,13 @@ public void LogShowFunc()
             }
         }
     }
-    public void ShowQuest(JsonMNG.Character_Contains_Quest Character)
+    public void ShowQuest(JsonMNG.CharacterData Character)
     {
         ChangeCharacter(Character);
         int TextAmount = 0;
         for (int i = 0; i < Character.LinkedQuests.Count; i++)
         {
-            //ÀÌ ºÎºÐ¿¡¼­ ¿À·ù³ª¸é Ä³¸¯ÅÍ Äù½ºÆ®ÂÊ È®ÀÎÇÒ°Í.
+            //ï¿½ï¿½ ï¿½ÎºÐ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ò°ï¿½.
             if (GameObject.Find(Character.Dialog_Info[Character.LinkedQuests[i]][0].QuestName) == null)
             {
                 bool isShow_Temp = true;
@@ -472,16 +472,16 @@ public void LogShowFunc()
 
     private static object GetFieldValue(object instance, string fieldName)
     {
-        // ReflectionÀ» »ç¿ëÇÏ¿© ÇÊµå¸¦ Ã£À½
+        // Reflectionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Êµå¸¦ Ã£ï¿½ï¿½
         FieldInfo field = instance.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
         if (field != null)
         {
-            // ÇÊµåÀÇ °ªÀ» °¡Á®¿È
+            // ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             return field.GetValue(instance);
         }
         else
         {
-            // ÇÊµå°¡ ¾øÀ» °æ¿ì
+            // ï¿½Êµå°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             Console.WriteLine("Field not found");
             return null;
         }
@@ -504,9 +504,9 @@ public void LogShowFunc()
         return isShow;
     }
 
-    public bool CheckSeenDialog(JsonMNG.Character_Contains_Quest character)
+    public bool CheckSeenDialog(JsonMNG.CharacterData character)
     {
-        //true¸é ÀÌ¹ÌÁö º¸ÀÌ±â, false¸é ÀÌ¹ÌÁö ¼û±â±â
+        //trueï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½, falseï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
         bool Check_Temp = false;
         if (character != null)
         {
@@ -532,23 +532,23 @@ public void LogShowFunc()
     #region ChoiceAfterFunc
     public void Move_Scene_2()
     {
-        ChangeLocation("µ¿±¼ ÀÔ±¸");
+        ChangeLocation("ï¿½ï¿½ï¿½ï¿½ ï¿½Ô±ï¿½");
     }
     public void Move_Scene_3()
     {
-        ChangeLocation("µ¿±¼ ¾È");
+        ChangeLocation("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½");
     }
     public void Move_Scene_4()
     {
-        ChangeLocation("µ¿±¼ ¾È 2");
+        ChangeLocation("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 2");
     }
     public void Move_Scene_5()
     {
-        ChangeLocation("µ¿±¼ Ãâ±¸");
+        ChangeLocation("ï¿½ï¿½ï¿½ï¿½ ï¿½â±¸");
     }
     public void Move_Scene_6()
     {
-        ChangeLocation("À¯´ÏÆ¼ ½ÅÀü");
+        ChangeLocation("ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½");
     }
     public void Move_Scene_End()
     {

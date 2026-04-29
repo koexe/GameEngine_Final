@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SettingCTR : MonoBehaviour
 {
     private float m_fTextShowSpeed;
-    private string tempText = "ÅØ½ºÆ®°¡ ³ªÅ¸³ª´Â ¼ÓµµÀÔ´Ï´Ù.";
+    private string tempText = "í…ìŠ¤íŠ¸ê°€ ë‚˜ì˜¤ëŠ” ì†ë„ì…ë‹ˆë‹¤.";
     public MainSceneMNG mainSceneMNG;
     public Scrollbar g_TextShowSpeedScrollBar;
     public Scrollbar g_BGMVolumeScrollBar;

@@ -11,8 +11,8 @@ using UnityEngine.SceneManagement;
 public class GameMNG : MonoBehaviour
 {
     private static GameMNG _instance;
-    public JsonMNG.LocationInfo_Contains_ALL g_cCurrentLocationInfo;
-    public List<JsonMNG.LocationInfo_Contains_ALL> g_AllLocationInfoList;
+    public JsonMNG.LocationData g_cCurrentLocationInfo;
+    public List<JsonMNG.LocationData> g_AllLocationInfoList;
     public Dictionary<string,bool> g_PlayerTriggerDic = new Dictionary<string,bool>();
     public Dictionary<string, ImageMNG._Image> g_ImageDIc;
 
@@ -21,12 +21,12 @@ public class GameMNG : MonoBehaviour
 
 
 
-    // ÀÎ½ºÅÏ½º¿¡ Á¢±ÙÇÏ±â À§ÇÑ ÇÁ·ÎÆÛÆ¼
+    // ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
     public static GameMNG Instance
     {
         get
         {
-            // ÀÎ½ºÅÏ½º°¡ ¾ø´Â °æ¿ì¿¡ Á¢±ÙÇÏ·Á ÇÏ¸é ÀÎ½ºÅÏ½º¸¦ ÇÒ´çÇØÁØ´Ù.
+            // ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½Ï¸ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
             if (!_instance)
             {
                 _instance = FindObjectOfType(typeof(GameMNG)) as GameMNG;
@@ -45,12 +45,12 @@ public class GameMNG : MonoBehaviour
         {
             _instance = this;
         }
-        // ÀÎ½ºÅÏ½º°¡ Á¸ÀçÇÏ´Â °æ¿ì »õ·Î»ý±â´Â ÀÎ½ºÅÏ½º¸¦ »èÁ¦ÇÑ´Ù.
+        // ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
         else if (_instance != this)
         {
             Destroy(gameObject);
         }
-        // ¾Æ·¡ÀÇ ÇÔ¼ö¸¦ »ç¿ëÇÏ¿© ¾ÀÀÌ ÀüÈ¯µÇ´õ¶óµµ ¼±¾ðµÇ¾ú´ø ÀÎ½ºÅÏ½º°¡ ÆÄ±«µÇÁö ¾Ê´Â´Ù.
+        // ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ç´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.
         DontDestroyOnLoad(gameObject);
 
     }

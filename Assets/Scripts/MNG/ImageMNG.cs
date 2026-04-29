@@ -13,7 +13,7 @@ public class ImageMNG : MonoBehaviour
     {
         get
         {
-            // ÀÎ½ºÅÏ½º°¡ ¾ø´Â °æ¿ì¿¡ Á¢±ÙÇÏ·Á ÇÏ¸é ÀÎ½ºÅÏ½º¸¦ ÇÒ´çÇØÁØ´Ù.
+            // ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½Ï¸ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
             if (!_instance)
             {
                 _instance = FindObjectOfType(typeof(ImageMNG)) as ImageMNG;
@@ -62,28 +62,28 @@ public class ImageMNG : MonoBehaviour
         {
             GameMNG.Instance.g_ImageDIc = new Dictionary<string, _Image> ();
         }
-        Image_Player Player = LoadImage<Image_Player>("À±ÀÌÁø");
-        Image_Father Father = LoadImage<Image_Father>("À±ÀÍÈñ");
-        Image_Bot Bot = LoadImage<Image_Bot>("ÇÇÆ¼");
-        Image_Monster Monster = LoadImage<Image_Monster>("¸ó½ºÅÍ");
-        GameMNG.Instance.g_ImageDIc.Add("À±ÀÌÁø", Player);
-        GameMNG.Instance.g_ImageDIc.Add("À±ÀÍÈñ", Father);
-        GameMNG.Instance.g_ImageDIc.Add("ÇÇÆ¼", Bot);
-        GameMNG.Instance.g_ImageDIc.Add("¸ó½ºÅÍ", Monster);
+        Image_Player Player = LoadImage<Image_Player>("ìœ¤ì´ì§„");
+        Image_Father Father = LoadImage<Image_Father>("ìœ¤ìµí¬");
+        Image_Bot Bot = LoadImage<Image_Bot>("í”¼í‹°");
+        Image_Monster Monster = LoadImage<Image_Monster>("ëª¬ìŠ¤í„°");
+        GameMNG.Instance.g_ImageDIc.Add("ìœ¤ì´ì§„", Player);
+        GameMNG.Instance.g_ImageDIc.Add("ìœ¤ìµí¬", Father);
+        GameMNG.Instance.g_ImageDIc.Add("í”¼í‹°", Bot);
+        GameMNG.Instance.g_ImageDIc.Add("ëª¬ìŠ¤í„°", Monster);
     }
 
     private T LoadImage<T>(string CharacterName)where T : _Image ,new()
     {
-        //_Image ÀÎ½ºÅÏ½º »ı¼º
+        //_Image ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½
         T instance = new T();
 
-        //°¢ ÀÌ¹ÌÁö Road
+        //ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ Road
         instance.Default = Resources.Load<Sprite>("Images/" + CharacterName + "/Default");
         instance.Smile = Resources.Load<Sprite>("Images/" + CharacterName + "/Smile");
         instance.Sad = Resources.Load<Sprite>("Images/" + CharacterName + "/Sad");
         instance.Angry = Resources.Load<Sprite>("Images/" + CharacterName + "/Angry");
 
-        //RoadµÈ ÀÌ¹ÌÁö ¹İÈ¯
+        //Roadï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
         return instance;
     }
 }

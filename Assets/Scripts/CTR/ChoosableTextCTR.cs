@@ -14,12 +14,12 @@ public class ChoosableTextCTR : MonoBehaviour, IPointerClickHandler
     public GameObject CheckImage;
 
 
-    //ÅØ½ºÆ® Á¾·ù¸¦ ±¸ºÐÇÏ±â À§ÇÏ¿© TextType string À» »ç¿ë, Character_Name_Text, Quest_Text, Choice_Text·Î ±¸ºÐ
+    //ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ TextType string ï¿½ï¿½ ï¿½ï¿½ï¿½, Character_Name_Text, Quest_Text, Choice_Textï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     public string g_sTextType;
     public int g_iCharacterIndex;
 
-    public JsonMNG.Character_Contains_Quest g_cCharacterInfo;
+    public JsonMNG.CharacterData g_cCharacterInfo;
     public JsonMNG.Dialogs g_cDialogInfo;
     public JsonMNG.Choice g_cChoiceInfo;
 

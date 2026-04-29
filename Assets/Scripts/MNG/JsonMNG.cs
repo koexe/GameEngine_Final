@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using static JsonMNG;
 using System;
 
 public class JsonMNG : MonoBehaviour
@@ -13,7 +12,7 @@ public class JsonMNG : MonoBehaviour
     private TextAsset CharacterJson;
     private TextAsset LocationJson;
 
-    public List<LocationInfo_Contains_ALL> locationInfo_ALL;
+    public List<LocationData> locationInfo_ALL;
 
 
 
@@ -34,31 +33,28 @@ public class JsonMNG : MonoBehaviour
         LocationJson = Resources.Load<TextAsset>("Json/Location");
 
 
-        //Json 파일의 기본적인 요소로 초기화함
-        LocationContainer Loc = ParseJson<LocationContainer>(LocationJson);
-        CharacterContainer CharacterTemp = ParseJson<CharacterContainer>(CharacterJson);
-        DialogContainer Dial = ParseJson<DialogContainer>(DialogJson);
+        LocationList Loc = ParseJson<LocationList>(LocationJson);
+        CharacterList CharacterTemp = ParseJson<CharacterList>(CharacterJson);
+        DialogList Dial = ParseJson<DialogList>(DialogJson);
         if(Loc == null || CharacterTemp == null || Dial == null)
         {
             Debug.Log("Json Parsing Error Occured. Plase Chack Json File exist or Check Json file formet");
         }
 
 
-        List<Character_Contains_Quest> CharacterTempList = new List<Character_Contains_Quest>();
-        LocationInfo_Contains_ALL Loc_con_all = new LocationInfo_Contains_ALL();
-        locationInfo_ALL = new List<LocationInfo_Contains_ALL>();
+        List<CharacterData> CharacterTempList = new List<CharacterData>();
+        LocationData Loc_con_all = new LocationData();
+        locationInfo_ALL = new List<LocationData>();
 
         foreach (Location Location_Temp in Loc.Locations)
         {
-            // Loc_all_temp 의 기본적인 요소들을 초기화
-            LocationInfo_Contains_ALL Loc_all_temp = new LocationInfo_Contains_ALL();
+            LocationData Loc_all_temp = new LocationData();
 
             Loc_all_temp.LocationName = Location_Temp.LocationName;
-            Loc_all_temp.CharacterList = new List<Character_Contains_Quest>();
+            Loc_all_temp.CharacterList = new List<CharacterData>();
             Loc_all_temp.LocationDescriptionID = Location_Temp.LocationDescription;
             Loc_all_temp.LocationBackGroundImage = Resources.Load<Sprite>("Images/Backgrounds/" + Location_Temp.LocationBackgroundImage);
             Loc_all_temp.LocationShowTrigger = Location_Temp.LocationShowTrigger;
-            //Debug.Log("Images/" + Location_Temp.LocationBackgroundImage + ".jpg");
             Loc_all_temp.BackGroundMusic = Location_Temp.BackGroundMusic;
             Loc_all_temp.LocationContainCharacter = Location_Temp.LocationContainCharacter;
 
@@ -68,8 +64,7 @@ public class JsonMNG : MonoBehaviour
 
         foreach (Character character in CharacterTemp.Characters)
         {
-            // character_Contains_Quest_Temp 의 기본적인 요소들을 초기화
-            Character_Contains_Quest character_Contains_Quest_Temp = new Character_Contains_Quest();
+            CharacterData character_Contains_Quest_Temp = new CharacterData();
 
             character_Contains_Quest_Temp.Name = character.Name;
             character_Contains_Quest_Temp.Location = character.Location;
@@ -83,13 +78,11 @@ public class JsonMNG : MonoBehaviour
 
         foreach (Dialogs dialogs in Dial.Dialog_ALL)
         {
-            //Dialog info 와 dialog의 index를 비교
             if(dialogs.Dialog.Count != dialogs.Dialog_CharacterInfo.Count)
                 Debug.Log("Dialog info index is not match in " + dialogs.DialogID + " Please Check this DialogID");
             
             GameMNG.Instance.g_PlayerTriggerDic.Add(dialogs.DialogID, false);
 
-            //location의 기본 Description을 초기화
             if (dialogs.DialogType == "Description")
             {
                 for(int i = 0;i<locationInfo_ALL.Count;i++)
@@ -100,7 +93,6 @@ public class JsonMNG : MonoBehaviour
             }
             else if (dialogs.DialogType == "Quest")
             {
-                //Dialog를 Character_Contains_Quest 형식에 QuestID를 기준으로 넣고, CharacterTempList를 초기화함
                 int index = CharacterTempList.FindIndex(item => item.LinkedQuests.Any(LinkedQuest => LinkedQuest == dialogs.QuestID));
                 if (index == -1)
                 {
@@ -108,7 +100,7 @@ public class JsonMNG : MonoBehaviour
                 }
                 else
                 {
-                    Character_Contains_Quest character = CharacterTempList[index];
+                    CharacterData character = CharacterTempList[index];
 
                     if (character.Dialog_Info == null)
                     {
@@ -128,8 +120,7 @@ public class JsonMNG : MonoBehaviour
             else
                 Debug.Log("Dialog Type Error");
         }
-        //characterlist를 LocationInfo에 넣음
-        foreach (Character_Contains_Quest chartemp in CharacterTempList)
+        foreach (CharacterData chartemp in CharacterTempList)
         {
             for (int i = 0; i < locationInfo_ALL.Count; i++)
             {
@@ -137,7 +128,7 @@ public class JsonMNG : MonoBehaviour
                 {
                     if (locationInfo_ALL[i].CharacterList == null)
                     {
-                        locationInfo_ALL[i].CharacterList = new List<Character_Contains_Quest>();
+                        locationInfo_ALL[i].CharacterList = new List<CharacterData>();
                     }
                     else
                     {
@@ -153,7 +144,6 @@ public class JsonMNG : MonoBehaviour
 
     private T ParseJson<T>(TextAsset json) where T : class
     {
-        //Json을 파싱하는 기능입니다. 반환할 타입과 TextAsset으로 변환된 json을 지정합니다.
         try
         {
             if (json != null)
@@ -188,11 +178,11 @@ public class JsonMNG : MonoBehaviour
         public string DialogID;
         public string QuestName;
         public List<string> Dialog;
-        public List<List<Dialog_CharacterInfo>> Dialog_CharacterInfo;
+        public List<List<DialogCharacterInfo>> Dialog_CharacterInfo;
         public List<Choice> Choices;
     }
     [System.Serializable]
-    public class Dialog_CharacterInfo
+    public class DialogCharacterInfo
     {
         public string Character;
         public bool isTalking;
@@ -235,31 +225,31 @@ public class JsonMNG : MonoBehaviour
         public List<string> LinkedQuests;
     }
 
-    public class DialogContainer
+    public class DialogList
     {
         public List<Dialogs> Dialog_ALL;
     }
 
-    public class LocationContainer
+    public class LocationList
     {
         public List<Location> Locations;
     }
-    public class CharacterContainer
+    public class CharacterList
     {
         public List<Character> Characters;
     }
-    public class LocationInfo_Contains_ALL
+    public class LocationData
     {
         public string LocationName;
         public List<string> LocationContainCharacter;
-        public List<Character_Contains_Quest> CharacterList;
+        public List<CharacterData> CharacterList;
         public string LocationDescriptionID;
         public Sprite LocationBackGroundImage;
         public Dialogs DescriptionDialog;
         public string BackGroundMusic;
         public List<Trigger> LocationShowTrigger;
     }
-    public class Character_Contains_Quest
+    public class CharacterData
     {
         public string Name;
         public string Location;
